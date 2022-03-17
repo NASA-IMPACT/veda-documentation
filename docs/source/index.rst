@@ -1,4 +1,4 @@
-Welcome to Lumache's documentation!
+Welcome to documentation for the VEDA ARCO API!
 ===================================
 
 **Lumache** (/lu'make/) is a Python library for cooks and food lovers
@@ -20,3 +20,4 @@ Contents
 
    usage
    api
+   api/china-no2-monthly-timeseries
