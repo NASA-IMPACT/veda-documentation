@@ -1,10 +1,9 @@
 Welcome to documentation for the VEDA ARCO API!
 ===================================
 
-**Lumache** (/lu'make/) is a Python library for cooks and food lovers
-that creates recipes mixing random ingredients.
-It pulls data from the `Open Food Facts database <https://world.openfoodfacts.org/>`_
-and offers a *simple* and *intuitive* API.
+This documentation supports users of the API with example notebooks on how to search, visualize and access the data.
+
+The API codebase is here: https://github.com/NASA-IMPACT/delta-backend/
 
 Check out the :doc:`usage` section for further information, including
 how to :ref:`installation` the project.
