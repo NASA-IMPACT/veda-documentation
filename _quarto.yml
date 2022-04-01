@@ -1,17 +1,18 @@
 project:
-  type: book
+  type: website
   output-dir: docs
 
-book:
+website:
   title: "veda-documentation"
   author: "VEDA Team (NASA IMPACT and Development Seed)"
   date: "3/31/2022"
-  chapters:
+  sidebar:
+    contents:
     - index.qmd
     - veda-apis.qmd
-    - part: Example Notebooks
-      chapters:
-      - no2-timeseries.ipynb
+    - section: "Example Notebooks"
+      contents:
+        - no2-timeseries.ipynb
 
 format:
   html:
