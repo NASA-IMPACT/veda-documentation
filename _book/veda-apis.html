@@ -3,7 +3,7 @@
   <meta charset="utf-8">
   <meta name="generator" content="quarto-0.9.128">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-  <title>veda-documentation - 1&nbsp; VEDA APIs</title>
+  <title>veda-documentation - VEDA APIs</title>
   <style>
     code{white-space: pre-wrap;}
     span.smallcaps{font-variant: small-caps;}
@@ -20,7 +20,7 @@
   <script src="site_libs/quarto-search/autocomplete.umd.js"></script>
   <script src="site_libs/quarto-search/fuse.min.js"></script>
   <script src="site_libs/quarto-search/quarto-search.js"></script>
-  <link href="./summary.html" rel="next">
+  <link href="./no2-timeseries.html" rel="next">
   <link href="./index.html" rel="prev">
   <script src="site_libs/quarto-html/quarto.js"></script>
   <script src="site_libs/quarto-html/popper.min.js"></script>
@@ -54,12 +54,12 @@
     <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
   <![endif]-->
 </head>
-<body class="floating fullcontent">
+<body class="floating">
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
   <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
     <div class="container-fluid d-flex justify-content-between">
-      <h1 class="quarto-secondary-nav-title"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">VEDA APIs</span></h1>
+      <h1 class="quarto-secondary-nav-title">VEDA APIs</h1>
       <button type="button" class="quarto-btn-toggle btn">
         <i class="bi bi-chevron-right"></i>
       </button>
@@ -84,37 +84,76 @@
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./index.html" class="sidebar-item-text sidebar-link">Welcome to documentation about the VEDA API and Datasets</a>
+  <a href="./index.html" class="sidebar-item-text sidebar-link">Welcome</a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./intro.html" class="sidebar-item-text sidebar-link active"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">VEDA APIs</span></a>
+  <a href="./veda-apis.html" class="sidebar-item-text sidebar-link active">VEDA APIs</a>
   </div>
 </li>
+        <li class="sidebar-item sidebar-item-section">
+    <div class="sidebar-item-container"> 
+        <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-example-notebooks" aria-expanded="true">Example Notebooks</a>
+      <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-example-notebooks" aria-expanded="true">
+        <i class="bi bi-chevron-right ms-2"></i>
+      </a>
+    </div>
+    <ul id="quarto-sidebar-section-example-notebooks" class="collapse list-unstyled sidebar-section depth1 show">  
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./summary.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Summary</span></a>
+  <a href="./no2-timeseries.html" class="sidebar-item-text sidebar-link">Monthly NO2 Timeseries</a>
   </div>
 </li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./references.html" class="sidebar-item-text sidebar-link">References</a>
-  </div>
-</li>
+    </ul>
+  </li>
     </ul>
     </div>
 </nav>
 <!-- margin-sidebar -->
-    
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc">
+<h2 id="toc-title">Table of contents</h2>
+<ul>
+<li><a href="#environments" class="nav-link active" data-scroll-target="#environments">Environments</a>
+<ul class="collapse">
+<li><a href="#development-aka-dev-experimental-work-expected-downtime" class="nav-link" data-scroll-target="#development-aka-dev-experimental-work-expected-downtime">Development, aka Dev (experimental work, expected downtime)</a></li>
+<li><a href="#staging-maintenance-will-be-announced" class="nav-link" data-scroll-target="#staging-maintenance-will-be-announced">Staging (maintenance will be announced):</a></li>
+<li><a href="#production-coming-soon" class="nav-link" data-scroll-target="#production-coming-soon">Production: COMING SOON</a></li>
+</ul></li>
+</ul>
+</nav>
+    </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 <header id="title-block-header" class="quarto-title-block default">
 
-<div class="quarto-title"><h1 class="title d-none d-lg-block display-7"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">VEDA APIs</span></h1></div></header>
+<div class="quarto-title"><h1 class="title d-none d-lg-block display-7">VEDA APIs</h1></div></header>
+
+<p>The VEDA API source code is currently stored in a private repository: <a href="https://github.com/NASA-IMPACT/delta-backend">delta-backend</a> but is based off <a href="https://github.com/developmentseed/eoAPI">eoAPI</a></p>
+<section id="environments" class="level2">
+<h2 class="anchored" data-anchor-id="environments">Environments</h2>
+<section id="development-aka-dev-experimental-work-expected-downtime" class="level3">
+<h3 class="anchored" data-anchor-id="development-aka-dev-experimental-work-expected-downtime">Development, aka Dev (experimental work, expected downtime)</h3>
+<ul>
+<li>STAC API (metadata): <a href="https://dev-stac.delta-backend.xyz/docs">https://dev-stac.delta-backend.xyz/docs</a> Raster API (tiling): <a href="https://dev-raster.delta-backend.xyz/docs">https://dev-raster.delta-backend.xyz/docs</a> STAC viewer: <a href="https://dev-stac.delta-backend.xyz/index.html">https://dev-stac.delta-backend.xyz/index.html</a></li>
+</ul>
+</section>
+<section id="staging-maintenance-will-be-announced" class="level3">
+<h3 class="anchored" data-anchor-id="staging-maintenance-will-be-announced">Staging (maintenance will be announced):</h3>
+<ul>
+<li>STAC API (metadata): <a href="https://staging-stac.delta-backend.xyz/docs">https://staging-stac.delta-backend.xyz/docs</a></li>
+<li>Raster API (tiling): <a href="https://staging-raster.delta-backend.xyz/docs">https://staging-raster.delta-backend.xyz/docs</a></li>
+<li>STAC viewer: <a href="https://staging-stac.delta-backend.xyz/index.html">https://staging-stac.delta-backend.xyz/index.html</a></li>
+</ul>
+</section>
+<section id="production-coming-soon" class="level3">
+<h3 class="anchored" data-anchor-id="production-coming-soon">Production: COMING SOON</h3>
 
 
 
+</section>
+</section>
 </main> <!-- /main -->
 <script type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
@@ -195,12 +234,12 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
       <a href="./index.html" class="pagination-link">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Welcome to documentation about the VEDA API and Datasets</span>
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Welcome</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./summary.html" class="pagination-link">
-        <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Summary</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./no2-timeseries.html" class="pagination-link">
+        <span class="nav-page-text">Monthly NO2 Timeseries</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

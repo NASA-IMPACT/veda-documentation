@@ -1,6 +1,8 @@
-# Welcome to documentation about the VEDA API and Datasets {.unnumbered}
+# Welcome {.unnumbered}
+
+## Welcome to documentation about the VEDA API and Datasets
 
 In this notebook you will find documentation for the various APIs for the datasets maintained by NASA VEDA project.
 
-In addition you will find example notebooks.
+In addition you will find example notebooks on how to use those APIs and datasets.
 

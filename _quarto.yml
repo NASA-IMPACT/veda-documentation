@@ -3,13 +3,14 @@ project:
 
 book:
   title: "veda-documentation"
-  author: "Jane Doe"
-  date: "3/22/2022"
+  author: "VEDA Team (NASA IMPACT and Development Seed)"
+  date: "3/31/2022"
   chapters:
     - index.qmd
-    - intro.qmd
-    - summary.qmd
-    - references.qmd
+    - veda-apis.qmd
+    - part: Example Notebooks
+      chapters:
+      - no2-timeseries.ipynb
 
 bibliography: references.bib
 
