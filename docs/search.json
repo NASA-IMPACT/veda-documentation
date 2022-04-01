@@ -1,0 +1,16 @@
+[
+  {
+    "objectID": "veda-apis.html",
+    "href": "veda-apis.html",
+    "title": "",
+    "section": "",
+    "text": "The VEDA API source code is currently stored in a private repository: delta-backend but is based off eoAPI\n\n\n\n\n\nSTAC API (metadata): https://dev-stac.delta-backend.xyz/docs Raster API (tiling): https://dev-raster.delta-backend.xyz/docs STAC viewer: https://dev-stac.delta-backend.xyz/index.html\n\n\n\n\n\nSTAC API (metadata): https://staging-stac.delta-backend.xyz/docs\nRaster API (tiling): https://staging-raster.delta-backend.xyz/docs\nSTAC viewer: https://staging-stac.delta-backend.xyz/index.html"
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "",
+    "section": "",
+    "text": "In this notebook you will find documentation for the various APIs for the datasets maintained by NASA VEDA project.\nIn addition you will find example notebooks on how to use those APIs and datasets."
+  }
+]

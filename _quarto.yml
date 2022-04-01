@@ -1,5 +1,6 @@
 project:
   type: book
+  output-dir: docs
 
 book:
   title: "veda-documentation"
@@ -11,8 +12,6 @@ book:
     - part: Example Notebooks
       chapters:
       - no2-timeseries.ipynb
-
-bibliography: references.bib
 
 format:
   html:
