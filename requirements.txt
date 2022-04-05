@@ -4,7 +4,7 @@ nbconvert
 ipykernel~=6.4.1
 nbsphinx
 rioxarray
-satsearch
+sat-search
 sphinxcontrib-napoleon
 sphinx-rtd-theme
 stackstac
