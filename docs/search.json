@@ -11,7 +11,7 @@
     "href": "veda-apis.html",
     "title": "veda-documentation",
     "section": "",
-    "text": "The VEDA API source code is currently stored in a private repository: delta-backend but is based off eoAPI\n\n\n\n\n\nSTAC API (metadata): https://dev-stac.delta-backend.xyz/docs Raster API (tiling): https://dev-raster.delta-backend.xyz/docs STAC viewer: https://dev-stac.delta-backend.xyz/index.html\n\n\n\n\n\nSTAC API (metadata): https://staging-stac.delta-backend.xyz/docs\nRaster API (tiling): https://staging-raster.delta-backend.xyz/docs\nSTAC viewer: https://staging-stac.delta-backend.xyz/index.html"
+    "text": "The VEDA API source code is currently stored in a private repository: delta-backend but is based off eoAPI\n\n\n\n\n\nSTAC API (metadata): https://dev-stac.delta-backend.xyz/docs\nList collections: https://dev-stac.delta-backend.xyz/collections Raster API (tiling): https://dev-raster.delta-backend.xyz/docs STAC viewer: https://dev-stac.delta-backend.xyz/index.html\n\n\n\n\n\nSTAC API (metadata): https://staging-stac.delta-backend.xyz/docs\nList collections: https://staging-stac.delta-backend.xyz/collections\nRaster API (tiling): https://staging-raster.delta-backend.xyz/docs\nSTAC viewer: https://staging-stac.delta-backend.xyz/index.html"
   },
   {
     "objectID": "index.html",
