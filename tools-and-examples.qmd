@@ -12,3 +12,4 @@ These notebooks use:
 * list-collections.ipynb shows how to use pystac to list all the collections in the VEDA API.
 * no2-timeseries.ipynb shows how to use stackstac, satsearch and rioxarray to create a timeseries.
 
+Run the notebooks with [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/nasa-impact/veda-documentation/HEAD)

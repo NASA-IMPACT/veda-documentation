@@ -10,7 +10,7 @@ website:
     contents:
     - index.qmd
     - veda-apis.qmd
-    - section: example-notebooks.qmd
+    - section: tools-and-examples.qmd
       contents:
         - list-collections.ipynb
         - no2-timeseries.ipynb

@@ -18,7 +18,7 @@
     "href": "tools-and-examples.html",
     "title": "veda-documentation",
     "section": "",
-    "text": "These notebooks use:\n\npystac: PySTAC is a library for working with SpatioTemporal Asset Catalogs (STAC) in Python 3.\nrioxarray: rasterio xarray extension\nsat-search: Sat-search is a Python 3 library and a command line tool for discovering and downloading publicly available satellite imagery using STAC compliant API.\nstackstac: stackstac.stack turns a STAC collection into a lazy xarray.DataArray, backed by dask.\n\n\n\n\nlist-collections.ipynb shows how to use pystac to list all the collections in the VEDA API.\nno2-timeseries.ipynb shows how to use stackstac, satsearch and rioxarray to create a timeseries."
+    "text": "These notebooks use:\n\npystac: PySTAC is a library for working with SpatioTemporal Asset Catalogs (STAC) in Python 3.\nrioxarray: rasterio xarray extension\nsat-search: Sat-search is a Python 3 library and a command line tool for discovering and downloading publicly available satellite imagery using STAC compliant API.\nstackstac: stackstac.stack turns a STAC collection into a lazy xarray.DataArray, backed by dask.\n\n\n\n\nlist-collections.ipynb shows how to use pystac to list all the collections in the VEDA API.\nno2-timeseries.ipynb shows how to use stackstac, satsearch and rioxarray to create a timeseries.\n\nRun the notebooks with"
   },
   {
     "objectID": "veda-apis.html",
@@ -32,6 +32,6 @@
     "href": "index.html",
     "title": "veda-documentation",
     "section": "",
-    "text": "Documentation for the various APIs for the datasets maintained by NASA VEDA project.\nExample notebooks on how to use those APIs and datasets."
+    "text": "Documentation for the various APIs for the datasets maintained by NASA VEDA project.\nExample notebooks on how to use those APIs and datasets.\nRun the notebooks with"
   }
 ]

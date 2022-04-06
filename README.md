@@ -8,7 +8,13 @@ Live at https://nasa-impact.github.io/veda-documentation
 
 ## Contributing
 
-This website uses quarto and github pages. After installing quarto and making changes, you can build the html:
+This website uses [quarto](https://quarto.org/docs/guide/) and github pages. After installing quarto you can preview the site locally.
+
+```bash
+quarto preview
+```
+
+and build the html and notebooks:
 
 ```bash
 quarto render --to all
