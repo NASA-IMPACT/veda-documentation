@@ -7,14 +7,14 @@ The VEDA API source code is currently stored in a private repository: [delta-bac
 ### Development, aka Dev (experimental work, expected downtime)
 
 * STAC API (metadata): [https://dev-stac.delta-backend.xyz/docs](https://dev-stac.delta-backend.xyz/docs)
-  * List collections: [https://dev-stac.delta-backend.xyz/collections](https://dev-stac.delta-backend.xyz/collections)
+* List collections: [https://dev-stac.delta-backend.xyz/collections](https://dev-stac.delta-backend.xyz/collections)
 Raster API (tiling): [https://dev-raster.delta-backend.xyz/docs](https://dev-raster.delta-backend.xyz/docs)
 STAC viewer: [https://dev-stac.delta-backend.xyz/index.html](https://dev-stac.delta-backend.xyz/index.html)
 
 ### Staging (maintenance will be announced):
 
 * STAC API (metadata): [https://staging-stac.delta-backend.xyz/docs](https://staging-stac.delta-backend.xyz/docs)
-  * List collections: [https://staging-stac.delta-backend.xyz/collections](https://staging-stac.delta-backend.xyz/collections)
+* List collections: [https://staging-stac.delta-backend.xyz/collections](https://staging-stac.delta-backend.xyz/collections)
 * Raster API (tiling): [https://staging-raster.delta-backend.xyz/docs](https://staging-raster.delta-backend.xyz/docs)
 * STAC viewer: [https://staging-stac.delta-backend.xyz/index.html](https://staging-stac.delta-backend.xyz/index.html)
 
