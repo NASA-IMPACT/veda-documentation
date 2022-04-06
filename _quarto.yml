@@ -10,8 +10,9 @@ website:
     contents:
     - index.qmd
     - veda-apis.qmd
-    - section: "Example Notebooks"
+    - section: example-notebooks.qmd
       contents:
+        - list-collections.ipynb
         - no2-timeseries.ipynb
 
 format:

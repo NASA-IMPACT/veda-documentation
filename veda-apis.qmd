@@ -8,8 +8,8 @@ The VEDA API source code is currently stored in a private repository: [delta-bac
 
 * STAC API (metadata): [https://dev-stac.delta-backend.xyz/docs](https://dev-stac.delta-backend.xyz/docs)
 * List collections: [https://dev-stac.delta-backend.xyz/collections](https://dev-stac.delta-backend.xyz/collections)
-Raster API (tiling): [https://dev-raster.delta-backend.xyz/docs](https://dev-raster.delta-backend.xyz/docs)
-STAC viewer: [https://dev-stac.delta-backend.xyz/index.html](https://dev-stac.delta-backend.xyz/index.html)
+* Raster API (tiling): [https://dev-raster.delta-backend.xyz/docs](https://dev-raster.delta-backend.xyz/docs)
+* STAC viewer: [https://dev-stac.delta-backend.xyz/index.html](https://dev-stac.delta-backend.xyz/index.html)
 
 ### Staging (maintenance will be announced):
 
