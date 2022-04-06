@@ -6,5 +6,5 @@ Documentation for the various APIs for the datasets maintained by NASA VEDA proj
 
 Example notebooks on how to use those APIs and datasets.
 
-Run the notebooks with [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/nasa-impact/veda-documentation/HEAD)
-
+Run the notebooks with 
+<a href="https://mybinder.org/v2/gh/nasa-impact/veda-documentation/HEAD"><img src="https://mybinder.org/badge_logo.svg" alt="MyBinder link." target="_blank"></a>
