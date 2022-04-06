@@ -14,10 +14,10 @@ This website uses [quarto](https://quarto.org/docs/guide/) and github pages. Aft
 quarto preview
 ```
 
-and build the html and notebooks:
+and build the html:
 
 ```bash
-quarto render --to all
+quarto render --to html
 ```
 
 Create a branch and open a PR with your changes.
