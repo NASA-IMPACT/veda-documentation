@@ -9,8 +9,8 @@ The VEDA API source code is currently stored in a private repository: [delta-bac
 * STAC API (metadata): [https://dev-stac.delta-backend.xyz/docs](https://dev-stac.delta-backend.xyz/docs)
 * List collections: [https://dev-stac.delta-backend.xyz/collections](https://dev-stac.delta-backend.xyz/collections)
 * Raster API (tiling): [https://dev-raster.delta-backend.xyz/docs](https://dev-raster.delta-backend.xyz/docs)
-* STAC viewer (view geojson feature results of basic STAC searches): [https://dev-stac.delta-backend.xyz/index.html](https://dev-stac.delta-backend.xyz/index.html)
-* STAC browser (filesystem-like STAC catalog browser): [http://delta-dev-stac-browser.s3-website-us-east-1.amazonaws.com/](http://delta-dev-stac-browser.s3-website-us-east-1.amazonaws.com/)
+* STAC viewer (geojson feature results of basic STAC searches): [https://dev-stac.delta-backend.xyz/index.html](https://dev-stac.delta-backend.xyz/index.html)
+* STAC browser (interactive STAC catalog browser): [http://delta-dev-stac-browser.s3-website-us-east-1.amazonaws.com](http://delta-dev-stac-browser.s3-website-us-east-1.amazonaws.com). *Read more about the development of this browser [here](https://medium.com/radiant-earth-insights/the-exciting-future-of-the-stac-browser-2351143aa24b)*
 
 ### Staging (maintenance will be announced):
 
@@ -18,6 +18,6 @@ The VEDA API source code is currently stored in a private repository: [delta-bac
 * List collections: [https://staging-stac.delta-backend.xyz/collections](https://staging-stac.delta-backend.xyz/collections)
 * Raster API (tiling): [https://staging-raster.delta-backend.xyz/docs](https://staging-raster.delta-backend.xyz/docs)
 * STAC viewer (geojson feature results of basic STAC searches): [https://staging-stac.delta-backend.xyz/index.html](https://staging-stac.delta-backend.xyz/index.html)
-* STAC browser (filesystem-like STAC catalog browser): [http://delta-staging-stac-browser.s3-website-us-east-1.amazonaws.com/](http://delta-staging-stac-browser.s3-website-us-east-1.amazonaws.com/)
+* STAC browser (interactive STAC catalog browser): [http://delta-staging-stac-browser.s3-website-us-east-1.amazonaws.com](http://delta-staging-stac-browser.s3-website-us-east-1.amazonaws.com). *Read more about the development of this browser [here](https://medium.com/radiant-earth-insights/the-exciting-future-of-the-stac-browser-2351143aa24b)*
 
 ### Production: COMING SOON
