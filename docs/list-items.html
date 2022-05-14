@@ -3,7 +3,7 @@
   <meta charset="utf-8">
   <meta name="generator" content="quarto-0.9.128">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-  <title>veda-documentation – list-collections</title>
+  <title>veda-documentation – list-items</title>
   <style>
     code{white-space: pre-wrap;}
     span.smallcaps{font-variant: small-caps;}
@@ -163,7 +163,7 @@
     <ul id="quarto-sidebar-section-tools-and-examplesqmd" class="collapse list-unstyled sidebar-section depth1 show">  
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./list-collections.html" class="sidebar-item-text sidebar-link active">List all collections</a>
+  <a href="./list-collections.html" class="sidebar-item-text sidebar-link">List all collections</a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -185,55 +185,74 @@
     
 <!-- main -->
 <main class="content" id="quarto-document-content">
-<section id="list-all-collections" class="level1 unnumbered">
-<h1 class="unnumbered">List all collections</h1>
+<section id="list-the-first-item-in-each-collection" class="level1 unnumbered">
+<h1 class="unnumbered">List the first item in each collection</h1>
 <div class="cell" data-execution_count="1">
-<div class="sourceCode" id="cb1"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> pystac <span class="im">import</span> Catalog</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> satsearch <span class="im">import</span> Search</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> pystac <span class="im">import</span> Catalog</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell" data-execution_count="2">
 <div class="sourceCode" id="cb2"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>stac_api_url <span class="op">=</span> <span class="st">'https://staging-stac.delta-backend.xyz/'</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>catalog <span class="op">=</span> Catalog.from_file(stac_api_url)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell" data-execution_count="3">
-<div class="sourceCode" id="cb3"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> root, subcatalogs, items <span class="kw">in</span> catalog.walk():</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>    <span class="co"># subcats represents any catalogs or collections owned by root</span></span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> cat <span class="kw">in</span> subcatalogs:</span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(cat.<span class="bu">id</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-stdout">
-<pre><code>social-vulnerability-index-housing-nopop
-nightlights-hd-monthly
-grdi-v1-built
-MO_NPP_npp_vgpm
-HLSS30.002
-HLSL30.002
-OMI_trno2-COG
-no2-monthly-diff
-social-vulnerability-index-household
-social-vulnerability-index-household-nopop
-social-vulnerability-index-minority
-grdi-shdi-raster
-no2-monthly
-facebook_population_density
-grdi-vnl-slope-raster
-grdi-vnl-raster
-social-vulnerability-index-socioeconomic
-social-vulnerability-index-socioeconomic-nopop
-social-vulnerability-index-housing
-blue-tarp-detection
-blue-tarp-planetscope
-grdi-v1-raster
-OMSO2PCA-COG
-social-vulnerability-index-overall-nopop
-grdi-filled-missing-values-count
-social-vulnerability-index-overall
-IS2SITMOGR4
-grdi-cdr-raster
-social-vulnerability-index-minority-nopop
-nceo_africa_2017
-geoglam
-grdi-imr-raster
-nightlights-hd-3bands</code></pre>
+<div class="sourceCode" id="cb3"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>collections <span class="op">=</span> []</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> root, subcatalogs, _ <span class="kw">in</span> catalog.walk():</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>    <span class="co"># subcats represents any catalogs or collections owned by root</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> cat <span class="kw">in</span> subcatalogs:</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>        collections.append(cat.<span class="bu">id</span>)</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>collections</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display" data-execution_count="3">
+<pre><code>['social-vulnerability-index-housing-nopop',
+ 'nightlights-hd-monthly',
+ 'grdi-v1-built',
+ 'MO_NPP_npp_vgpm',
+ 'HLSS30.002',
+ 'HLSL30.002',
+ 'OMI_trno2-COG',
+ 'no2-monthly-diff',
+ 'social-vulnerability-index-household',
+ 'social-vulnerability-index-household-nopop',
+ 'social-vulnerability-index-minority',
+ 'grdi-shdi-raster',
+ 'no2-monthly',
+ 'facebook_population_density',
+ 'grdi-vnl-slope-raster',
+ 'grdi-vnl-raster',
+ 'social-vulnerability-index-socioeconomic',
+ 'social-vulnerability-index-socioeconomic-nopop',
+ 'social-vulnerability-index-housing',
+ 'blue-tarp-detection',
+ 'blue-tarp-planetscope',
+ 'grdi-v1-raster',
+ 'OMSO2PCA-COG',
+ 'social-vulnerability-index-overall-nopop',
+ 'grdi-filled-missing-values-count',
+ 'social-vulnerability-index-overall',
+ 'IS2SITMOGR4',
+ 'grdi-cdr-raster',
+ 'social-vulnerability-index-minority-nopop',
+ 'nceo_africa_2017',
+ 'geoglam',
+ 'grdi-imr-raster',
+ 'nightlights-hd-3bands']</code></pre>
 </div>
+</div>
+<div class="cell">
+<div class="sourceCode" id="cb5"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>first_item_locations <span class="op">=</span> []</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> collection <span class="kw">in</span> collections:</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>    search <span class="op">=</span> Search.search(</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>        url<span class="op">=</span>stac_api_url,</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>        collections<span class="op">=</span>[collection],</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>        limit<span class="op">=</span><span class="dv">1</span></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>    location <span class="op">=</span> search.items()[<span class="dv">0</span>].assets[<span class="st">'cog_default'</span>][<span class="st">'href'</span>]</span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>    first_item_locations.append(location)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode" id="cb6"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>first_item_locations</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 
 

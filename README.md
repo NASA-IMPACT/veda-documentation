@@ -4,6 +4,13 @@ Documentation for the various APIs for the datasets maintained by NASA VEDA proj
 
 Example notebooks on how to use those APIs and datasets.
 
+Run the notebooks via:
+
+```bash
+pip3 install -r requirements
+jupyter notebook
+```
+
 Live at https://nasa-impact.github.io/veda-documentation
 
 ## Contributing
