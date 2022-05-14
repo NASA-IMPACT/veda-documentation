@@ -3,6 +3,7 @@ pandoc
 nbconvert
 ipykernel~=6.4.1
 ipyleaflet
+matplotlib
 nbsphinx
 pystac
 rioxarray
