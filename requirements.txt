@@ -2,6 +2,7 @@ sphinx>=1.4
 pandoc
 nbconvert
 ipykernel~=6.4.1
+ipyleaflet
 nbsphinx
 pystac
 rioxarray
