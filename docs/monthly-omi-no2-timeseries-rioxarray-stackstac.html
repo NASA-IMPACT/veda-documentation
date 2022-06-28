@@ -225,46 +225,57 @@
 <li>Author: Aimee Barciauskas</li>
 <li>Lasted Updated Date: May 13, 2022</li>
 </ul>
-<div class="cell" data-execution_count="1">
+<div class="cell" data-execution_count="19">
 <div class="sourceCode" id="cb1"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> rioxarray</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> stackstac</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> satsearch <span class="im">import</span> Search</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
+<p>Note: If you wish to run this code outside of AWS sagemaker, you will need to request access via an AWS IAM role or user permission. Please email aimee@developmentseed.org if you are interested in being provided read access to the data outside of our sagemker instance.</p>
+<div class="cell" data-execution_count="20">
+<div class="sourceCode" id="cb2"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Skip this if running in AWS Sagemaker</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="op">%</span>run <span class="op">-</span>i <span class="st">'create_rio_session.py'</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 <section id="use-satsearch-to-discover-items-in-the-no2-monthly-collection-for-china" class="level2">
 <h2 class="anchored" data-anchor-id="use-satsearch-to-discover-items-in-the-no2-monthly-collection-for-china">Use satsearch to discover items in the no2-monthly collection for China</h2>
-<div class="cell" data-execution_count="2">
-<div class="sourceCode" id="cb2"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>stac_api_url <span class="op">=</span> <span class="st">'https://staging-stac.delta-backend.xyz/'</span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>china_bbox <span class="op">=</span> [</span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>    <span class="fl">73.675</span>,</span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>    <span class="fl">18.198</span>,</span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>    <span class="fl">135.026</span>,</span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>    <span class="fl">53.459</span></span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>]</span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>datetime <span class="op">=</span> <span class="st">"2000-01-01T00:00:00Z/2022-01-02T00:00:00Z"</span></span>
-<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>collection <span class="op">=</span> <span class="st">'no2-monthly'</span></span>
-<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>search <span class="op">=</span> Search.search(</span>
-<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>    url<span class="op">=</span>stac_api_url,</span>
-<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>    bbox<span class="op">=</span>china_bbox,</span>
-<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>    datetime<span class="op">=</span>datetime,</span>
-<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>    collections<span class="op">=</span>[collection],</span>
-<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>    limit<span class="op">=</span><span class="dv">1000</span></span>
-<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a>items <span class="op">=</span> search.items()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-execution_count="21">
+<div class="sourceCode" id="cb3"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>stac_api_url <span class="op">=</span> <span class="st">'https://staging-stac.delta-backend.xyz/'</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>china_bbox <span class="op">=</span> [</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>    <span class="fl">73.675</span>,</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>    <span class="fl">18.198</span>,</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>    <span class="fl">135.026</span>,</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>    <span class="fl">53.459</span></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>]</span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>datetime <span class="op">=</span> <span class="st">"2000-01-01T00:00:00Z/2022-01-02T00:00:00Z"</span></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>collection <span class="op">=</span> <span class="st">'no2-monthly'</span></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>search <span class="op">=</span> Search.search(</span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>    url<span class="op">=</span>stac_api_url,</span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>    bbox<span class="op">=</span>china_bbox,</span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>    datetime<span class="op">=</span>datetime,</span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>    collections<span class="op">=</span>[collection],</span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>    limit<span class="op">=</span><span class="dv">1000</span></span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a>items <span class="op">=</span> search.items()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-stdout">
+<pre><code>url is https://staging-stac.delta-backend.xyz/search
+headers is None
+kwargs is {'limit': 1000, 'bbox': [73.675, 18.198, 135.026, 53.459], 'datetime': '2000-01-01T00:00:00Z/2022-01-02T00:00:00Z', 'collections': ['no2-monthly']}</code></pre>
 </div>
-<div class="cell" data-execution_count="3">
-<div class="sourceCode" id="cb3"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="bu">len</span>(items)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display" data-execution_count="3">
+</div>
+<div class="cell" data-execution_count="22">
+<div class="sourceCode" id="cb5"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="bu">len</span>(items)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display" data-execution_count="22">
 <pre><code>73</code></pre>
 </div>
 </div>
 </section>
 <section id="create-an-xarray.dataarray-using-stackstac" class="level2">
 <h2 class="anchored" data-anchor-id="create-an-xarray.dataarray-using-stackstac">Create an <code>xarray.DataArray</code> using <code>stackstac</code></h2>
-<div class="cell" data-execution_count="11">
-<div class="sourceCode" id="cb5"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>stack <span class="op">=</span> stackstac.stack(items)</span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>stack</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display" data-execution_count="11">
+<div class="cell" data-execution_count="36">
+<div class="sourceCode" id="cb7"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>stack <span class="op">=</span> stackstac.stack(items)</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>stack <span class="op">=</span> stack.assign_coords({<span class="st">"time"</span>: stack.start_datetime})</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>stack</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display" data-execution_count="36">
 <div><svg style="position: absolute; width: 0; height: 0; overflow: hidden">
 <defs>
 <symbol id="icon-database" viewbox="0 0 32 32">
@@ -616,27 +627,29 @@ dl.xr-attrs {
   stroke: currentColor;
   fill: currentColor;
 }
-</style><pre class="xr-text-repr-fallback">&lt;xarray.DataArray 'stackstac-7e8e82989d54d2f1c178e93b95617dd4' (time: 73,
+</style><pre class="xr-text-repr-fallback">&lt;xarray.DataArray 'stackstac-5227002b71043bbfd9046c1aa79faf1f' (time: 73,
                                                                 band: 1,
                                                                 y: 1800, x: 3600)&gt;
 dask.array&lt;fetch_raster_window, shape=(73, 1, 1800, 3600), dtype=float64, chunksize=(1, 1, 1024, 1024), chunktype=numpy.ndarray&gt;
-Coordinates:
-  * time            (time) datetime64[ns] 2016-01-01 2016-02-01 ... 2022-01-01
-    id              (time) &lt;U46 'OMI_trno2_0.10x0.10_201601_Col3_V4-no2-month...
+Coordinates: (12/13)
+  * time            (time) &lt;U20 '2022-01-01T00:00:00Z' ... '2016-01-01T00:00:...
+    id              (time) &lt;U45 'OMI_trno2_monthly_0.10x0.10_202201_Col3_V4.n...
   * band            (band) &lt;U11 'cog_default'
   * x               (x) float64 -180.0 -179.9 -179.8 ... 179.7 179.8 179.9
   * y               (y) float64 90.0 89.9 89.8 89.7 ... -89.6 -89.7 -89.8 -89.9
-    proj:geometry   object {'type': 'Polygon', 'coordinates': [[[-180.0, 90.0...
-    proj:epsg       int64 4326
-    proj:bbox       object {180.0, -180.0, 90.0, -90.0}
     proj:shape      object {1800, 3600}
+    ...              ...
+    proj:bbox       object {180.0, -180.0, 90.0, -90.0}
+    start_datetime  (time) &lt;U20 '2022-01-01T00:00:00Z' ... '2016-01-01T00:00:...
+    end_datetime    (time) &lt;U20 '2022-01-31T00:00:00Z' ... '2016-01-31T00:00:...
+    proj:epsg       int64 4326
     proj:transform  object {0.1, 0.0, -0.1, 1.0, -180.0, 90.0}
     epsg            int64 4326
 Attributes:
     spec:        RasterSpec(epsg=4326, bounds=(-180.0, -90.0, 180.0, 90.0), r...
     crs:         epsg:4326
     transform:   | 0.10, 0.00,-180.00|\n| 0.00,-0.10, 90.00|\n| 0.00, 0.00, 1...
-    resolution:  0.1</pre><div class="xr-wrap" style="display:none"><div class="xr-header"><div class="xr-obj-type">xarray.DataArray</div><div class="xr-array-name">'stackstac-7e8e82989d54d2f1c178e93b95617dd4'</div><ul class="xr-dim-list"><li><span class="xr-has-index">time</span>: 73</li><li><span class="xr-has-index">band</span>: 1</li><li><span class="xr-has-index">y</span>: 1800</li><li><span class="xr-has-index">x</span>: 3600</li></ul></div><ul class="xr-sections"><li class="xr-section-item"><div class="xr-array-wrap"><input id="section-41a7c66f-93fe-4077-86d1-f3c34a8d9269" class="xr-array-in" type="checkbox" checked=""><label for="section-41a7c66f-93fe-4077-86d1-f3c34a8d9269" title="Show/hide data repr"><svg class="icon xr-icon-database"><use href="#icon-database"></use></svg></label><div class="xr-array-preview xr-preview"><span>dask.array&lt;chunksize=(1, 1, 1024, 1024), meta=np.ndarray&gt;</span></div><div class="xr-array-data"><table>
+    resolution:  0.1</pre><div class="xr-wrap" style="display:none"><div class="xr-header"><div class="xr-obj-type">xarray.DataArray</div><div class="xr-array-name">'stackstac-5227002b71043bbfd9046c1aa79faf1f'</div><ul class="xr-dim-list"><li><span class="xr-has-index">time</span>: 73</li><li><span class="xr-has-index">band</span>: 1</li><li><span class="xr-has-index">y</span>: 1800</li><li><span class="xr-has-index">x</span>: 3600</li></ul></div><ul class="xr-sections"><li class="xr-section-item"><div class="xr-array-wrap"><input id="section-18647567-f95d-474d-84ed-fd3605abd092" class="xr-array-in" type="checkbox" checked=""><label for="section-18647567-f95d-474d-84ed-fd3605abd092" title="Show/hide data repr"><svg class="icon xr-icon-database"><use href="#icon-database"></use></svg></label><div class="xr-array-preview xr-preview"><span>dask.array&lt;chunksize=(1, 1, 1024, 1024), meta=np.ndarray&gt;</span></div><div class="xr-array-data"><table>
     <tbody><tr>
         <td>
             <table>
@@ -662,7 +675,7 @@ Attributes:
                     </tr>
                     <tr>
                         <th> Count </th>
-                        <td> 730 Tasks </td>
+                        <td> 738 Tasks </td>
                         <td> 584 Chunks </td>
                     </tr>
                     <tr>
@@ -771,84 +784,144 @@ Attributes:
 </svg>
         </td>
     </tr>
-</tbody></table></div></div></li><li class="xr-section-item"><input id="section-3370a658-3476-4db3-9579-51edfdf92aa1" class="xr-section-summary-in" type="checkbox" checked=""><label for="section-3370a658-3476-4db3-9579-51edfdf92aa1" class="xr-section-summary">Coordinates: <span>(11)</span></label><div class="xr-section-inline-details"></div><div class="xr-section-details"><ul class="xr-var-list"><li class="xr-var-item"><div class="xr-var-name"><span class="xr-has-index">time</span></div><div class="xr-var-dims">(time)</div><div class="xr-var-dtype">datetime64[ns]</div><div class="xr-var-preview xr-preview">2016-01-01 ... 2022-01-01</div><input id="attrs-030625ce-536f-4184-9f3e-83543eade606" class="xr-var-attrs-in" type="checkbox" disabled=""><label for="attrs-030625ce-536f-4184-9f3e-83543eade606" title="Show/Hide attributes"><svg class="icon xr-icon-file-text2"><use href="#icon-file-text2"></use></svg></label><input id="data-a4a3b863-2e7d-4fa7-85cc-d5a6fa548dc7" class="xr-var-data-in" type="checkbox"><label for="data-a4a3b863-2e7d-4fa7-85cc-d5a6fa548dc7" title="Show/Hide data repr"><svg class="icon xr-icon-database"><use href="#icon-database"></use></svg></label><div class="xr-var-attrs"><dl class="xr-attrs"></dl></div><div class="xr-var-data"><pre>array(['2016-01-01T00:00:00.000000000', '2016-02-01T00:00:00.000000000',
-       '2016-03-01T00:00:00.000000000', '2016-04-01T00:00:00.000000000',
-       '2016-05-01T00:00:00.000000000', '2016-06-01T00:00:00.000000000',
-       '2016-07-01T00:00:00.000000000', '2016-08-01T00:00:00.000000000',
-       '2016-09-01T00:00:00.000000000', '2016-10-01T00:00:00.000000000',
-       '2016-11-01T00:00:00.000000000', '2016-12-01T00:00:00.000000000',
-       '2017-01-01T00:00:00.000000000', '2017-02-01T00:00:00.000000000',
-       '2017-03-01T00:00:00.000000000', '2017-04-01T00:00:00.000000000',
-       '2017-05-01T00:00:00.000000000', '2017-06-01T00:00:00.000000000',
-       '2017-07-01T00:00:00.000000000', '2017-08-01T00:00:00.000000000',
-       '2017-09-01T00:00:00.000000000', '2017-10-01T00:00:00.000000000',
-       '2017-11-01T00:00:00.000000000', '2017-12-01T00:00:00.000000000',
-       '2018-01-01T00:00:00.000000000', '2018-02-01T00:00:00.000000000',
-       '2018-03-01T00:00:00.000000000', '2018-04-01T00:00:00.000000000',
-       '2018-05-01T00:00:00.000000000', '2018-06-01T00:00:00.000000000',
-       '2018-07-01T00:00:00.000000000', '2018-08-01T00:00:00.000000000',
-       '2018-09-01T00:00:00.000000000', '2018-10-01T00:00:00.000000000',
-       '2018-11-01T00:00:00.000000000', '2018-12-01T00:00:00.000000000',
-       '2019-01-01T00:00:00.000000000', '2019-02-01T00:00:00.000000000',
-       '2019-03-01T00:00:00.000000000', '2019-04-01T00:00:00.000000000',
-       '2019-05-01T00:00:00.000000000', '2019-06-01T00:00:00.000000000',
-       '2019-07-01T00:00:00.000000000', '2019-08-01T00:00:00.000000000',
-       '2019-09-01T00:00:00.000000000', '2019-10-01T00:00:00.000000000',
-       '2019-11-01T00:00:00.000000000', '2019-12-01T00:00:00.000000000',
-       '2020-01-01T00:00:00.000000000', '2020-02-01T00:00:00.000000000',
-       '2020-03-01T00:00:00.000000000', '2020-04-01T00:00:00.000000000',
-       '2020-05-01T00:00:00.000000000', '2020-06-01T00:00:00.000000000',
-       '2020-07-01T00:00:00.000000000', '2020-08-01T00:00:00.000000000',
-       '2020-09-01T00:00:00.000000000', '2020-10-01T00:00:00.000000000',
-       '2020-11-01T00:00:00.000000000', '2020-12-01T00:00:00.000000000',
-       '2021-01-01T00:00:00.000000000', '2021-02-01T00:00:00.000000000',
-       '2021-03-01T00:00:00.000000000', '2021-04-01T00:00:00.000000000',
-       '2021-05-01T00:00:00.000000000', '2021-06-01T00:00:00.000000000',
-       '2021-07-01T00:00:00.000000000', '2021-08-01T00:00:00.000000000',
-       '2021-09-01T00:00:00.000000000', '2021-10-01T00:00:00.000000000',
-       '2021-11-01T00:00:00.000000000', '2021-12-01T00:00:00.000000000',
-       '2022-01-01T00:00:00.000000000'], dtype='datetime64[ns]')</pre></div></li><li class="xr-var-item"><div class="xr-var-name"><span>id</span></div><div class="xr-var-dims">(time)</div><div class="xr-var-dtype">&lt;U46</div><div class="xr-var-preview xr-preview">'OMI_trno2_0.10x0.10_201601_Col3...</div><input id="attrs-516a3eb1-1f3b-401d-9d7c-76fcc0bd4421" class="xr-var-attrs-in" type="checkbox" disabled=""><label for="attrs-516a3eb1-1f3b-401d-9d7c-76fcc0bd4421" title="Show/Hide attributes"><svg class="icon xr-icon-file-text2"><use href="#icon-file-text2"></use></svg></label><input id="data-0f29147b-dfb7-4908-a623-4fcc8e356e1a" class="xr-var-data-in" type="checkbox"><label for="data-0f29147b-dfb7-4908-a623-4fcc8e356e1a" title="Show/Hide data repr"><svg class="icon xr-icon-database"><use href="#icon-database"></use></svg></label><div class="xr-var-attrs"><dl class="xr-attrs"></dl></div><div class="xr-var-data"><pre>array(['OMI_trno2_0.10x0.10_201601_Col3_V4-no2-monthly',
-       'OMI_trno2_0.10x0.10_201602_Col3_V4-no2-monthly',
-       'OMI_trno2_0.10x0.10_201603_Col3_V4-no2-monthly',
-       'OMI_trno2_0.10x0.10_201604_Col3_V4-no2-monthly',
-       'OMI_trno2_0.10x0.10_201605_Col3_V4-no2-monthly',
-       'OMI_trno2_0.10x0.10_201606_Col3_V4-no2-monthly',
-       'OMI_trno2_0.10x0.10_201607_Col3_V4-no2-monthly',
-       'OMI_trno2_0.10x0.10_201608_Col3_V4-no2-monthly',
-       'OMI_trno2_0.10x0.10_201609_Col3_V4-no2-monthly',
-       'OMI_trno2_0.10x0.10_201610_Col3_V4-no2-monthly',
-       'OMI_trno2_0.10x0.10_201611_Col3_V4-no2-monthly',
-       'OMI_trno2_0.10x0.10_201612_Col3_V4-no2-monthly',
-       'OMI_trno2_0.10x0.10_201701_Col3_V4-no2-monthly',
-       'OMI_trno2_0.10x0.10_201702_Col3_V4-no2-monthly',
-       'OMI_trno2_0.10x0.10_201703_Col3_V4-no2-monthly',
-       'OMI_trno2_0.10x0.10_201704_Col3_V4-no2-monthly',
-       'OMI_trno2_0.10x0.10_201705_Col3_V4-no2-monthly',
-       'OMI_trno2_0.10x0.10_201706_Col3_V4-no2-monthly',
-       'OMI_trno2_0.10x0.10_201707_Col3_V4-no2-monthly',
-       'OMI_trno2_0.10x0.10_201708_Col3_V4-no2-monthly',
+</tbody></table></div></div></li><li class="xr-section-item"><input id="section-1c9323dd-c21a-4663-8c59-c94da93fa995" class="xr-section-summary-in" type="checkbox" checked=""><label for="section-1c9323dd-c21a-4663-8c59-c94da93fa995" class="xr-section-summary">Coordinates: <span>(13)</span></label><div class="xr-section-inline-details"></div><div class="xr-section-details"><ul class="xr-var-list"><li class="xr-var-item"><div class="xr-var-name"><span class="xr-has-index">time</span></div><div class="xr-var-dims">(time)</div><div class="xr-var-dtype">&lt;U20</div><div class="xr-var-preview xr-preview">'2022-01-01T00:00:00Z' ... '2016...</div><input id="attrs-2e14ba51-7122-4b16-b9f0-bd59c49f2b51" class="xr-var-attrs-in" type="checkbox" disabled=""><label for="attrs-2e14ba51-7122-4b16-b9f0-bd59c49f2b51" title="Show/Hide attributes"><svg class="icon xr-icon-file-text2"><use href="#icon-file-text2"></use></svg></label><input id="data-6d837e45-325b-4a57-a5a0-f6bc36037557" class="xr-var-data-in" type="checkbox"><label for="data-6d837e45-325b-4a57-a5a0-f6bc36037557" title="Show/Hide data repr"><svg class="icon xr-icon-database"><use href="#icon-database"></use></svg></label><div class="xr-var-attrs"><dl class="xr-attrs"></dl></div><div class="xr-var-data"><pre>array(['2022-01-01T00:00:00Z', '2021-12-01T00:00:00Z', '2021-11-01T00:00:00Z',
+       '2021-10-01T00:00:00Z', '2021-09-01T00:00:00Z', '2021-08-01T00:00:00Z',
+       '2021-07-01T00:00:00Z', '2021-06-01T00:00:00Z', '2021-05-01T00:00:00Z',
+       '2021-04-01T00:00:00Z', '2021-03-01T00:00:00Z', '2021-02-01T00:00:00Z',
+       '2021-01-01T00:00:00Z', '2020-12-01T00:00:00Z', '2020-11-01T00:00:00Z',
+       '2020-10-01T00:00:00Z', '2020-09-01T00:00:00Z', '2020-08-01T00:00:00Z',
+       '2020-07-01T00:00:00Z', '2020-06-01T00:00:00Z', '2020-05-01T00:00:00Z',
+       '2020-04-01T00:00:00Z', '2020-03-01T00:00:00Z', '2020-02-01T00:00:00Z',
+       '2020-01-01T00:00:00Z', '2019-12-01T00:00:00Z', '2019-11-01T00:00:00Z',
+       '2019-10-01T00:00:00Z', '2019-09-01T00:00:00Z', '2019-08-01T00:00:00Z',
+       '2019-07-01T00:00:00Z', '2019-06-01T00:00:00Z', '2019-05-01T00:00:00Z',
+       '2019-04-01T00:00:00Z', '2019-03-01T00:00:00Z', '2019-02-01T00:00:00Z',
+       '2019-01-01T00:00:00Z', '2018-12-01T00:00:00Z', '2018-11-01T00:00:00Z',
+       '2018-10-01T00:00:00Z', '2018-09-01T00:00:00Z', '2018-08-01T00:00:00Z',
+       '2018-07-01T00:00:00Z', '2018-06-01T00:00:00Z', '2018-05-01T00:00:00Z',
+       '2018-04-01T00:00:00Z', '2018-03-01T00:00:00Z', '2018-02-01T00:00:00Z',
+       '2018-01-01T00:00:00Z', '2017-12-01T00:00:00Z', '2017-11-01T00:00:00Z',
+       '2017-10-01T00:00:00Z', '2017-09-01T00:00:00Z', '2017-08-01T00:00:00Z',
+       '2017-07-01T00:00:00Z', '2017-06-01T00:00:00Z', '2017-05-01T00:00:00Z',
+       '2017-04-01T00:00:00Z', '2017-03-01T00:00:00Z', '2017-02-01T00:00:00Z',
+       '2017-01-01T00:00:00Z', '2016-12-01T00:00:00Z', '2016-11-01T00:00:00Z',
+       '2016-10-01T00:00:00Z', '2016-09-01T00:00:00Z', '2016-08-01T00:00:00Z',
+       '2016-07-01T00:00:00Z', '2016-06-01T00:00:00Z', '2016-05-01T00:00:00Z',
+       '2016-04-01T00:00:00Z', '2016-03-01T00:00:00Z', '2016-02-01T00:00:00Z',
+       '2016-01-01T00:00:00Z'], dtype='&lt;U20')</pre></div></li><li class="xr-var-item"><div class="xr-var-name"><span>id</span></div><div class="xr-var-dims">(time)</div><div class="xr-var-dtype">&lt;U45</div><div class="xr-var-preview xr-preview">'OMI_trno2_monthly_0.10x0.10_202...</div><input id="attrs-e6996cba-f677-4e14-be32-e9d16dd1451c" class="xr-var-attrs-in" type="checkbox" disabled=""><label for="attrs-e6996cba-f677-4e14-be32-e9d16dd1451c" title="Show/Hide attributes"><svg class="icon xr-icon-file-text2"><use href="#icon-file-text2"></use></svg></label><input id="data-eb27bf10-4078-4b93-ab37-d7b07c051817" class="xr-var-data-in" type="checkbox"><label for="data-eb27bf10-4078-4b93-ab37-d7b07c051817" title="Show/Hide data repr"><svg class="icon xr-icon-database"><use href="#icon-database"></use></svg></label><div class="xr-var-attrs"><dl class="xr-attrs"></dl></div><div class="xr-var-data"><pre>array(['OMI_trno2_monthly_0.10x0.10_202201_Col3_V4.nc',
+       'OMI_trno2_monthly_0.10x0.10_202112_Col3_V4.nc',
+       'OMI_trno2_monthly_0.10x0.10_202111_Col3_V4.nc',
+       'OMI_trno2_monthly_0.10x0.10_202110_Col3_V4.nc',
+       'OMI_trno2_monthly_0.10x0.10_202109_Col3_V4.nc',
+       'OMI_trno2_monthly_0.10x0.10_202108_Col3_V4.nc',
+       'OMI_trno2_monthly_0.10x0.10_202107_Col3_V4.nc',
+       'OMI_trno2_monthly_0.10x0.10_202106_Col3_V4.nc',
+       'OMI_trno2_monthly_0.10x0.10_202105_Col3_V4.nc',
+       'OMI_trno2_monthly_0.10x0.10_202104_Col3_V4.nc',
+       'OMI_trno2_monthly_0.10x0.10_202103_Col3_V4.nc',
+       'OMI_trno2_monthly_0.10x0.10_202102_Col3_V4.nc',
+       'OMI_trno2_monthly_0.10x0.10_202101_Col3_V4.nc',
+       'OMI_trno2_monthly_0.10x0.10_202012_Col3_V4.nc',
+       'OMI_trno2_monthly_0.10x0.10_202011_Col3_V4.nc',
+       'OMI_trno2_monthly_0.10x0.10_202010_Col3_V4.nc',
+       'OMI_trno2_monthly_0.10x0.10_202009_Col3_V4.nc',
+       'OMI_trno2_monthly_0.10x0.10_202008_Col3_V4.nc',
+       'OMI_trno2_monthly_0.10x0.10_202007_Col3_V4.nc',
+       'OMI_trno2_monthly_0.10x0.10_202006_Col3_V4.nc',
 ...
-       'OMI_trno2_0.10x0.10_202006_Col3_V4-no2-monthly',
-       'OMI_trno2_0.10x0.10_202007_Col3_V4-no2-monthly',
-       'OMI_trno2_0.10x0.10_202008_Col3_V4-no2-monthly',
-       'OMI_trno2_0.10x0.10_202009_Col3_V4-no2-monthly',
-       'OMI_trno2_0.10x0.10_202010_Col3_V4-no2-monthly',
-       'OMI_trno2_0.10x0.10_202011_Col3_V4-no2-monthly',
-       'OMI_trno2_0.10x0.10_202012_Col3_V4-no2-monthly',
-       'OMI_trno2_0.10x0.10_202101_Col3_V4-no2-monthly',
-       'OMI_trno2_0.10x0.10_202102_Col3_V4-no2-monthly',
-       'OMI_trno2_0.10x0.10_202103_Col3_V4-no2-monthly',
-       'OMI_trno2_0.10x0.10_202104_Col3_V4-no2-monthly',
-       'OMI_trno2_0.10x0.10_202105_Col3_V4-no2-monthly',
-       'OMI_trno2_0.10x0.10_202106_Col3_V4-no2-monthly',
-       'OMI_trno2_0.10x0.10_202107_Col3_V4-no2-monthly',
-       'OMI_trno2_0.10x0.10_202108_Col3_V4-no2-monthly',
-       'OMI_trno2_0.10x0.10_202109_Col3_V4-no2-monthly',
-       'OMI_trno2_0.10x0.10_202110_Col3_V4-no2-monthly',
-       'OMI_trno2_0.10x0.10_202111_Col3_V4-no2-monthly',
-       'OMI_trno2_0.10x0.10_202112_Col3_V4-no2-monthly',
-       'OMI_trno2_0.10x0.10_202201_Col3_V4-no2-monthly'], dtype='&lt;U46')</pre></div></li><li class="xr-var-item"><div class="xr-var-name"><span class="xr-has-index">band</span></div><div class="xr-var-dims">(band)</div><div class="xr-var-dtype">&lt;U11</div><div class="xr-var-preview xr-preview">'cog_default'</div><input id="attrs-5c256b99-28db-47e6-8b2c-699b6f75aaf1" class="xr-var-attrs-in" type="checkbox" disabled=""><label for="attrs-5c256b99-28db-47e6-8b2c-699b6f75aaf1" title="Show/Hide attributes"><svg class="icon xr-icon-file-text2"><use href="#icon-file-text2"></use></svg></label><input id="data-127a7f0f-b452-4ee7-97d1-442439251921" class="xr-var-data-in" type="checkbox"><label for="data-127a7f0f-b452-4ee7-97d1-442439251921" title="Show/Hide data repr"><svg class="icon xr-icon-database"><use href="#icon-database"></use></svg></label><div class="xr-var-attrs"><dl class="xr-attrs"></dl></div><div class="xr-var-data"><pre>array(['cog_default'], dtype='&lt;U11')</pre></div></li><li class="xr-var-item"><div class="xr-var-name"><span class="xr-has-index">x</span></div><div class="xr-var-dims">(x)</div><div class="xr-var-dtype">float64</div><div class="xr-var-preview xr-preview">-180.0 -179.9 ... 179.8 179.9</div><input id="attrs-229e52b1-6522-4304-9fa9-a2e3785d65f9" class="xr-var-attrs-in" type="checkbox" disabled=""><label for="attrs-229e52b1-6522-4304-9fa9-a2e3785d65f9" title="Show/Hide attributes"><svg class="icon xr-icon-file-text2"><use href="#icon-file-text2"></use></svg></label><input id="data-92021313-046d-4d8c-a98e-88000658c3ac" class="xr-var-data-in" type="checkbox"><label for="data-92021313-046d-4d8c-a98e-88000658c3ac" title="Show/Hide data repr"><svg class="icon xr-icon-database"><use href="#icon-database"></use></svg></label><div class="xr-var-attrs"><dl class="xr-attrs"></dl></div><div class="xr-var-data"><pre>array([-180. , -179.9, -179.8, ...,  179.7,  179.8,  179.9])</pre></div></li><li class="xr-var-item"><div class="xr-var-name"><span class="xr-has-index">y</span></div><div class="xr-var-dims">(y)</div><div class="xr-var-dtype">float64</div><div class="xr-var-preview xr-preview">90.0 89.9 89.8 ... -89.8 -89.9</div><input id="attrs-5c3dafde-e892-4cd6-9e2e-1cdc6c00bde6" class="xr-var-attrs-in" type="checkbox" disabled=""><label for="attrs-5c3dafde-e892-4cd6-9e2e-1cdc6c00bde6" title="Show/Hide attributes"><svg class="icon xr-icon-file-text2"><use href="#icon-file-text2"></use></svg></label><input id="data-26c7ec8f-d8e3-4610-9cf2-c218d5d91591" class="xr-var-data-in" type="checkbox"><label for="data-26c7ec8f-d8e3-4610-9cf2-c218d5d91591" title="Show/Hide data repr"><svg class="icon xr-icon-database"><use href="#icon-database"></use></svg></label><div class="xr-var-attrs"><dl class="xr-attrs"></dl></div><div class="xr-var-data"><pre>array([ 90. ,  89.9,  89.8, ..., -89.7, -89.8, -89.9])</pre></div></li><li class="xr-var-item"><div class="xr-var-name"><span>proj:geometry</span></div><div class="xr-var-dims">()</div><div class="xr-var-dtype">object</div><div class="xr-var-preview xr-preview">{'type': 'Polygon', 'coordinates...</div><input id="attrs-65a37dce-ceae-457e-871e-3d637ea2b09e" class="xr-var-attrs-in" type="checkbox" disabled=""><label for="attrs-65a37dce-ceae-457e-871e-3d637ea2b09e" title="Show/Hide attributes"><svg class="icon xr-icon-file-text2"><use href="#icon-file-text2"></use></svg></label><input id="data-797b0032-77cd-46cd-ba96-bee1fec1774c" class="xr-var-data-in" type="checkbox"><label for="data-797b0032-77cd-46cd-ba96-bee1fec1774c" title="Show/Hide data repr"><svg class="icon xr-icon-database"><use href="#icon-database"></use></svg></label><div class="xr-var-attrs"><dl class="xr-attrs"></dl></div><div class="xr-var-data"><pre>array({'type': 'Polygon', 'coordinates': [[[-180.0, 90.0], [-180.0, -90.0], [180.0, -90.0], [180.0, 90.0], [-180.0, 90.0]]]},
-      dtype=object)</pre></div></li><li class="xr-var-item"><div class="xr-var-name"><span>proj:epsg</span></div><div class="xr-var-dims">()</div><div class="xr-var-dtype">int64</div><div class="xr-var-preview xr-preview">4326</div><input id="attrs-d7ecc7ac-5788-4ffc-a8e8-608875a5dedf" class="xr-var-attrs-in" type="checkbox" disabled=""><label for="attrs-d7ecc7ac-5788-4ffc-a8e8-608875a5dedf" title="Show/Hide attributes"><svg class="icon xr-icon-file-text2"><use href="#icon-file-text2"></use></svg></label><input id="data-04fcfa67-d556-455d-a0ce-1e97927a023f" class="xr-var-data-in" type="checkbox"><label for="data-04fcfa67-d556-455d-a0ce-1e97927a023f" title="Show/Hide data repr"><svg class="icon xr-icon-database"><use href="#icon-database"></use></svg></label><div class="xr-var-attrs"><dl class="xr-attrs"></dl></div><div class="xr-var-data"><pre>array(4326)</pre></div></li><li class="xr-var-item"><div class="xr-var-name"><span>proj:bbox</span></div><div class="xr-var-dims">()</div><div class="xr-var-dtype">object</div><div class="xr-var-preview xr-preview">{180.0, -180.0, 90.0, -90.0}</div><input id="attrs-b8cc5ba2-bea2-4864-919c-b2eca050c2df" class="xr-var-attrs-in" type="checkbox" disabled=""><label for="attrs-b8cc5ba2-bea2-4864-919c-b2eca050c2df" title="Show/Hide attributes"><svg class="icon xr-icon-file-text2"><use href="#icon-file-text2"></use></svg></label><input id="data-cc15815d-e95c-4fbb-be45-f59c010dc859" class="xr-var-data-in" type="checkbox"><label for="data-cc15815d-e95c-4fbb-be45-f59c010dc859" title="Show/Hide data repr"><svg class="icon xr-icon-database"><use href="#icon-database"></use></svg></label><div class="xr-var-attrs"><dl class="xr-attrs"></dl></div><div class="xr-var-data"><pre>array({180.0, -180.0, 90.0, -90.0}, dtype=object)</pre></div></li><li class="xr-var-item"><div class="xr-var-name"><span>proj:shape</span></div><div class="xr-var-dims">()</div><div class="xr-var-dtype">object</div><div class="xr-var-preview xr-preview">{1800, 3600}</div><input id="attrs-e68d6cb2-93a9-4dad-83e0-297a156b63a3" class="xr-var-attrs-in" type="checkbox" disabled=""><label for="attrs-e68d6cb2-93a9-4dad-83e0-297a156b63a3" title="Show/Hide attributes"><svg class="icon xr-icon-file-text2"><use href="#icon-file-text2"></use></svg></label><input id="data-100702c6-cc12-4df1-ba17-ff397d66ba9d" class="xr-var-data-in" type="checkbox"><label for="data-100702c6-cc12-4df1-ba17-ff397d66ba9d" title="Show/Hide data repr"><svg class="icon xr-icon-database"><use href="#icon-database"></use></svg></label><div class="xr-var-attrs"><dl class="xr-attrs"></dl></div><div class="xr-var-data"><pre>array({1800, 3600}, dtype=object)</pre></div></li><li class="xr-var-item"><div class="xr-var-name"><span>proj:transform</span></div><div class="xr-var-dims">()</div><div class="xr-var-dtype">object</div><div class="xr-var-preview xr-preview">{0.1, 0.0, -0.1, 1.0, -180.0, 90.0}</div><input id="attrs-bd9ad291-07e2-4718-85e9-67be166182af" class="xr-var-attrs-in" type="checkbox" disabled=""><label for="attrs-bd9ad291-07e2-4718-85e9-67be166182af" title="Show/Hide attributes"><svg class="icon xr-icon-file-text2"><use href="#icon-file-text2"></use></svg></label><input id="data-4e070f0b-b863-4249-a87a-3db51eb87f10" class="xr-var-data-in" type="checkbox"><label for="data-4e070f0b-b863-4249-a87a-3db51eb87f10" title="Show/Hide data repr"><svg class="icon xr-icon-database"><use href="#icon-database"></use></svg></label><div class="xr-var-attrs"><dl class="xr-attrs"></dl></div><div class="xr-var-data"><pre>array({0.1, 0.0, -0.1, 1.0, -180.0, 90.0}, dtype=object)</pre></div></li><li class="xr-var-item"><div class="xr-var-name"><span>epsg</span></div><div class="xr-var-dims">()</div><div class="xr-var-dtype">int64</div><div class="xr-var-preview xr-preview">4326</div><input id="attrs-d48cc2cf-2fa8-49bc-a3a9-d7c15eabe984" class="xr-var-attrs-in" type="checkbox" disabled=""><label for="attrs-d48cc2cf-2fa8-49bc-a3a9-d7c15eabe984" title="Show/Hide attributes"><svg class="icon xr-icon-file-text2"><use href="#icon-file-text2"></use></svg></label><input id="data-d5a8fed5-2eb0-4577-8567-8a2674f7d395" class="xr-var-data-in" type="checkbox"><label for="data-d5a8fed5-2eb0-4577-8567-8a2674f7d395" title="Show/Hide data repr"><svg class="icon xr-icon-database"><use href="#icon-database"></use></svg></label><div class="xr-var-attrs"><dl class="xr-attrs"></dl></div><div class="xr-var-data"><pre>array(4326)</pre></div></li></ul></div></li><li class="xr-section-item"><input id="section-2965f455-bfcb-4970-a555-183a15e96d57" class="xr-section-summary-in" type="checkbox" checked=""><label for="section-2965f455-bfcb-4970-a555-183a15e96d57" class="xr-section-summary">Attributes: <span>(4)</span></label><div class="xr-section-inline-details"></div><div class="xr-section-details"><dl class="xr-attrs"><dt><span>spec :</span></dt><dd>RasterSpec(epsg=4326, bounds=(-180.0, -90.0, 180.0, 90.0), resolutions_xy=(0.1, 0.1))</dd><dt><span>crs :</span></dt><dd>epsg:4326</dd><dt><span>transform :</span></dt><dd>| 0.10, 0.00,-180.00|
+       'OMI_trno2_monthly_0.10x0.10_201708_Col3_V4.nc',
+       'OMI_trno2_monthly_0.10x0.10_201707_Col3_V4.nc',
+       'OMI_trno2_monthly_0.10x0.10_201706_Col3_V4.nc',
+       'OMI_trno2_monthly_0.10x0.10_201705_Col3_V4.nc',
+       'OMI_trno2_monthly_0.10x0.10_201704_Col3_V4.nc',
+       'OMI_trno2_monthly_0.10x0.10_201703_Col3_V4.nc',
+       'OMI_trno2_monthly_0.10x0.10_201702_Col3_V4.nc',
+       'OMI_trno2_monthly_0.10x0.10_201701_Col3_V4.nc',
+       'OMI_trno2_monthly_0.10x0.10_201612_Col3_V4.nc',
+       'OMI_trno2_monthly_0.10x0.10_201611_Col3_V4.nc',
+       'OMI_trno2_monthly_0.10x0.10_201610_Col3_V4.nc',
+       'OMI_trno2_monthly_0.10x0.10_201609_Col3_V4.nc',
+       'OMI_trno2_monthly_0.10x0.10_201608_Col3_V4.nc',
+       'OMI_trno2_monthly_0.10x0.10_201607_Col3_V4.nc',
+       'OMI_trno2_monthly_0.10x0.10_201606_Col3_V4.nc',
+       'OMI_trno2_monthly_0.10x0.10_201605_Col3_V4.nc',
+       'OMI_trno2_monthly_0.10x0.10_201604_Col3_V4.nc',
+       'OMI_trno2_monthly_0.10x0.10_201603_Col3_V4.nc',
+       'OMI_trno2_monthly_0.10x0.10_201602_Col3_V4.nc',
+       'OMI_trno2_monthly_0.10x0.10_201601_Col3_V4.nc'], dtype='&lt;U45')</pre></div></li><li class="xr-var-item"><div class="xr-var-name"><span class="xr-has-index">band</span></div><div class="xr-var-dims">(band)</div><div class="xr-var-dtype">&lt;U11</div><div class="xr-var-preview xr-preview">'cog_default'</div><input id="attrs-0b0efb59-5b11-437c-a6f3-97c88a71a334" class="xr-var-attrs-in" type="checkbox" disabled=""><label for="attrs-0b0efb59-5b11-437c-a6f3-97c88a71a334" title="Show/Hide attributes"><svg class="icon xr-icon-file-text2"><use href="#icon-file-text2"></use></svg></label><input id="data-4a6d7826-d122-4c4f-9f08-1323cb56a9ef" class="xr-var-data-in" type="checkbox"><label for="data-4a6d7826-d122-4c4f-9f08-1323cb56a9ef" title="Show/Hide data repr"><svg class="icon xr-icon-database"><use href="#icon-database"></use></svg></label><div class="xr-var-attrs"><dl class="xr-attrs"></dl></div><div class="xr-var-data"><pre>array(['cog_default'], dtype='&lt;U11')</pre></div></li><li class="xr-var-item"><div class="xr-var-name"><span class="xr-has-index">x</span></div><div class="xr-var-dims">(x)</div><div class="xr-var-dtype">float64</div><div class="xr-var-preview xr-preview">-180.0 -179.9 ... 179.8 179.9</div><input id="attrs-bf0311b2-305a-46f7-9961-d59f32fe3d57" class="xr-var-attrs-in" type="checkbox" disabled=""><label for="attrs-bf0311b2-305a-46f7-9961-d59f32fe3d57" title="Show/Hide attributes"><svg class="icon xr-icon-file-text2"><use href="#icon-file-text2"></use></svg></label><input id="data-44bb85b2-a90d-4d0f-9b02-bd32ab77a61e" class="xr-var-data-in" type="checkbox"><label for="data-44bb85b2-a90d-4d0f-9b02-bd32ab77a61e" title="Show/Hide data repr"><svg class="icon xr-icon-database"><use href="#icon-database"></use></svg></label><div class="xr-var-attrs"><dl class="xr-attrs"></dl></div><div class="xr-var-data"><pre>array([-180. , -179.9, -179.8, ...,  179.7,  179.8,  179.9])</pre></div></li><li class="xr-var-item"><div class="xr-var-name"><span class="xr-has-index">y</span></div><div class="xr-var-dims">(y)</div><div class="xr-var-dtype">float64</div><div class="xr-var-preview xr-preview">90.0 89.9 89.8 ... -89.8 -89.9</div><input id="attrs-e65469b6-f0b4-4ffa-a576-d062f95ac092" class="xr-var-attrs-in" type="checkbox" disabled=""><label for="attrs-e65469b6-f0b4-4ffa-a576-d062f95ac092" title="Show/Hide attributes"><svg class="icon xr-icon-file-text2"><use href="#icon-file-text2"></use></svg></label><input id="data-ea4c683d-7a77-4c64-9605-4cad1d800851" class="xr-var-data-in" type="checkbox"><label for="data-ea4c683d-7a77-4c64-9605-4cad1d800851" title="Show/Hide data repr"><svg class="icon xr-icon-database"><use href="#icon-database"></use></svg></label><div class="xr-var-attrs"><dl class="xr-attrs"></dl></div><div class="xr-var-data"><pre>array([ 90. ,  89.9,  89.8, ..., -89.7, -89.8, -89.9])</pre></div></li><li class="xr-var-item"><div class="xr-var-name"><span>proj:shape</span></div><div class="xr-var-dims">()</div><div class="xr-var-dtype">object</div><div class="xr-var-preview xr-preview">{1800, 3600}</div><input id="attrs-6da1d0f3-c00e-4bea-86a4-65ef5decf0ba" class="xr-var-attrs-in" type="checkbox" disabled=""><label for="attrs-6da1d0f3-c00e-4bea-86a4-65ef5decf0ba" title="Show/Hide attributes"><svg class="icon xr-icon-file-text2"><use href="#icon-file-text2"></use></svg></label><input id="data-e954a92d-3441-4443-928d-502746f127a1" class="xr-var-data-in" type="checkbox"><label for="data-e954a92d-3441-4443-928d-502746f127a1" title="Show/Hide data repr"><svg class="icon xr-icon-database"><use href="#icon-database"></use></svg></label><div class="xr-var-attrs"><dl class="xr-attrs"></dl></div><div class="xr-var-data"><pre>array({1800, 3600}, dtype=object)</pre></div></li><li class="xr-var-item"><div class="xr-var-name"><span>proj:geometry</span></div><div class="xr-var-dims">()</div><div class="xr-var-dtype">object</div><div class="xr-var-preview xr-preview">{'type': 'Polygon', 'coordinates...</div><input id="attrs-1fd90fc1-670d-48d3-8a9d-663089b8eb5b" class="xr-var-attrs-in" type="checkbox" disabled=""><label for="attrs-1fd90fc1-670d-48d3-8a9d-663089b8eb5b" title="Show/Hide attributes"><svg class="icon xr-icon-file-text2"><use href="#icon-file-text2"></use></svg></label><input id="data-735d88d5-74cf-41e5-91f9-52bb5e14367d" class="xr-var-data-in" type="checkbox"><label for="data-735d88d5-74cf-41e5-91f9-52bb5e14367d" title="Show/Hide data repr"><svg class="icon xr-icon-database"><use href="#icon-database"></use></svg></label><div class="xr-var-attrs"><dl class="xr-attrs"></dl></div><div class="xr-var-data"><pre>array({'type': 'Polygon', 'coordinates': [[[-180.0, -90.0], [180.0, -90.0], [180.0, 90.0], [-180.0, 90.0], [-180.0, -90.0]]]},
+      dtype=object)</pre></div></li><li class="xr-var-item"><div class="xr-var-name"><span>proj:bbox</span></div><div class="xr-var-dims">()</div><div class="xr-var-dtype">object</div><div class="xr-var-preview xr-preview">{180.0, -180.0, 90.0, -90.0}</div><input id="attrs-b75a8e24-7a71-4701-ae97-9302bc2aaf7b" class="xr-var-attrs-in" type="checkbox" disabled=""><label for="attrs-b75a8e24-7a71-4701-ae97-9302bc2aaf7b" title="Show/Hide attributes"><svg class="icon xr-icon-file-text2"><use href="#icon-file-text2"></use></svg></label><input id="data-cc86faa4-2bd8-4e86-9521-94f754b05ecd" class="xr-var-data-in" type="checkbox"><label for="data-cc86faa4-2bd8-4e86-9521-94f754b05ecd" title="Show/Hide data repr"><svg class="icon xr-icon-database"><use href="#icon-database"></use></svg></label><div class="xr-var-attrs"><dl class="xr-attrs"></dl></div><div class="xr-var-data"><pre>array({180.0, -180.0, 90.0, -90.0}, dtype=object)</pre></div></li><li class="xr-var-item"><div class="xr-var-name"><span>start_datetime</span></div><div class="xr-var-dims">(time)</div><div class="xr-var-dtype">&lt;U20</div><div class="xr-var-preview xr-preview">'2022-01-01T00:00:00Z' ... '2016...</div><input id="attrs-1e4c16c8-c1d7-46cf-b82e-9b2d56e27ed1" class="xr-var-attrs-in" type="checkbox" disabled=""><label for="attrs-1e4c16c8-c1d7-46cf-b82e-9b2d56e27ed1" title="Show/Hide attributes"><svg class="icon xr-icon-file-text2"><use href="#icon-file-text2"></use></svg></label><input id="data-6952ff73-062d-4e25-98b0-3c412a099ccd" class="xr-var-data-in" type="checkbox"><label for="data-6952ff73-062d-4e25-98b0-3c412a099ccd" title="Show/Hide data repr"><svg class="icon xr-icon-database"><use href="#icon-database"></use></svg></label><div class="xr-var-attrs"><dl class="xr-attrs"></dl></div><div class="xr-var-data"><pre>array(['2022-01-01T00:00:00Z', '2021-12-01T00:00:00Z',
+       '2021-11-01T00:00:00Z', '2021-10-01T00:00:00Z',
+       '2021-09-01T00:00:00Z', '2021-08-01T00:00:00Z',
+       '2021-07-01T00:00:00Z', '2021-06-01T00:00:00Z',
+       '2021-05-01T00:00:00Z', '2021-04-01T00:00:00Z',
+       '2021-03-01T00:00:00Z', '2021-02-01T00:00:00Z',
+       '2021-01-01T00:00:00Z', '2020-12-01T00:00:00Z',
+       '2020-11-01T00:00:00Z', '2020-10-01T00:00:00Z',
+       '2020-09-01T00:00:00Z', '2020-08-01T00:00:00Z',
+       '2020-07-01T00:00:00Z', '2020-06-01T00:00:00Z',
+       '2020-05-01T00:00:00Z', '2020-04-01T00:00:00Z',
+       '2020-03-01T00:00:00Z', '2020-02-01T00:00:00Z',
+       '2020-01-01T00:00:00Z', '2019-12-01T00:00:00Z',
+       '2019-11-01T00:00:00Z', '2019-10-01T00:00:00Z',
+       '2019-09-01T00:00:00Z', '2019-08-01T00:00:00Z',
+       '2019-07-01T00:00:00Z', '2019-06-01T00:00:00Z',
+       '2019-05-01T00:00:00Z', '2019-04-01T00:00:00Z',
+       '2019-03-01T00:00:00Z', '2019-02-01T00:00:00Z',
+       '2019-01-01T00:00:00Z', '2018-12-01T00:00:00Z',
+       '2018-11-01T00:00:00Z', '2018-10-01T00:00:00Z',
+       '2018-09-01T00:00:00Z', '2018-08-01T00:00:00Z',
+       '2018-07-01T00:00:00Z', '2018-06-01T00:00:00Z',
+       '2018-05-01T00:00:00Z', '2018-04-01T00:00:00Z',
+       '2018-03-01T00:00:00Z', '2018-02-01T00:00:00Z',
+       '2018-01-01T00:00:00Z', '2017-12-01T00:00:00Z',
+       '2017-11-01T00:00:00Z', '2017-10-01T00:00:00Z',
+       '2017-09-01T00:00:00Z', '2017-08-01T00:00:00Z',
+       '2017-07-01T00:00:00Z', '2017-06-01T00:00:00Z',
+       '2017-05-01T00:00:00Z', '2017-04-01T00:00:00Z',
+       '2017-03-01T00:00:00Z', '2017-02-01T00:00:00Z',
+       '2017-01-01T00:00:00Z', '2016-12-01T00:00:00Z',
+       '2016-11-01T00:00:00Z', '2016-10-01T00:00:00Z',
+       '2016-09-01T00:00:00Z', '2016-08-01T00:00:00Z',
+       '2016-07-01T00:00:00Z', '2016-06-01T00:00:00Z',
+       '2016-05-01T00:00:00Z', '2016-04-01T00:00:00Z',
+       '2016-03-01T00:00:00Z', '2016-02-01T00:00:00Z',
+       '2016-01-01T00:00:00Z'], dtype='&lt;U20')</pre></div></li><li class="xr-var-item"><div class="xr-var-name"><span>end_datetime</span></div><div class="xr-var-dims">(time)</div><div class="xr-var-dtype">&lt;U20</div><div class="xr-var-preview xr-preview">'2022-01-31T00:00:00Z' ... '2016...</div><input id="attrs-6454ece7-21fc-425e-bedf-160990d9aec9" class="xr-var-attrs-in" type="checkbox" disabled=""><label for="attrs-6454ece7-21fc-425e-bedf-160990d9aec9" title="Show/Hide attributes"><svg class="icon xr-icon-file-text2"><use href="#icon-file-text2"></use></svg></label><input id="data-55c9914b-8892-4b8b-bc37-601fe6741daf" class="xr-var-data-in" type="checkbox"><label for="data-55c9914b-8892-4b8b-bc37-601fe6741daf" title="Show/Hide data repr"><svg class="icon xr-icon-database"><use href="#icon-database"></use></svg></label><div class="xr-var-attrs"><dl class="xr-attrs"></dl></div><div class="xr-var-data"><pre>array(['2022-01-31T00:00:00Z', '2021-12-31T00:00:00Z',
+       '2021-11-30T00:00:00Z', '2021-10-31T00:00:00Z',
+       '2021-09-30T00:00:00Z', '2021-08-31T00:00:00Z',
+       '2021-07-31T00:00:00Z', '2021-06-30T00:00:00Z',
+       '2021-05-31T00:00:00Z', '2021-04-30T00:00:00Z',
+       '2021-03-31T00:00:00Z', '2021-02-28T00:00:00Z',
+       '2021-01-31T00:00:00Z', '2020-12-31T00:00:00Z',
+       '2020-11-30T00:00:00Z', '2020-10-31T00:00:00Z',
+       '2020-09-30T00:00:00Z', '2020-08-31T00:00:00Z',
+       '2020-07-31T00:00:00Z', '2020-06-30T00:00:00Z',
+       '2020-05-31T00:00:00Z', '2020-04-30T00:00:00Z',
+       '2020-03-31T00:00:00Z', '2020-02-29T00:00:00Z',
+       '2020-01-31T00:00:00Z', '2019-12-31T00:00:00Z',
+       '2019-11-30T00:00:00Z', '2019-10-31T00:00:00Z',
+       '2019-09-30T00:00:00Z', '2019-08-31T00:00:00Z',
+       '2019-07-31T00:00:00Z', '2019-06-30T00:00:00Z',
+       '2019-05-31T00:00:00Z', '2019-04-30T00:00:00Z',
+       '2019-03-31T00:00:00Z', '2019-02-28T00:00:00Z',
+       '2019-01-31T00:00:00Z', '2018-12-31T00:00:00Z',
+       '2018-11-30T00:00:00Z', '2018-10-31T00:00:00Z',
+       '2018-09-30T00:00:00Z', '2018-08-31T00:00:00Z',
+       '2018-07-31T00:00:00Z', '2018-06-30T00:00:00Z',
+       '2018-05-31T00:00:00Z', '2018-04-30T00:00:00Z',
+       '2018-03-31T00:00:00Z', '2018-02-28T00:00:00Z',
+       '2018-01-31T00:00:00Z', '2017-12-31T00:00:00Z',
+       '2017-11-30T00:00:00Z', '2017-10-31T00:00:00Z',
+       '2017-09-30T00:00:00Z', '2017-08-31T00:00:00Z',
+       '2017-07-31T00:00:00Z', '2017-06-30T00:00:00Z',
+       '2017-05-31T00:00:00Z', '2017-04-30T00:00:00Z',
+       '2017-03-31T00:00:00Z', '2017-02-28T00:00:00Z',
+       '2017-01-31T00:00:00Z', '2016-12-31T00:00:00Z',
+       '2016-11-30T00:00:00Z', '2016-10-31T00:00:00Z',
+       '2016-09-30T00:00:00Z', '2016-08-31T00:00:00Z',
+       '2016-07-31T00:00:00Z', '2016-06-30T00:00:00Z',
+       '2016-05-31T00:00:00Z', '2016-04-30T00:00:00Z',
+       '2016-03-31T00:00:00Z', '2016-02-29T00:00:00Z',
+       '2016-01-31T00:00:00Z'], dtype='&lt;U20')</pre></div></li><li class="xr-var-item"><div class="xr-var-name"><span>proj:epsg</span></div><div class="xr-var-dims">()</div><div class="xr-var-dtype">int64</div><div class="xr-var-preview xr-preview">4326</div><input id="attrs-081528e4-d9d6-4a60-a329-458b0de5670b" class="xr-var-attrs-in" type="checkbox" disabled=""><label for="attrs-081528e4-d9d6-4a60-a329-458b0de5670b" title="Show/Hide attributes"><svg class="icon xr-icon-file-text2"><use href="#icon-file-text2"></use></svg></label><input id="data-ef90eaf9-538b-433e-943b-f557fb989fe5" class="xr-var-data-in" type="checkbox"><label for="data-ef90eaf9-538b-433e-943b-f557fb989fe5" title="Show/Hide data repr"><svg class="icon xr-icon-database"><use href="#icon-database"></use></svg></label><div class="xr-var-attrs"><dl class="xr-attrs"></dl></div><div class="xr-var-data"><pre>array(4326)</pre></div></li><li class="xr-var-item"><div class="xr-var-name"><span>proj:transform</span></div><div class="xr-var-dims">()</div><div class="xr-var-dtype">object</div><div class="xr-var-preview xr-preview">{0.1, 0.0, -0.1, 1.0, -180.0, 90.0}</div><input id="attrs-e5ae3dcc-95d5-4e61-aef3-52592599c4a6" class="xr-var-attrs-in" type="checkbox" disabled=""><label for="attrs-e5ae3dcc-95d5-4e61-aef3-52592599c4a6" title="Show/Hide attributes"><svg class="icon xr-icon-file-text2"><use href="#icon-file-text2"></use></svg></label><input id="data-d80a2c8e-72d5-40bf-853d-cf2ef64938ef" class="xr-var-data-in" type="checkbox"><label for="data-d80a2c8e-72d5-40bf-853d-cf2ef64938ef" title="Show/Hide data repr"><svg class="icon xr-icon-database"><use href="#icon-database"></use></svg></label><div class="xr-var-attrs"><dl class="xr-attrs"></dl></div><div class="xr-var-data"><pre>array({0.1, 0.0, -0.1, 1.0, -180.0, 90.0}, dtype=object)</pre></div></li><li class="xr-var-item"><div class="xr-var-name"><span>epsg</span></div><div class="xr-var-dims">()</div><div class="xr-var-dtype">int64</div><div class="xr-var-preview xr-preview">4326</div><input id="attrs-44dbae3a-7ab9-4a54-b500-52911779ec21" class="xr-var-attrs-in" type="checkbox" disabled=""><label for="attrs-44dbae3a-7ab9-4a54-b500-52911779ec21" title="Show/Hide attributes"><svg class="icon xr-icon-file-text2"><use href="#icon-file-text2"></use></svg></label><input id="data-ead84bc4-5fa4-4fca-9068-2eceaf73d77a" class="xr-var-data-in" type="checkbox"><label for="data-ead84bc4-5fa4-4fca-9068-2eceaf73d77a" title="Show/Hide data repr"><svg class="icon xr-icon-database"><use href="#icon-database"></use></svg></label><div class="xr-var-attrs"><dl class="xr-attrs"></dl></div><div class="xr-var-data"><pre>array(4326)</pre></div></li></ul></div></li><li class="xr-section-item"><input id="section-e49539ed-b781-400f-a9e4-9c7f8b0ea0ac" class="xr-section-summary-in" type="checkbox" checked=""><label for="section-e49539ed-b781-400f-a9e4-9c7f8b0ea0ac" class="xr-section-summary">Attributes: <span>(4)</span></label><div class="xr-section-inline-details"></div><div class="xr-section-details"><dl class="xr-attrs"><dt><span>spec :</span></dt><dd>RasterSpec(epsg=4326, bounds=(-180.0, -90.0, 180.0, 90.0), resolutions_xy=(0.1, 0.1))</dd><dt><span>crs :</span></dt><dd>epsg:4326</dd><dt><span>transform :</span></dt><dd>| 0.10, 0.00,-180.00|
 | 0.00,-0.10, 90.00|
 | 0.00, 0.00, 1.00|</dd><dt><span>resolution :</span></dt><dd>0.1</dd></dl></div></li></ul></div></div>
 </div>
@@ -856,16 +929,16 @@ Attributes:
 </section>
 <section id="clip-the-data-to-the-bounding-box-for-china" class="level2">
 <h2 class="anchored" data-anchor-id="clip-the-data-to-the-bounding-box-for-china">Clip the data to the bounding box for China</h2>
-<div class="cell" data-execution_count="6">
-<div class="sourceCode" id="cb6"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Subset to Bounding Box for China</span></span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>subset <span class="op">=</span> stack.rio.clip_box(</span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>    minx<span class="op">=</span>china_bbox[<span class="dv">0</span>],</span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>    miny<span class="op">=</span>china_bbox[<span class="dv">1</span>],</span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>    maxx<span class="op">=</span>china_bbox[<span class="dv">2</span>],</span>
-<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>    maxy<span class="op">=</span>china_bbox[<span class="dv">3</span>]</span>
-<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>subset</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display" data-execution_count="6">
+<div class="cell" data-execution_count="37">
+<div class="sourceCode" id="cb8"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Subset to Bounding Box for China</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>subset <span class="op">=</span> stack.rio.clip_box(</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>    minx<span class="op">=</span>china_bbox[<span class="dv">0</span>],</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>    miny<span class="op">=</span>china_bbox[<span class="dv">1</span>],</span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>    maxx<span class="op">=</span>china_bbox[<span class="dv">2</span>],</span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>    maxy<span class="op">=</span>china_bbox[<span class="dv">3</span>]</span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>subset</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display" data-execution_count="37">
 <div><svg style="position: absolute; width: 0; height: 0; overflow: hidden">
 <defs>
 <symbol id="icon-database" viewbox="0 0 32 32">
@@ -1217,26 +1290,27 @@ dl.xr-attrs {
   stroke: currentColor;
   fill: currentColor;
 }
-</style><pre class="xr-text-repr-fallback">&lt;xarray.DataArray 'stackstac-0e5c1d761e250551f505585d46ddfff0' (time: 73,
+</style><pre class="xr-text-repr-fallback">&lt;xarray.DataArray 'stackstac-5227002b71043bbfd9046c1aa79faf1f' (time: 73,
                                                                 band: 1,
                                                                 y: 354, x: 614)&gt;
 dask.array&lt;getitem, shape=(73, 1, 354, 614), dtype=float64, chunksize=(1, 1, 354, 535), chunktype=numpy.ndarray&gt;
-Coordinates:
-  * time            (time) datetime64[ns] 2016-01-01 2016-02-01 ... 2022-01-01
-    id              (time) &lt;U46 'OMI_trno2_0.10x0.10_201601_Col3_V4-no2-month...
+Coordinates: (12/14)
+  * time            (time) &lt;U20 '2022-01-01T00:00:00Z' ... '2016-01-01T00:00:...
+    id              (time) &lt;U45 'OMI_trno2_monthly_0.10x0.10_202201_Col3_V4.n...
   * band            (band) &lt;U11 'cog_default'
   * x               (x) float64 73.7 73.8 73.9 74.0 ... 134.7 134.8 134.9 135.0
   * y               (y) float64 53.5 53.4 53.3 53.2 53.1 ... 18.5 18.4 18.3 18.2
-    proj:geometry   object {'type': 'Polygon', 'coordinates': [[[-180.0, 90.0...
-    proj:epsg       int64 4326
-    proj:bbox       object {90.0, 180.0, -90.0, -180.0}
     proj:shape      object {1800, 3600}
+    ...              ...
+    start_datetime  (time) &lt;U20 '2022-01-01T00:00:00Z' ... '2016-01-01T00:00:...
+    end_datetime    (time) &lt;U20 '2022-01-31T00:00:00Z' ... '2016-01-31T00:00:...
+    proj:epsg       int64 4326
     proj:transform  object {0.1, 0.0, 1.0, -0.1, -180.0, 90.0}
     epsg            int64 4326
     spatial_ref     int64 0
 Attributes:
     spec:        RasterSpec(epsg=4326, bounds=(-180.0, -90.0, 180.0, 90.0), r...
-    resolution:  0.1</pre><div class="xr-wrap" style="display:none"><div class="xr-header"><div class="xr-obj-type">xarray.DataArray</div><div class="xr-array-name">'stackstac-0e5c1d761e250551f505585d46ddfff0'</div><ul class="xr-dim-list"><li><span class="xr-has-index">time</span>: 73</li><li><span class="xr-has-index">band</span>: 1</li><li><span class="xr-has-index">y</span>: 354</li><li><span class="xr-has-index">x</span>: 614</li></ul></div><ul class="xr-sections"><li class="xr-section-item"><div class="xr-array-wrap"><input id="section-b39f4989-77a5-46b5-98e3-551698e393ce" class="xr-array-in" type="checkbox" checked=""><label for="section-b39f4989-77a5-46b5-98e3-551698e393ce" title="Show/hide data repr"><svg class="icon xr-icon-database"><use href="#icon-database"></use></svg></label><div class="xr-array-preview xr-preview"><span>dask.array&lt;chunksize=(1, 1, 354, 535), meta=np.ndarray&gt;</span></div><div class="xr-array-data"><table>
+    resolution:  0.1</pre><div class="xr-wrap" style="display:none"><div class="xr-header"><div class="xr-obj-type">xarray.DataArray</div><div class="xr-array-name">'stackstac-5227002b71043bbfd9046c1aa79faf1f'</div><ul class="xr-dim-list"><li><span class="xr-has-index">time</span>: 73</li><li><span class="xr-has-index">band</span>: 1</li><li><span class="xr-has-index">y</span>: 354</li><li><span class="xr-has-index">x</span>: 614</li></ul></div><ul class="xr-sections"><li class="xr-section-item"><div class="xr-array-wrap"><input id="section-75cffd82-b98c-42a6-b021-e93dff11f767" class="xr-array-in" type="checkbox" checked=""><label for="section-75cffd82-b98c-42a6-b021-e93dff11f767" title="Show/hide data repr"><svg class="icon xr-icon-database"><use href="#icon-database"></use></svg></label><div class="xr-array-preview xr-preview"><span>dask.array&lt;chunksize=(1, 1, 354, 535), meta=np.ndarray&gt;</span></div><div class="xr-array-data"><table>
     <tbody><tr>
         <td>
             <table>
@@ -1262,7 +1336,7 @@ Attributes:
                     </tr>
                     <tr>
                         <th> Count </th>
-                        <td> 876 Tasks </td>
+                        <td> 884 Tasks </td>
                         <td> 146 Chunks </td>
                     </tr>
                     <tr>
@@ -1365,95 +1439,155 @@ Attributes:
 </svg>
         </td>
     </tr>
-</tbody></table></div></div></li><li class="xr-section-item"><input id="section-314dfe06-b075-4bed-88ed-75d76c1c999b" class="xr-section-summary-in" type="checkbox" checked=""><label for="section-314dfe06-b075-4bed-88ed-75d76c1c999b" class="xr-section-summary">Coordinates: <span>(12)</span></label><div class="xr-section-inline-details"></div><div class="xr-section-details"><ul class="xr-var-list"><li class="xr-var-item"><div class="xr-var-name"><span class="xr-has-index">time</span></div><div class="xr-var-dims">(time)</div><div class="xr-var-dtype">datetime64[ns]</div><div class="xr-var-preview xr-preview">2016-01-01 ... 2022-01-01</div><input id="attrs-04c347ca-2df1-4b5d-8efa-83bbb2ecaca5" class="xr-var-attrs-in" type="checkbox" disabled=""><label for="attrs-04c347ca-2df1-4b5d-8efa-83bbb2ecaca5" title="Show/Hide attributes"><svg class="icon xr-icon-file-text2"><use href="#icon-file-text2"></use></svg></label><input id="data-c4dee55d-475f-4ada-bc0f-c43df7e8e158" class="xr-var-data-in" type="checkbox"><label for="data-c4dee55d-475f-4ada-bc0f-c43df7e8e158" title="Show/Hide data repr"><svg class="icon xr-icon-database"><use href="#icon-database"></use></svg></label><div class="xr-var-attrs"><dl class="xr-attrs"></dl></div><div class="xr-var-data"><pre>array(['2016-01-01T00:00:00.000000000', '2016-02-01T00:00:00.000000000',
-       '2016-03-01T00:00:00.000000000', '2016-04-01T00:00:00.000000000',
-       '2016-05-01T00:00:00.000000000', '2016-06-01T00:00:00.000000000',
-       '2016-07-01T00:00:00.000000000', '2016-08-01T00:00:00.000000000',
-       '2016-09-01T00:00:00.000000000', '2016-10-01T00:00:00.000000000',
-       '2016-11-01T00:00:00.000000000', '2016-12-01T00:00:00.000000000',
-       '2017-01-01T00:00:00.000000000', '2017-02-01T00:00:00.000000000',
-       '2017-03-01T00:00:00.000000000', '2017-04-01T00:00:00.000000000',
-       '2017-05-01T00:00:00.000000000', '2017-06-01T00:00:00.000000000',
-       '2017-07-01T00:00:00.000000000', '2017-08-01T00:00:00.000000000',
-       '2017-09-01T00:00:00.000000000', '2017-10-01T00:00:00.000000000',
-       '2017-11-01T00:00:00.000000000', '2017-12-01T00:00:00.000000000',
-       '2018-01-01T00:00:00.000000000', '2018-02-01T00:00:00.000000000',
-       '2018-03-01T00:00:00.000000000', '2018-04-01T00:00:00.000000000',
-       '2018-05-01T00:00:00.000000000', '2018-06-01T00:00:00.000000000',
-       '2018-07-01T00:00:00.000000000', '2018-08-01T00:00:00.000000000',
-       '2018-09-01T00:00:00.000000000', '2018-10-01T00:00:00.000000000',
-       '2018-11-01T00:00:00.000000000', '2018-12-01T00:00:00.000000000',
-       '2019-01-01T00:00:00.000000000', '2019-02-01T00:00:00.000000000',
-       '2019-03-01T00:00:00.000000000', '2019-04-01T00:00:00.000000000',
-       '2019-05-01T00:00:00.000000000', '2019-06-01T00:00:00.000000000',
-       '2019-07-01T00:00:00.000000000', '2019-08-01T00:00:00.000000000',
-       '2019-09-01T00:00:00.000000000', '2019-10-01T00:00:00.000000000',
-       '2019-11-01T00:00:00.000000000', '2019-12-01T00:00:00.000000000',
-       '2020-01-01T00:00:00.000000000', '2020-02-01T00:00:00.000000000',
-       '2020-03-01T00:00:00.000000000', '2020-04-01T00:00:00.000000000',
-       '2020-05-01T00:00:00.000000000', '2020-06-01T00:00:00.000000000',
-       '2020-07-01T00:00:00.000000000', '2020-08-01T00:00:00.000000000',
-       '2020-09-01T00:00:00.000000000', '2020-10-01T00:00:00.000000000',
-       '2020-11-01T00:00:00.000000000', '2020-12-01T00:00:00.000000000',
-       '2021-01-01T00:00:00.000000000', '2021-02-01T00:00:00.000000000',
-       '2021-03-01T00:00:00.000000000', '2021-04-01T00:00:00.000000000',
-       '2021-05-01T00:00:00.000000000', '2021-06-01T00:00:00.000000000',
-       '2021-07-01T00:00:00.000000000', '2021-08-01T00:00:00.000000000',
-       '2021-09-01T00:00:00.000000000', '2021-10-01T00:00:00.000000000',
-       '2021-11-01T00:00:00.000000000', '2021-12-01T00:00:00.000000000',
-       '2022-01-01T00:00:00.000000000'], dtype='datetime64[ns]')</pre></div></li><li class="xr-var-item"><div class="xr-var-name"><span>id</span></div><div class="xr-var-dims">(time)</div><div class="xr-var-dtype">&lt;U46</div><div class="xr-var-preview xr-preview">'OMI_trno2_0.10x0.10_201601_Col3...</div><input id="attrs-21b5f078-b87a-40ce-a85d-8553caf7a881" class="xr-var-attrs-in" type="checkbox" disabled=""><label for="attrs-21b5f078-b87a-40ce-a85d-8553caf7a881" title="Show/Hide attributes"><svg class="icon xr-icon-file-text2"><use href="#icon-file-text2"></use></svg></label><input id="data-b743b4be-de4a-4436-8a2e-8a0b73db470b" class="xr-var-data-in" type="checkbox"><label for="data-b743b4be-de4a-4436-8a2e-8a0b73db470b" title="Show/Hide data repr"><svg class="icon xr-icon-database"><use href="#icon-database"></use></svg></label><div class="xr-var-attrs"><dl class="xr-attrs"></dl></div><div class="xr-var-data"><pre>array(['OMI_trno2_0.10x0.10_201601_Col3_V4-no2-monthly',
-       'OMI_trno2_0.10x0.10_201602_Col3_V4-no2-monthly',
-       'OMI_trno2_0.10x0.10_201603_Col3_V4-no2-monthly',
-       'OMI_trno2_0.10x0.10_201604_Col3_V4-no2-monthly',
-       'OMI_trno2_0.10x0.10_201605_Col3_V4-no2-monthly',
-       'OMI_trno2_0.10x0.10_201606_Col3_V4-no2-monthly',
-       'OMI_trno2_0.10x0.10_201607_Col3_V4-no2-monthly',
-       'OMI_trno2_0.10x0.10_201608_Col3_V4-no2-monthly',
-       'OMI_trno2_0.10x0.10_201609_Col3_V4-no2-monthly',
-       'OMI_trno2_0.10x0.10_201610_Col3_V4-no2-monthly',
-       'OMI_trno2_0.10x0.10_201611_Col3_V4-no2-monthly',
-       'OMI_trno2_0.10x0.10_201612_Col3_V4-no2-monthly',
-       'OMI_trno2_0.10x0.10_201701_Col3_V4-no2-monthly',
-       'OMI_trno2_0.10x0.10_201702_Col3_V4-no2-monthly',
-       'OMI_trno2_0.10x0.10_201703_Col3_V4-no2-monthly',
-       'OMI_trno2_0.10x0.10_201704_Col3_V4-no2-monthly',
-       'OMI_trno2_0.10x0.10_201705_Col3_V4-no2-monthly',
-       'OMI_trno2_0.10x0.10_201706_Col3_V4-no2-monthly',
-       'OMI_trno2_0.10x0.10_201707_Col3_V4-no2-monthly',
-       'OMI_trno2_0.10x0.10_201708_Col3_V4-no2-monthly',
+</tbody></table></div></div></li><li class="xr-section-item"><input id="section-942d9c65-88f0-4cb7-b369-732f774e856b" class="xr-section-summary-in" type="checkbox" checked=""><label for="section-942d9c65-88f0-4cb7-b369-732f774e856b" class="xr-section-summary">Coordinates: <span>(14)</span></label><div class="xr-section-inline-details"></div><div class="xr-section-details"><ul class="xr-var-list"><li class="xr-var-item"><div class="xr-var-name"><span class="xr-has-index">time</span></div><div class="xr-var-dims">(time)</div><div class="xr-var-dtype">&lt;U20</div><div class="xr-var-preview xr-preview">'2022-01-01T00:00:00Z' ... '2016...</div><input id="attrs-29b1fa49-e1b6-470d-9866-e85897f48663" class="xr-var-attrs-in" type="checkbox" disabled=""><label for="attrs-29b1fa49-e1b6-470d-9866-e85897f48663" title="Show/Hide attributes"><svg class="icon xr-icon-file-text2"><use href="#icon-file-text2"></use></svg></label><input id="data-b0879f6d-4716-47cf-a397-9e0d61ef8fde" class="xr-var-data-in" type="checkbox"><label for="data-b0879f6d-4716-47cf-a397-9e0d61ef8fde" title="Show/Hide data repr"><svg class="icon xr-icon-database"><use href="#icon-database"></use></svg></label><div class="xr-var-attrs"><dl class="xr-attrs"></dl></div><div class="xr-var-data"><pre>array(['2022-01-01T00:00:00Z', '2021-12-01T00:00:00Z', '2021-11-01T00:00:00Z',
+       '2021-10-01T00:00:00Z', '2021-09-01T00:00:00Z', '2021-08-01T00:00:00Z',
+       '2021-07-01T00:00:00Z', '2021-06-01T00:00:00Z', '2021-05-01T00:00:00Z',
+       '2021-04-01T00:00:00Z', '2021-03-01T00:00:00Z', '2021-02-01T00:00:00Z',
+       '2021-01-01T00:00:00Z', '2020-12-01T00:00:00Z', '2020-11-01T00:00:00Z',
+       '2020-10-01T00:00:00Z', '2020-09-01T00:00:00Z', '2020-08-01T00:00:00Z',
+       '2020-07-01T00:00:00Z', '2020-06-01T00:00:00Z', '2020-05-01T00:00:00Z',
+       '2020-04-01T00:00:00Z', '2020-03-01T00:00:00Z', '2020-02-01T00:00:00Z',
+       '2020-01-01T00:00:00Z', '2019-12-01T00:00:00Z', '2019-11-01T00:00:00Z',
+       '2019-10-01T00:00:00Z', '2019-09-01T00:00:00Z', '2019-08-01T00:00:00Z',
+       '2019-07-01T00:00:00Z', '2019-06-01T00:00:00Z', '2019-05-01T00:00:00Z',
+       '2019-04-01T00:00:00Z', '2019-03-01T00:00:00Z', '2019-02-01T00:00:00Z',
+       '2019-01-01T00:00:00Z', '2018-12-01T00:00:00Z', '2018-11-01T00:00:00Z',
+       '2018-10-01T00:00:00Z', '2018-09-01T00:00:00Z', '2018-08-01T00:00:00Z',
+       '2018-07-01T00:00:00Z', '2018-06-01T00:00:00Z', '2018-05-01T00:00:00Z',
+       '2018-04-01T00:00:00Z', '2018-03-01T00:00:00Z', '2018-02-01T00:00:00Z',
+       '2018-01-01T00:00:00Z', '2017-12-01T00:00:00Z', '2017-11-01T00:00:00Z',
+       '2017-10-01T00:00:00Z', '2017-09-01T00:00:00Z', '2017-08-01T00:00:00Z',
+       '2017-07-01T00:00:00Z', '2017-06-01T00:00:00Z', '2017-05-01T00:00:00Z',
+       '2017-04-01T00:00:00Z', '2017-03-01T00:00:00Z', '2017-02-01T00:00:00Z',
+       '2017-01-01T00:00:00Z', '2016-12-01T00:00:00Z', '2016-11-01T00:00:00Z',
+       '2016-10-01T00:00:00Z', '2016-09-01T00:00:00Z', '2016-08-01T00:00:00Z',
+       '2016-07-01T00:00:00Z', '2016-06-01T00:00:00Z', '2016-05-01T00:00:00Z',
+       '2016-04-01T00:00:00Z', '2016-03-01T00:00:00Z', '2016-02-01T00:00:00Z',
+       '2016-01-01T00:00:00Z'], dtype='&lt;U20')</pre></div></li><li class="xr-var-item"><div class="xr-var-name"><span>id</span></div><div class="xr-var-dims">(time)</div><div class="xr-var-dtype">&lt;U45</div><div class="xr-var-preview xr-preview">'OMI_trno2_monthly_0.10x0.10_202...</div><input id="attrs-e1ea2891-d836-47a3-b17b-16a0d9fe46ed" class="xr-var-attrs-in" type="checkbox" disabled=""><label for="attrs-e1ea2891-d836-47a3-b17b-16a0d9fe46ed" title="Show/Hide attributes"><svg class="icon xr-icon-file-text2"><use href="#icon-file-text2"></use></svg></label><input id="data-acd15f58-12e7-49b0-90e3-108fc9540972" class="xr-var-data-in" type="checkbox"><label for="data-acd15f58-12e7-49b0-90e3-108fc9540972" title="Show/Hide data repr"><svg class="icon xr-icon-database"><use href="#icon-database"></use></svg></label><div class="xr-var-attrs"><dl class="xr-attrs"></dl></div><div class="xr-var-data"><pre>array(['OMI_trno2_monthly_0.10x0.10_202201_Col3_V4.nc',
+       'OMI_trno2_monthly_0.10x0.10_202112_Col3_V4.nc',
+       'OMI_trno2_monthly_0.10x0.10_202111_Col3_V4.nc',
+       'OMI_trno2_monthly_0.10x0.10_202110_Col3_V4.nc',
+       'OMI_trno2_monthly_0.10x0.10_202109_Col3_V4.nc',
+       'OMI_trno2_monthly_0.10x0.10_202108_Col3_V4.nc',
+       'OMI_trno2_monthly_0.10x0.10_202107_Col3_V4.nc',
+       'OMI_trno2_monthly_0.10x0.10_202106_Col3_V4.nc',
+       'OMI_trno2_monthly_0.10x0.10_202105_Col3_V4.nc',
+       'OMI_trno2_monthly_0.10x0.10_202104_Col3_V4.nc',
+       'OMI_trno2_monthly_0.10x0.10_202103_Col3_V4.nc',
+       'OMI_trno2_monthly_0.10x0.10_202102_Col3_V4.nc',
+       'OMI_trno2_monthly_0.10x0.10_202101_Col3_V4.nc',
+       'OMI_trno2_monthly_0.10x0.10_202012_Col3_V4.nc',
+       'OMI_trno2_monthly_0.10x0.10_202011_Col3_V4.nc',
+       'OMI_trno2_monthly_0.10x0.10_202010_Col3_V4.nc',
+       'OMI_trno2_monthly_0.10x0.10_202009_Col3_V4.nc',
+       'OMI_trno2_monthly_0.10x0.10_202008_Col3_V4.nc',
+       'OMI_trno2_monthly_0.10x0.10_202007_Col3_V4.nc',
+       'OMI_trno2_monthly_0.10x0.10_202006_Col3_V4.nc',
 ...
-       'OMI_trno2_0.10x0.10_202006_Col3_V4-no2-monthly',
-       'OMI_trno2_0.10x0.10_202007_Col3_V4-no2-monthly',
-       'OMI_trno2_0.10x0.10_202008_Col3_V4-no2-monthly',
-       'OMI_trno2_0.10x0.10_202009_Col3_V4-no2-monthly',
-       'OMI_trno2_0.10x0.10_202010_Col3_V4-no2-monthly',
-       'OMI_trno2_0.10x0.10_202011_Col3_V4-no2-monthly',
-       'OMI_trno2_0.10x0.10_202012_Col3_V4-no2-monthly',
-       'OMI_trno2_0.10x0.10_202101_Col3_V4-no2-monthly',
-       'OMI_trno2_0.10x0.10_202102_Col3_V4-no2-monthly',
-       'OMI_trno2_0.10x0.10_202103_Col3_V4-no2-monthly',
-       'OMI_trno2_0.10x0.10_202104_Col3_V4-no2-monthly',
-       'OMI_trno2_0.10x0.10_202105_Col3_V4-no2-monthly',
-       'OMI_trno2_0.10x0.10_202106_Col3_V4-no2-monthly',
-       'OMI_trno2_0.10x0.10_202107_Col3_V4-no2-monthly',
-       'OMI_trno2_0.10x0.10_202108_Col3_V4-no2-monthly',
-       'OMI_trno2_0.10x0.10_202109_Col3_V4-no2-monthly',
-       'OMI_trno2_0.10x0.10_202110_Col3_V4-no2-monthly',
-       'OMI_trno2_0.10x0.10_202111_Col3_V4-no2-monthly',
-       'OMI_trno2_0.10x0.10_202112_Col3_V4-no2-monthly',
-       'OMI_trno2_0.10x0.10_202201_Col3_V4-no2-monthly'], dtype='&lt;U46')</pre></div></li><li class="xr-var-item"><div class="xr-var-name"><span class="xr-has-index">band</span></div><div class="xr-var-dims">(band)</div><div class="xr-var-dtype">&lt;U11</div><div class="xr-var-preview xr-preview">'cog_default'</div><input id="attrs-aee37f41-c8cf-4541-b9d2-767f11c03a9e" class="xr-var-attrs-in" type="checkbox" disabled=""><label for="attrs-aee37f41-c8cf-4541-b9d2-767f11c03a9e" title="Show/Hide attributes"><svg class="icon xr-icon-file-text2"><use href="#icon-file-text2"></use></svg></label><input id="data-39092d19-6e04-4de6-9e98-3afdd1085035" class="xr-var-data-in" type="checkbox"><label for="data-39092d19-6e04-4de6-9e98-3afdd1085035" title="Show/Hide data repr"><svg class="icon xr-icon-database"><use href="#icon-database"></use></svg></label><div class="xr-var-attrs"><dl class="xr-attrs"></dl></div><div class="xr-var-data"><pre>array(['cog_default'], dtype='&lt;U11')</pre></div></li><li class="xr-var-item"><div class="xr-var-name"><span class="xr-has-index">x</span></div><div class="xr-var-dims">(x)</div><div class="xr-var-dtype">float64</div><div class="xr-var-preview xr-preview">73.7 73.8 73.9 ... 134.9 135.0</div><input id="attrs-5ffcd786-1a2a-4a9a-b80a-7cd2f1fb1139" class="xr-var-attrs-in" type="checkbox"><label for="attrs-5ffcd786-1a2a-4a9a-b80a-7cd2f1fb1139" title="Show/Hide attributes"><svg class="icon xr-icon-file-text2"><use href="#icon-file-text2"></use></svg></label><input id="data-52a41a9a-a082-4e93-9aa9-26a542f9ac47" class="xr-var-data-in" type="checkbox"><label for="data-52a41a9a-a082-4e93-9aa9-26a542f9ac47" title="Show/Hide data repr"><svg class="icon xr-icon-database"><use href="#icon-database"></use></svg></label><div class="xr-var-attrs"><dl class="xr-attrs"><dt><span>axis :</span></dt><dd>X</dd><dt><span>long_name :</span></dt><dd>longitude</dd><dt><span>standard_name :</span></dt><dd>longitude</dd><dt><span>units :</span></dt><dd>degrees_east</dd></dl></div><div class="xr-var-data"><pre>array([ 73.7,  73.8,  73.9, ..., 134.8, 134.9, 135. ])</pre></div></li><li class="xr-var-item"><div class="xr-var-name"><span class="xr-has-index">y</span></div><div class="xr-var-dims">(y)</div><div class="xr-var-dtype">float64</div><div class="xr-var-preview xr-preview">53.5 53.4 53.3 ... 18.4 18.3 18.2</div><input id="attrs-8463e7b8-261f-4964-81ba-ea295664724a" class="xr-var-attrs-in" type="checkbox"><label for="attrs-8463e7b8-261f-4964-81ba-ea295664724a" title="Show/Hide attributes"><svg class="icon xr-icon-file-text2"><use href="#icon-file-text2"></use></svg></label><input id="data-4087b1b5-2ac4-4679-a88f-5b72aa41e4f8" class="xr-var-data-in" type="checkbox"><label for="data-4087b1b5-2ac4-4679-a88f-5b72aa41e4f8" title="Show/Hide data repr"><svg class="icon xr-icon-database"><use href="#icon-database"></use></svg></label><div class="xr-var-attrs"><dl class="xr-attrs"><dt><span>axis :</span></dt><dd>Y</dd><dt><span>long_name :</span></dt><dd>latitude</dd><dt><span>standard_name :</span></dt><dd>latitude</dd><dt><span>units :</span></dt><dd>degrees_north</dd></dl></div><div class="xr-var-data"><pre>array([53.5, 53.4, 53.3, ..., 18.4, 18.3, 18.2])</pre></div></li><li class="xr-var-item"><div class="xr-var-name"><span>proj:geometry</span></div><div class="xr-var-dims">()</div><div class="xr-var-dtype">object</div><div class="xr-var-preview xr-preview">{'type': 'Polygon', 'coordinates...</div><input id="attrs-bf32602d-dcf2-46e1-a203-2674cbd86238" class="xr-var-attrs-in" type="checkbox" disabled=""><label for="attrs-bf32602d-dcf2-46e1-a203-2674cbd86238" title="Show/Hide attributes"><svg class="icon xr-icon-file-text2"><use href="#icon-file-text2"></use></svg></label><input id="data-7a0f76c5-26c8-449d-9371-63d9f0a639a3" class="xr-var-data-in" type="checkbox"><label for="data-7a0f76c5-26c8-449d-9371-63d9f0a639a3" title="Show/Hide data repr"><svg class="icon xr-icon-database"><use href="#icon-database"></use></svg></label><div class="xr-var-attrs"><dl class="xr-attrs"></dl></div><div class="xr-var-data"><pre>array({'type': 'Polygon', 'coordinates': [[[-180.0, 90.0], [-180.0, -90.0], [180.0, -90.0], [180.0, 90.0], [-180.0, 90.0]]]},
-      dtype=object)</pre></div></li><li class="xr-var-item"><div class="xr-var-name"><span>proj:epsg</span></div><div class="xr-var-dims">()</div><div class="xr-var-dtype">int64</div><div class="xr-var-preview xr-preview">4326</div><input id="attrs-dfa2f970-1270-43e8-ab9c-f974244cc50d" class="xr-var-attrs-in" type="checkbox" disabled=""><label for="attrs-dfa2f970-1270-43e8-ab9c-f974244cc50d" title="Show/Hide attributes"><svg class="icon xr-icon-file-text2"><use href="#icon-file-text2"></use></svg></label><input id="data-c0dc4895-411f-435a-83e8-6c2e44b69595" class="xr-var-data-in" type="checkbox"><label for="data-c0dc4895-411f-435a-83e8-6c2e44b69595" title="Show/Hide data repr"><svg class="icon xr-icon-database"><use href="#icon-database"></use></svg></label><div class="xr-var-attrs"><dl class="xr-attrs"></dl></div><div class="xr-var-data"><pre>array(4326)</pre></div></li><li class="xr-var-item"><div class="xr-var-name"><span>proj:bbox</span></div><div class="xr-var-dims">()</div><div class="xr-var-dtype">object</div><div class="xr-var-preview xr-preview">{90.0, 180.0, -90.0, -180.0}</div><input id="attrs-d1871609-6f54-4380-b356-c4b34d558cd6" class="xr-var-attrs-in" type="checkbox" disabled=""><label for="attrs-d1871609-6f54-4380-b356-c4b34d558cd6" title="Show/Hide attributes"><svg class="icon xr-icon-file-text2"><use href="#icon-file-text2"></use></svg></label><input id="data-fa22ba62-1620-4074-84ad-82b295765ee2" class="xr-var-data-in" type="checkbox"><label for="data-fa22ba62-1620-4074-84ad-82b295765ee2" title="Show/Hide data repr"><svg class="icon xr-icon-database"><use href="#icon-database"></use></svg></label><div class="xr-var-attrs"><dl class="xr-attrs"></dl></div><div class="xr-var-data"><pre>array({90.0, 180.0, -90.0, -180.0}, dtype=object)</pre></div></li><li class="xr-var-item"><div class="xr-var-name"><span>proj:shape</span></div><div class="xr-var-dims">()</div><div class="xr-var-dtype">object</div><div class="xr-var-preview xr-preview">{1800, 3600}</div><input id="attrs-e9f4d65f-3e31-4565-a8ec-8c9757bc3c16" class="xr-var-attrs-in" type="checkbox" disabled=""><label for="attrs-e9f4d65f-3e31-4565-a8ec-8c9757bc3c16" title="Show/Hide attributes"><svg class="icon xr-icon-file-text2"><use href="#icon-file-text2"></use></svg></label><input id="data-b73db277-3691-481e-bebe-0c9357a3923d" class="xr-var-data-in" type="checkbox"><label for="data-b73db277-3691-481e-bebe-0c9357a3923d" title="Show/Hide data repr"><svg class="icon xr-icon-database"><use href="#icon-database"></use></svg></label><div class="xr-var-attrs"><dl class="xr-attrs"></dl></div><div class="xr-var-data"><pre>array({1800, 3600}, dtype=object)</pre></div></li><li class="xr-var-item"><div class="xr-var-name"><span>proj:transform</span></div><div class="xr-var-dims">()</div><div class="xr-var-dtype">object</div><div class="xr-var-preview xr-preview">{0.1, 0.0, 1.0, -0.1, -180.0, 90.0}</div><input id="attrs-f301d98a-cfc2-435b-953c-62a7a68f4390" class="xr-var-attrs-in" type="checkbox" disabled=""><label for="attrs-f301d98a-cfc2-435b-953c-62a7a68f4390" title="Show/Hide attributes"><svg class="icon xr-icon-file-text2"><use href="#icon-file-text2"></use></svg></label><input id="data-48efe8f8-fe67-4849-a43e-d59b7dda8200" class="xr-var-data-in" type="checkbox"><label for="data-48efe8f8-fe67-4849-a43e-d59b7dda8200" title="Show/Hide data repr"><svg class="icon xr-icon-database"><use href="#icon-database"></use></svg></label><div class="xr-var-attrs"><dl class="xr-attrs"></dl></div><div class="xr-var-data"><pre>array({0.1, 0.0, 1.0, -0.1, -180.0, 90.0}, dtype=object)</pre></div></li><li class="xr-var-item"><div class="xr-var-name"><span>epsg</span></div><div class="xr-var-dims">()</div><div class="xr-var-dtype">int64</div><div class="xr-var-preview xr-preview">4326</div><input id="attrs-5c59e4aa-99fb-45ac-bbf2-eba1250c9ffb" class="xr-var-attrs-in" type="checkbox" disabled=""><label for="attrs-5c59e4aa-99fb-45ac-bbf2-eba1250c9ffb" title="Show/Hide attributes"><svg class="icon xr-icon-file-text2"><use href="#icon-file-text2"></use></svg></label><input id="data-8e8f816e-817d-41d9-b744-deeefe8edfb5" class="xr-var-data-in" type="checkbox"><label for="data-8e8f816e-817d-41d9-b744-deeefe8edfb5" title="Show/Hide data repr"><svg class="icon xr-icon-database"><use href="#icon-database"></use></svg></label><div class="xr-var-attrs"><dl class="xr-attrs"></dl></div><div class="xr-var-data"><pre>array(4326)</pre></div></li><li class="xr-var-item"><div class="xr-var-name"><span>spatial_ref</span></div><div class="xr-var-dims">()</div><div class="xr-var-dtype">int64</div><div class="xr-var-preview xr-preview">0</div><input id="attrs-76ffa768-fa5c-44ed-8b15-afa88b79075c" class="xr-var-attrs-in" type="checkbox"><label for="attrs-76ffa768-fa5c-44ed-8b15-afa88b79075c" title="Show/Hide attributes"><svg class="icon xr-icon-file-text2"><use href="#icon-file-text2"></use></svg></label><input id="data-1cdc55e8-1b9b-461f-a2b6-5a8b2e7d53b6" class="xr-var-data-in" type="checkbox"><label for="data-1cdc55e8-1b9b-461f-a2b6-5a8b2e7d53b6" title="Show/Hide data repr"><svg class="icon xr-icon-database"><use href="#icon-database"></use></svg></label><div class="xr-var-attrs"><dl class="xr-attrs"><dt><span>crs_wkt :</span></dt><dd>GEOGCS["WGS 84",DATUM["WGS_1984",SPHEROID["WGS 84",6378137,298.257223563,AUTHORITY["EPSG","7030"]],AUTHORITY["EPSG","6326"]],PRIMEM["Greenwich",0,AUTHORITY["EPSG","8901"]],UNIT["degree",0.0174532925199433,AUTHORITY["EPSG","9122"]],AXIS["Latitude",NORTH],AXIS["Longitude",EAST],AUTHORITY["EPSG","4326"]]</dd><dt><span>semi_major_axis :</span></dt><dd>6378137.0</dd><dt><span>semi_minor_axis :</span></dt><dd>6356752.314245179</dd><dt><span>inverse_flattening :</span></dt><dd>298.257223563</dd><dt><span>reference_ellipsoid_name :</span></dt><dd>WGS 84</dd><dt><span>longitude_of_prime_meridian :</span></dt><dd>0.0</dd><dt><span>prime_meridian_name :</span></dt><dd>Greenwich</dd><dt><span>geographic_crs_name :</span></dt><dd>WGS 84</dd><dt><span>grid_mapping_name :</span></dt><dd>latitude_longitude</dd><dt><span>spatial_ref :</span></dt><dd>GEOGCS["WGS 84",DATUM["WGS_1984",SPHEROID["WGS 84",6378137,298.257223563,AUTHORITY["EPSG","7030"]],AUTHORITY["EPSG","6326"]],PRIMEM["Greenwich",0,AUTHORITY["EPSG","8901"]],UNIT["degree",0.0174532925199433,AUTHORITY["EPSG","9122"]],AXIS["Latitude",NORTH],AXIS["Longitude",EAST],AUTHORITY["EPSG","4326"]]</dd><dt><span>GeoTransform :</span></dt><dd>73.65000000000002 0.09999999999999998 0.0 53.55 0.0 -0.09999999999999999</dd></dl></div><div class="xr-var-data"><pre>array(0)</pre></div></li></ul></div></li><li class="xr-section-item"><input id="section-7377cfdf-5346-47cd-8b2f-320c6914f166" class="xr-section-summary-in" type="checkbox" checked=""><label for="section-7377cfdf-5346-47cd-8b2f-320c6914f166" class="xr-section-summary">Attributes: <span>(2)</span></label><div class="xr-section-inline-details"></div><div class="xr-section-details"><dl class="xr-attrs"><dt><span>spec :</span></dt><dd>RasterSpec(epsg=4326, bounds=(-180.0, -90.0, 180.0, 90.0), resolutions_xy=(0.1, 0.1))</dd><dt><span>resolution :</span></dt><dd>0.1</dd></dl></div></li></ul></div></div>
+       'OMI_trno2_monthly_0.10x0.10_201708_Col3_V4.nc',
+       'OMI_trno2_monthly_0.10x0.10_201707_Col3_V4.nc',
+       'OMI_trno2_monthly_0.10x0.10_201706_Col3_V4.nc',
+       'OMI_trno2_monthly_0.10x0.10_201705_Col3_V4.nc',
+       'OMI_trno2_monthly_0.10x0.10_201704_Col3_V4.nc',
+       'OMI_trno2_monthly_0.10x0.10_201703_Col3_V4.nc',
+       'OMI_trno2_monthly_0.10x0.10_201702_Col3_V4.nc',
+       'OMI_trno2_monthly_0.10x0.10_201701_Col3_V4.nc',
+       'OMI_trno2_monthly_0.10x0.10_201612_Col3_V4.nc',
+       'OMI_trno2_monthly_0.10x0.10_201611_Col3_V4.nc',
+       'OMI_trno2_monthly_0.10x0.10_201610_Col3_V4.nc',
+       'OMI_trno2_monthly_0.10x0.10_201609_Col3_V4.nc',
+       'OMI_trno2_monthly_0.10x0.10_201608_Col3_V4.nc',
+       'OMI_trno2_monthly_0.10x0.10_201607_Col3_V4.nc',
+       'OMI_trno2_monthly_0.10x0.10_201606_Col3_V4.nc',
+       'OMI_trno2_monthly_0.10x0.10_201605_Col3_V4.nc',
+       'OMI_trno2_monthly_0.10x0.10_201604_Col3_V4.nc',
+       'OMI_trno2_monthly_0.10x0.10_201603_Col3_V4.nc',
+       'OMI_trno2_monthly_0.10x0.10_201602_Col3_V4.nc',
+       'OMI_trno2_monthly_0.10x0.10_201601_Col3_V4.nc'], dtype='&lt;U45')</pre></div></li><li class="xr-var-item"><div class="xr-var-name"><span class="xr-has-index">band</span></div><div class="xr-var-dims">(band)</div><div class="xr-var-dtype">&lt;U11</div><div class="xr-var-preview xr-preview">'cog_default'</div><input id="attrs-54b53a6d-dd0f-4ff3-9157-3785bff69cac" class="xr-var-attrs-in" type="checkbox" disabled=""><label for="attrs-54b53a6d-dd0f-4ff3-9157-3785bff69cac" title="Show/Hide attributes"><svg class="icon xr-icon-file-text2"><use href="#icon-file-text2"></use></svg></label><input id="data-e9ccf778-06b6-4948-89a0-1e30bbdcbdde" class="xr-var-data-in" type="checkbox"><label for="data-e9ccf778-06b6-4948-89a0-1e30bbdcbdde" title="Show/Hide data repr"><svg class="icon xr-icon-database"><use href="#icon-database"></use></svg></label><div class="xr-var-attrs"><dl class="xr-attrs"></dl></div><div class="xr-var-data"><pre>array(['cog_default'], dtype='&lt;U11')</pre></div></li><li class="xr-var-item"><div class="xr-var-name"><span class="xr-has-index">x</span></div><div class="xr-var-dims">(x)</div><div class="xr-var-dtype">float64</div><div class="xr-var-preview xr-preview">73.7 73.8 73.9 ... 134.9 135.0</div><input id="attrs-43f4b22e-b354-4d4d-bd6c-c2d7b9099018" class="xr-var-attrs-in" type="checkbox"><label for="attrs-43f4b22e-b354-4d4d-bd6c-c2d7b9099018" title="Show/Hide attributes"><svg class="icon xr-icon-file-text2"><use href="#icon-file-text2"></use></svg></label><input id="data-18c1576c-adc6-4c46-992f-bc5f11ef98ca" class="xr-var-data-in" type="checkbox"><label for="data-18c1576c-adc6-4c46-992f-bc5f11ef98ca" title="Show/Hide data repr"><svg class="icon xr-icon-database"><use href="#icon-database"></use></svg></label><div class="xr-var-attrs"><dl class="xr-attrs"><dt><span>axis :</span></dt><dd>X</dd><dt><span>long_name :</span></dt><dd>longitude</dd><dt><span>standard_name :</span></dt><dd>longitude</dd><dt><span>units :</span></dt><dd>degrees_east</dd></dl></div><div class="xr-var-data"><pre>array([ 73.7,  73.8,  73.9, ..., 134.8, 134.9, 135. ])</pre></div></li><li class="xr-var-item"><div class="xr-var-name"><span class="xr-has-index">y</span></div><div class="xr-var-dims">(y)</div><div class="xr-var-dtype">float64</div><div class="xr-var-preview xr-preview">53.5 53.4 53.3 ... 18.4 18.3 18.2</div><input id="attrs-227f0828-55c6-47cd-a8f1-ddbab69b2c19" class="xr-var-attrs-in" type="checkbox"><label for="attrs-227f0828-55c6-47cd-a8f1-ddbab69b2c19" title="Show/Hide attributes"><svg class="icon xr-icon-file-text2"><use href="#icon-file-text2"></use></svg></label><input id="data-b2b922d3-1231-4e09-9f15-5eeb22905742" class="xr-var-data-in" type="checkbox"><label for="data-b2b922d3-1231-4e09-9f15-5eeb22905742" title="Show/Hide data repr"><svg class="icon xr-icon-database"><use href="#icon-database"></use></svg></label><div class="xr-var-attrs"><dl class="xr-attrs"><dt><span>axis :</span></dt><dd>Y</dd><dt><span>long_name :</span></dt><dd>latitude</dd><dt><span>standard_name :</span></dt><dd>latitude</dd><dt><span>units :</span></dt><dd>degrees_north</dd></dl></div><div class="xr-var-data"><pre>array([53.5, 53.4, 53.3, ..., 18.4, 18.3, 18.2])</pre></div></li><li class="xr-var-item"><div class="xr-var-name"><span>proj:shape</span></div><div class="xr-var-dims">()</div><div class="xr-var-dtype">object</div><div class="xr-var-preview xr-preview">{1800, 3600}</div><input id="attrs-f33f98f9-da23-44a9-9881-abed8704c352" class="xr-var-attrs-in" type="checkbox" disabled=""><label for="attrs-f33f98f9-da23-44a9-9881-abed8704c352" title="Show/Hide attributes"><svg class="icon xr-icon-file-text2"><use href="#icon-file-text2"></use></svg></label><input id="data-18ed5f7e-cde2-49f6-9863-c840a91a0038" class="xr-var-data-in" type="checkbox"><label for="data-18ed5f7e-cde2-49f6-9863-c840a91a0038" title="Show/Hide data repr"><svg class="icon xr-icon-database"><use href="#icon-database"></use></svg></label><div class="xr-var-attrs"><dl class="xr-attrs"></dl></div><div class="xr-var-data"><pre>array({1800, 3600}, dtype=object)</pre></div></li><li class="xr-var-item"><div class="xr-var-name"><span>proj:geometry</span></div><div class="xr-var-dims">()</div><div class="xr-var-dtype">object</div><div class="xr-var-preview xr-preview">{'type': 'Polygon', 'coordinates...</div><input id="attrs-7583fd8f-a499-4e83-9fd1-2eedaf8f33a4" class="xr-var-attrs-in" type="checkbox" disabled=""><label for="attrs-7583fd8f-a499-4e83-9fd1-2eedaf8f33a4" title="Show/Hide attributes"><svg class="icon xr-icon-file-text2"><use href="#icon-file-text2"></use></svg></label><input id="data-b88c95f4-e4b4-4a19-b41e-2cb469aa351a" class="xr-var-data-in" type="checkbox"><label for="data-b88c95f4-e4b4-4a19-b41e-2cb469aa351a" title="Show/Hide data repr"><svg class="icon xr-icon-database"><use href="#icon-database"></use></svg></label><div class="xr-var-attrs"><dl class="xr-attrs"></dl></div><div class="xr-var-data"><pre>array({'type': 'Polygon', 'coordinates': [[[-180.0, -90.0], [180.0, -90.0], [180.0, 90.0], [-180.0, 90.0], [-180.0, -90.0]]]},
+      dtype=object)</pre></div></li><li class="xr-var-item"><div class="xr-var-name"><span>proj:bbox</span></div><div class="xr-var-dims">()</div><div class="xr-var-dtype">object</div><div class="xr-var-preview xr-preview">{90.0, 180.0, -90.0, -180.0}</div><input id="attrs-0c1ca636-04e4-4072-9310-a6980a992727" class="xr-var-attrs-in" type="checkbox" disabled=""><label for="attrs-0c1ca636-04e4-4072-9310-a6980a992727" title="Show/Hide attributes"><svg class="icon xr-icon-file-text2"><use href="#icon-file-text2"></use></svg></label><input id="data-a957db13-8304-431f-8409-01cde0bf28d0" class="xr-var-data-in" type="checkbox"><label for="data-a957db13-8304-431f-8409-01cde0bf28d0" title="Show/Hide data repr"><svg class="icon xr-icon-database"><use href="#icon-database"></use></svg></label><div class="xr-var-attrs"><dl class="xr-attrs"></dl></div><div class="xr-var-data"><pre>array({90.0, 180.0, -90.0, -180.0}, dtype=object)</pre></div></li><li class="xr-var-item"><div class="xr-var-name"><span>start_datetime</span></div><div class="xr-var-dims">(time)</div><div class="xr-var-dtype">&lt;U20</div><div class="xr-var-preview xr-preview">'2022-01-01T00:00:00Z' ... '2016...</div><input id="attrs-a0aa7e7e-f70a-45ad-82d6-c9afcc9959f5" class="xr-var-attrs-in" type="checkbox" disabled=""><label for="attrs-a0aa7e7e-f70a-45ad-82d6-c9afcc9959f5" title="Show/Hide attributes"><svg class="icon xr-icon-file-text2"><use href="#icon-file-text2"></use></svg></label><input id="data-782bb827-94cb-48d5-a915-ffaafd4ab6d2" class="xr-var-data-in" type="checkbox"><label for="data-782bb827-94cb-48d5-a915-ffaafd4ab6d2" title="Show/Hide data repr"><svg class="icon xr-icon-database"><use href="#icon-database"></use></svg></label><div class="xr-var-attrs"><dl class="xr-attrs"></dl></div><div class="xr-var-data"><pre>array(['2022-01-01T00:00:00Z', '2021-12-01T00:00:00Z',
+       '2021-11-01T00:00:00Z', '2021-10-01T00:00:00Z',
+       '2021-09-01T00:00:00Z', '2021-08-01T00:00:00Z',
+       '2021-07-01T00:00:00Z', '2021-06-01T00:00:00Z',
+       '2021-05-01T00:00:00Z', '2021-04-01T00:00:00Z',
+       '2021-03-01T00:00:00Z', '2021-02-01T00:00:00Z',
+       '2021-01-01T00:00:00Z', '2020-12-01T00:00:00Z',
+       '2020-11-01T00:00:00Z', '2020-10-01T00:00:00Z',
+       '2020-09-01T00:00:00Z', '2020-08-01T00:00:00Z',
+       '2020-07-01T00:00:00Z', '2020-06-01T00:00:00Z',
+       '2020-05-01T00:00:00Z', '2020-04-01T00:00:00Z',
+       '2020-03-01T00:00:00Z', '2020-02-01T00:00:00Z',
+       '2020-01-01T00:00:00Z', '2019-12-01T00:00:00Z',
+       '2019-11-01T00:00:00Z', '2019-10-01T00:00:00Z',
+       '2019-09-01T00:00:00Z', '2019-08-01T00:00:00Z',
+       '2019-07-01T00:00:00Z', '2019-06-01T00:00:00Z',
+       '2019-05-01T00:00:00Z', '2019-04-01T00:00:00Z',
+       '2019-03-01T00:00:00Z', '2019-02-01T00:00:00Z',
+       '2019-01-01T00:00:00Z', '2018-12-01T00:00:00Z',
+       '2018-11-01T00:00:00Z', '2018-10-01T00:00:00Z',
+       '2018-09-01T00:00:00Z', '2018-08-01T00:00:00Z',
+       '2018-07-01T00:00:00Z', '2018-06-01T00:00:00Z',
+       '2018-05-01T00:00:00Z', '2018-04-01T00:00:00Z',
+       '2018-03-01T00:00:00Z', '2018-02-01T00:00:00Z',
+       '2018-01-01T00:00:00Z', '2017-12-01T00:00:00Z',
+       '2017-11-01T00:00:00Z', '2017-10-01T00:00:00Z',
+       '2017-09-01T00:00:00Z', '2017-08-01T00:00:00Z',
+       '2017-07-01T00:00:00Z', '2017-06-01T00:00:00Z',
+       '2017-05-01T00:00:00Z', '2017-04-01T00:00:00Z',
+       '2017-03-01T00:00:00Z', '2017-02-01T00:00:00Z',
+       '2017-01-01T00:00:00Z', '2016-12-01T00:00:00Z',
+       '2016-11-01T00:00:00Z', '2016-10-01T00:00:00Z',
+       '2016-09-01T00:00:00Z', '2016-08-01T00:00:00Z',
+       '2016-07-01T00:00:00Z', '2016-06-01T00:00:00Z',
+       '2016-05-01T00:00:00Z', '2016-04-01T00:00:00Z',
+       '2016-03-01T00:00:00Z', '2016-02-01T00:00:00Z',
+       '2016-01-01T00:00:00Z'], dtype='&lt;U20')</pre></div></li><li class="xr-var-item"><div class="xr-var-name"><span>end_datetime</span></div><div class="xr-var-dims">(time)</div><div class="xr-var-dtype">&lt;U20</div><div class="xr-var-preview xr-preview">'2022-01-31T00:00:00Z' ... '2016...</div><input id="attrs-a8101e64-b57f-4c96-b02d-932b21c38efb" class="xr-var-attrs-in" type="checkbox" disabled=""><label for="attrs-a8101e64-b57f-4c96-b02d-932b21c38efb" title="Show/Hide attributes"><svg class="icon xr-icon-file-text2"><use href="#icon-file-text2"></use></svg></label><input id="data-768f061c-795b-4ff1-b721-1ad22dfefa99" class="xr-var-data-in" type="checkbox"><label for="data-768f061c-795b-4ff1-b721-1ad22dfefa99" title="Show/Hide data repr"><svg class="icon xr-icon-database"><use href="#icon-database"></use></svg></label><div class="xr-var-attrs"><dl class="xr-attrs"></dl></div><div class="xr-var-data"><pre>array(['2022-01-31T00:00:00Z', '2021-12-31T00:00:00Z',
+       '2021-11-30T00:00:00Z', '2021-10-31T00:00:00Z',
+       '2021-09-30T00:00:00Z', '2021-08-31T00:00:00Z',
+       '2021-07-31T00:00:00Z', '2021-06-30T00:00:00Z',
+       '2021-05-31T00:00:00Z', '2021-04-30T00:00:00Z',
+       '2021-03-31T00:00:00Z', '2021-02-28T00:00:00Z',
+       '2021-01-31T00:00:00Z', '2020-12-31T00:00:00Z',
+       '2020-11-30T00:00:00Z', '2020-10-31T00:00:00Z',
+       '2020-09-30T00:00:00Z', '2020-08-31T00:00:00Z',
+       '2020-07-31T00:00:00Z', '2020-06-30T00:00:00Z',
+       '2020-05-31T00:00:00Z', '2020-04-30T00:00:00Z',
+       '2020-03-31T00:00:00Z', '2020-02-29T00:00:00Z',
+       '2020-01-31T00:00:00Z', '2019-12-31T00:00:00Z',
+       '2019-11-30T00:00:00Z', '2019-10-31T00:00:00Z',
+       '2019-09-30T00:00:00Z', '2019-08-31T00:00:00Z',
+       '2019-07-31T00:00:00Z', '2019-06-30T00:00:00Z',
+       '2019-05-31T00:00:00Z', '2019-04-30T00:00:00Z',
+       '2019-03-31T00:00:00Z', '2019-02-28T00:00:00Z',
+       '2019-01-31T00:00:00Z', '2018-12-31T00:00:00Z',
+       '2018-11-30T00:00:00Z', '2018-10-31T00:00:00Z',
+       '2018-09-30T00:00:00Z', '2018-08-31T00:00:00Z',
+       '2018-07-31T00:00:00Z', '2018-06-30T00:00:00Z',
+       '2018-05-31T00:00:00Z', '2018-04-30T00:00:00Z',
+       '2018-03-31T00:00:00Z', '2018-02-28T00:00:00Z',
+       '2018-01-31T00:00:00Z', '2017-12-31T00:00:00Z',
+       '2017-11-30T00:00:00Z', '2017-10-31T00:00:00Z',
+       '2017-09-30T00:00:00Z', '2017-08-31T00:00:00Z',
+       '2017-07-31T00:00:00Z', '2017-06-30T00:00:00Z',
+       '2017-05-31T00:00:00Z', '2017-04-30T00:00:00Z',
+       '2017-03-31T00:00:00Z', '2017-02-28T00:00:00Z',
+       '2017-01-31T00:00:00Z', '2016-12-31T00:00:00Z',
+       '2016-11-30T00:00:00Z', '2016-10-31T00:00:00Z',
+       '2016-09-30T00:00:00Z', '2016-08-31T00:00:00Z',
+       '2016-07-31T00:00:00Z', '2016-06-30T00:00:00Z',
+       '2016-05-31T00:00:00Z', '2016-04-30T00:00:00Z',
+       '2016-03-31T00:00:00Z', '2016-02-29T00:00:00Z',
+       '2016-01-31T00:00:00Z'], dtype='&lt;U20')</pre></div></li><li class="xr-var-item"><div class="xr-var-name"><span>proj:epsg</span></div><div class="xr-var-dims">()</div><div class="xr-var-dtype">int64</div><div class="xr-var-preview xr-preview">4326</div><input id="attrs-3d99e17f-784a-4890-b753-fdc0f05afa5d" class="xr-var-attrs-in" type="checkbox" disabled=""><label for="attrs-3d99e17f-784a-4890-b753-fdc0f05afa5d" title="Show/Hide attributes"><svg class="icon xr-icon-file-text2"><use href="#icon-file-text2"></use></svg></label><input id="data-b98cf720-18de-4e50-b4b5-2a7a3da7cbf1" class="xr-var-data-in" type="checkbox"><label for="data-b98cf720-18de-4e50-b4b5-2a7a3da7cbf1" title="Show/Hide data repr"><svg class="icon xr-icon-database"><use href="#icon-database"></use></svg></label><div class="xr-var-attrs"><dl class="xr-attrs"></dl></div><div class="xr-var-data"><pre>array(4326)</pre></div></li><li class="xr-var-item"><div class="xr-var-name"><span>proj:transform</span></div><div class="xr-var-dims">()</div><div class="xr-var-dtype">object</div><div class="xr-var-preview xr-preview">{0.1, 0.0, 1.0, -0.1, -180.0, 90.0}</div><input id="attrs-b21bb1a0-530a-446c-8442-4a4b1cfb9756" class="xr-var-attrs-in" type="checkbox" disabled=""><label for="attrs-b21bb1a0-530a-446c-8442-4a4b1cfb9756" title="Show/Hide attributes"><svg class="icon xr-icon-file-text2"><use href="#icon-file-text2"></use></svg></label><input id="data-77486b62-d5ba-4b10-a4db-735851373457" class="xr-var-data-in" type="checkbox"><label for="data-77486b62-d5ba-4b10-a4db-735851373457" title="Show/Hide data repr"><svg class="icon xr-icon-database"><use href="#icon-database"></use></svg></label><div class="xr-var-attrs"><dl class="xr-attrs"></dl></div><div class="xr-var-data"><pre>array({0.1, 0.0, 1.0, -0.1, -180.0, 90.0}, dtype=object)</pre></div></li><li class="xr-var-item"><div class="xr-var-name"><span>epsg</span></div><div class="xr-var-dims">()</div><div class="xr-var-dtype">int64</div><div class="xr-var-preview xr-preview">4326</div><input id="attrs-f162e523-7b61-40c8-bd05-09d970ed8a00" class="xr-var-attrs-in" type="checkbox" disabled=""><label for="attrs-f162e523-7b61-40c8-bd05-09d970ed8a00" title="Show/Hide attributes"><svg class="icon xr-icon-file-text2"><use href="#icon-file-text2"></use></svg></label><input id="data-0e4ce886-26c0-4a08-8bc3-9c6723aa4ffc" class="xr-var-data-in" type="checkbox"><label for="data-0e4ce886-26c0-4a08-8bc3-9c6723aa4ffc" title="Show/Hide data repr"><svg class="icon xr-icon-database"><use href="#icon-database"></use></svg></label><div class="xr-var-attrs"><dl class="xr-attrs"></dl></div><div class="xr-var-data"><pre>array(4326)</pre></div></li><li class="xr-var-item"><div class="xr-var-name"><span>spatial_ref</span></div><div class="xr-var-dims">()</div><div class="xr-var-dtype">int64</div><div class="xr-var-preview xr-preview">0</div><input id="attrs-3f15b8fd-6ac0-4346-9c12-50399994f6c7" class="xr-var-attrs-in" type="checkbox"><label for="attrs-3f15b8fd-6ac0-4346-9c12-50399994f6c7" title="Show/Hide attributes"><svg class="icon xr-icon-file-text2"><use href="#icon-file-text2"></use></svg></label><input id="data-407dd963-5ad4-4a30-9bc9-6fc9a3c48be3" class="xr-var-data-in" type="checkbox"><label for="data-407dd963-5ad4-4a30-9bc9-6fc9a3c48be3" title="Show/Hide data repr"><svg class="icon xr-icon-database"><use href="#icon-database"></use></svg></label><div class="xr-var-attrs"><dl class="xr-attrs"><dt><span>crs_wkt :</span></dt><dd>GEOGCS["WGS 84",DATUM["WGS_1984",SPHEROID["WGS 84",6378137,298.257223563,AUTHORITY["EPSG","7030"]],AUTHORITY["EPSG","6326"]],PRIMEM["Greenwich",0,AUTHORITY["EPSG","8901"]],UNIT["degree",0.0174532925199433,AUTHORITY["EPSG","9122"]],AXIS["Latitude",NORTH],AXIS["Longitude",EAST],AUTHORITY["EPSG","4326"]]</dd><dt><span>semi_major_axis :</span></dt><dd>6378137.0</dd><dt><span>semi_minor_axis :</span></dt><dd>6356752.314245179</dd><dt><span>inverse_flattening :</span></dt><dd>298.257223563</dd><dt><span>reference_ellipsoid_name :</span></dt><dd>WGS 84</dd><dt><span>longitude_of_prime_meridian :</span></dt><dd>0.0</dd><dt><span>prime_meridian_name :</span></dt><dd>Greenwich</dd><dt><span>geographic_crs_name :</span></dt><dd>WGS 84</dd><dt><span>grid_mapping_name :</span></dt><dd>latitude_longitude</dd><dt><span>spatial_ref :</span></dt><dd>GEOGCS["WGS 84",DATUM["WGS_1984",SPHEROID["WGS 84",6378137,298.257223563,AUTHORITY["EPSG","7030"]],AUTHORITY["EPSG","6326"]],PRIMEM["Greenwich",0,AUTHORITY["EPSG","8901"]],UNIT["degree",0.0174532925199433,AUTHORITY["EPSG","9122"]],AXIS["Latitude",NORTH],AXIS["Longitude",EAST],AUTHORITY["EPSG","4326"]]</dd><dt><span>GeoTransform :</span></dt><dd>73.65000000000002 0.09999999999999998 0.0 53.55 0.0 -0.09999999999999999</dd></dl></div><div class="xr-var-data"><pre>array(0)</pre></div></li></ul></div></li><li class="xr-section-item"><input id="section-d4c8a607-0307-4717-883a-0d9165d434de" class="xr-section-summary-in" type="checkbox" checked=""><label for="section-d4c8a607-0307-4717-883a-0d9165d434de" class="xr-section-summary">Attributes: <span>(2)</span></label><div class="xr-section-inline-details"></div><div class="xr-section-details"><dl class="xr-attrs"><dt><span>spec :</span></dt><dd>RasterSpec(epsg=4326, bounds=(-180.0, -90.0, 180.0, 90.0), resolutions_xy=(0.1, 0.1))</dd><dt><span>resolution :</span></dt><dd>0.1</dd></dl></div></li></ul></div></div>
 </div>
 </div>
 </section>
 <section id="select-a-band-of-data" class="level2">
 <h2 class="anchored" data-anchor-id="select-a-band-of-data">Select a band of data</h2>
 <p>There is just one band in this case, <code>cog_default</code>.</p>
-<div class="cell" data-execution_count="7">
-<div class="sourceCode" id="cb7"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># select the band default</span></span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>data_band <span class="op">=</span> subset.sel(band<span class="op">=</span><span class="st">'cog_default'</span>)</span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>data_band</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display" data-execution_count="7">
+<div class="cell" data-execution_count="38">
+<div class="sourceCode" id="cb9"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># select the band default</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>data_band <span class="op">=</span> subset.sel(band<span class="op">=</span><span class="st">'cog_default'</span>)</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>data_band</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display" data-execution_count="38">
 <div><svg style="position: absolute; width: 0; height: 0; overflow: hidden">
 <defs>
 <symbol id="icon-database" viewbox="0 0 32 32">
@@ -1805,25 +1939,26 @@ dl.xr-attrs {
   stroke: currentColor;
   fill: currentColor;
 }
-</style><pre class="xr-text-repr-fallback">&lt;xarray.DataArray 'stackstac-0e5c1d761e250551f505585d46ddfff0' (time: 73,
+</style><pre class="xr-text-repr-fallback">&lt;xarray.DataArray 'stackstac-5227002b71043bbfd9046c1aa79faf1f' (time: 73,
                                                                 y: 354, x: 614)&gt;
 dask.array&lt;getitem, shape=(73, 354, 614), dtype=float64, chunksize=(1, 354, 535), chunktype=numpy.ndarray&gt;
-Coordinates:
-  * time            (time) datetime64[ns] 2016-01-01 2016-02-01 ... 2022-01-01
-    id              (time) &lt;U46 'OMI_trno2_0.10x0.10_201601_Col3_V4-no2-month...
+Coordinates: (12/14)
+  * time            (time) &lt;U20 '2022-01-01T00:00:00Z' ... '2016-01-01T00:00:...
+    id              (time) &lt;U45 'OMI_trno2_monthly_0.10x0.10_202201_Col3_V4.n...
     band            &lt;U11 'cog_default'
   * x               (x) float64 73.7 73.8 73.9 74.0 ... 134.7 134.8 134.9 135.0
   * y               (y) float64 53.5 53.4 53.3 53.2 53.1 ... 18.5 18.4 18.3 18.2
-    proj:geometry   object {'type': 'Polygon', 'coordinates': [[[-180.0, 90.0...
-    proj:epsg       int64 4326
-    proj:bbox       object {90.0, 180.0, -90.0, -180.0}
     proj:shape      object {1800, 3600}
+    ...              ...
+    start_datetime  (time) &lt;U20 '2022-01-01T00:00:00Z' ... '2016-01-01T00:00:...
+    end_datetime    (time) &lt;U20 '2022-01-31T00:00:00Z' ... '2016-01-31T00:00:...
+    proj:epsg       int64 4326
     proj:transform  object {0.1, 0.0, 1.0, -0.1, -180.0, 90.0}
     epsg            int64 4326
     spatial_ref     int64 0
 Attributes:
     spec:        RasterSpec(epsg=4326, bounds=(-180.0, -90.0, 180.0, 90.0), r...
-    resolution:  0.1</pre><div class="xr-wrap" style="display:none"><div class="xr-header"><div class="xr-obj-type">xarray.DataArray</div><div class="xr-array-name">'stackstac-0e5c1d761e250551f505585d46ddfff0'</div><ul class="xr-dim-list"><li><span class="xr-has-index">time</span>: 73</li><li><span class="xr-has-index">y</span>: 354</li><li><span class="xr-has-index">x</span>: 614</li></ul></div><ul class="xr-sections"><li class="xr-section-item"><div class="xr-array-wrap"><input id="section-85e11ae2-e0aa-44d1-8c4a-e30e2fa2c792" class="xr-array-in" type="checkbox" checked=""><label for="section-85e11ae2-e0aa-44d1-8c4a-e30e2fa2c792" title="Show/hide data repr"><svg class="icon xr-icon-database"><use href="#icon-database"></use></svg></label><div class="xr-array-preview xr-preview"><span>dask.array&lt;chunksize=(1, 354, 535), meta=np.ndarray&gt;</span></div><div class="xr-array-data"><table>
+    resolution:  0.1</pre><div class="xr-wrap" style="display:none"><div class="xr-header"><div class="xr-obj-type">xarray.DataArray</div><div class="xr-array-name">'stackstac-5227002b71043bbfd9046c1aa79faf1f'</div><ul class="xr-dim-list"><li><span class="xr-has-index">time</span>: 73</li><li><span class="xr-has-index">y</span>: 354</li><li><span class="xr-has-index">x</span>: 614</li></ul></div><ul class="xr-sections"><li class="xr-section-item"><div class="xr-array-wrap"><input id="section-028704a3-6875-4458-a2e7-a020413f1148" class="xr-array-in" type="checkbox" checked=""><label for="section-028704a3-6875-4458-a2e7-a020413f1148" title="Show/hide data repr"><svg class="icon xr-icon-database"><use href="#icon-database"></use></svg></label><div class="xr-array-preview xr-preview"><span>dask.array&lt;chunksize=(1, 354, 535), meta=np.ndarray&gt;</span></div><div class="xr-array-data"><table>
     <tbody><tr>
         <td>
             <table>
@@ -1849,7 +1984,7 @@ Attributes:
                     </tr>
                     <tr>
                         <th> Count </th>
-                        <td> 1022 Tasks </td>
+                        <td> 1030 Tasks </td>
                         <td> 146 Chunks </td>
                     </tr>
                     <tr>
@@ -1941,98 +2076,158 @@ Attributes:
 </svg>
         </td>
     </tr>
-</tbody></table></div></div></li><li class="xr-section-item"><input id="section-03710d11-b787-46b7-9efc-d93344771daf" class="xr-section-summary-in" type="checkbox" checked=""><label for="section-03710d11-b787-46b7-9efc-d93344771daf" class="xr-section-summary">Coordinates: <span>(12)</span></label><div class="xr-section-inline-details"></div><div class="xr-section-details"><ul class="xr-var-list"><li class="xr-var-item"><div class="xr-var-name"><span class="xr-has-index">time</span></div><div class="xr-var-dims">(time)</div><div class="xr-var-dtype">datetime64[ns]</div><div class="xr-var-preview xr-preview">2016-01-01 ... 2022-01-01</div><input id="attrs-802d4d10-073b-4d3d-8276-1a62aa9d6868" class="xr-var-attrs-in" type="checkbox" disabled=""><label for="attrs-802d4d10-073b-4d3d-8276-1a62aa9d6868" title="Show/Hide attributes"><svg class="icon xr-icon-file-text2"><use href="#icon-file-text2"></use></svg></label><input id="data-635f73c5-d7a0-49ef-b0c4-4fbb9b8abca2" class="xr-var-data-in" type="checkbox"><label for="data-635f73c5-d7a0-49ef-b0c4-4fbb9b8abca2" title="Show/Hide data repr"><svg class="icon xr-icon-database"><use href="#icon-database"></use></svg></label><div class="xr-var-attrs"><dl class="xr-attrs"></dl></div><div class="xr-var-data"><pre>array(['2016-01-01T00:00:00.000000000', '2016-02-01T00:00:00.000000000',
-       '2016-03-01T00:00:00.000000000', '2016-04-01T00:00:00.000000000',
-       '2016-05-01T00:00:00.000000000', '2016-06-01T00:00:00.000000000',
-       '2016-07-01T00:00:00.000000000', '2016-08-01T00:00:00.000000000',
-       '2016-09-01T00:00:00.000000000', '2016-10-01T00:00:00.000000000',
-       '2016-11-01T00:00:00.000000000', '2016-12-01T00:00:00.000000000',
-       '2017-01-01T00:00:00.000000000', '2017-02-01T00:00:00.000000000',
-       '2017-03-01T00:00:00.000000000', '2017-04-01T00:00:00.000000000',
-       '2017-05-01T00:00:00.000000000', '2017-06-01T00:00:00.000000000',
-       '2017-07-01T00:00:00.000000000', '2017-08-01T00:00:00.000000000',
-       '2017-09-01T00:00:00.000000000', '2017-10-01T00:00:00.000000000',
-       '2017-11-01T00:00:00.000000000', '2017-12-01T00:00:00.000000000',
-       '2018-01-01T00:00:00.000000000', '2018-02-01T00:00:00.000000000',
-       '2018-03-01T00:00:00.000000000', '2018-04-01T00:00:00.000000000',
-       '2018-05-01T00:00:00.000000000', '2018-06-01T00:00:00.000000000',
-       '2018-07-01T00:00:00.000000000', '2018-08-01T00:00:00.000000000',
-       '2018-09-01T00:00:00.000000000', '2018-10-01T00:00:00.000000000',
-       '2018-11-01T00:00:00.000000000', '2018-12-01T00:00:00.000000000',
-       '2019-01-01T00:00:00.000000000', '2019-02-01T00:00:00.000000000',
-       '2019-03-01T00:00:00.000000000', '2019-04-01T00:00:00.000000000',
-       '2019-05-01T00:00:00.000000000', '2019-06-01T00:00:00.000000000',
-       '2019-07-01T00:00:00.000000000', '2019-08-01T00:00:00.000000000',
-       '2019-09-01T00:00:00.000000000', '2019-10-01T00:00:00.000000000',
-       '2019-11-01T00:00:00.000000000', '2019-12-01T00:00:00.000000000',
-       '2020-01-01T00:00:00.000000000', '2020-02-01T00:00:00.000000000',
-       '2020-03-01T00:00:00.000000000', '2020-04-01T00:00:00.000000000',
-       '2020-05-01T00:00:00.000000000', '2020-06-01T00:00:00.000000000',
-       '2020-07-01T00:00:00.000000000', '2020-08-01T00:00:00.000000000',
-       '2020-09-01T00:00:00.000000000', '2020-10-01T00:00:00.000000000',
-       '2020-11-01T00:00:00.000000000', '2020-12-01T00:00:00.000000000',
-       '2021-01-01T00:00:00.000000000', '2021-02-01T00:00:00.000000000',
-       '2021-03-01T00:00:00.000000000', '2021-04-01T00:00:00.000000000',
-       '2021-05-01T00:00:00.000000000', '2021-06-01T00:00:00.000000000',
-       '2021-07-01T00:00:00.000000000', '2021-08-01T00:00:00.000000000',
-       '2021-09-01T00:00:00.000000000', '2021-10-01T00:00:00.000000000',
-       '2021-11-01T00:00:00.000000000', '2021-12-01T00:00:00.000000000',
-       '2022-01-01T00:00:00.000000000'], dtype='datetime64[ns]')</pre></div></li><li class="xr-var-item"><div class="xr-var-name"><span>id</span></div><div class="xr-var-dims">(time)</div><div class="xr-var-dtype">&lt;U46</div><div class="xr-var-preview xr-preview">'OMI_trno2_0.10x0.10_201601_Col3...</div><input id="attrs-32a1187d-685d-44d3-948d-31ae576747c6" class="xr-var-attrs-in" type="checkbox" disabled=""><label for="attrs-32a1187d-685d-44d3-948d-31ae576747c6" title="Show/Hide attributes"><svg class="icon xr-icon-file-text2"><use href="#icon-file-text2"></use></svg></label><input id="data-98a3454f-c78b-4e33-a9bd-f6ed15a43814" class="xr-var-data-in" type="checkbox"><label for="data-98a3454f-c78b-4e33-a9bd-f6ed15a43814" title="Show/Hide data repr"><svg class="icon xr-icon-database"><use href="#icon-database"></use></svg></label><div class="xr-var-attrs"><dl class="xr-attrs"></dl></div><div class="xr-var-data"><pre>array(['OMI_trno2_0.10x0.10_201601_Col3_V4-no2-monthly',
-       'OMI_trno2_0.10x0.10_201602_Col3_V4-no2-monthly',
-       'OMI_trno2_0.10x0.10_201603_Col3_V4-no2-monthly',
-       'OMI_trno2_0.10x0.10_201604_Col3_V4-no2-monthly',
-       'OMI_trno2_0.10x0.10_201605_Col3_V4-no2-monthly',
-       'OMI_trno2_0.10x0.10_201606_Col3_V4-no2-monthly',
-       'OMI_trno2_0.10x0.10_201607_Col3_V4-no2-monthly',
-       'OMI_trno2_0.10x0.10_201608_Col3_V4-no2-monthly',
-       'OMI_trno2_0.10x0.10_201609_Col3_V4-no2-monthly',
-       'OMI_trno2_0.10x0.10_201610_Col3_V4-no2-monthly',
-       'OMI_trno2_0.10x0.10_201611_Col3_V4-no2-monthly',
-       'OMI_trno2_0.10x0.10_201612_Col3_V4-no2-monthly',
-       'OMI_trno2_0.10x0.10_201701_Col3_V4-no2-monthly',
-       'OMI_trno2_0.10x0.10_201702_Col3_V4-no2-monthly',
-       'OMI_trno2_0.10x0.10_201703_Col3_V4-no2-monthly',
-       'OMI_trno2_0.10x0.10_201704_Col3_V4-no2-monthly',
-       'OMI_trno2_0.10x0.10_201705_Col3_V4-no2-monthly',
-       'OMI_trno2_0.10x0.10_201706_Col3_V4-no2-monthly',
-       'OMI_trno2_0.10x0.10_201707_Col3_V4-no2-monthly',
-       'OMI_trno2_0.10x0.10_201708_Col3_V4-no2-monthly',
+</tbody></table></div></div></li><li class="xr-section-item"><input id="section-45d8d841-8d98-4a41-b499-152e7d1c3539" class="xr-section-summary-in" type="checkbox" checked=""><label for="section-45d8d841-8d98-4a41-b499-152e7d1c3539" class="xr-section-summary">Coordinates: <span>(14)</span></label><div class="xr-section-inline-details"></div><div class="xr-section-details"><ul class="xr-var-list"><li class="xr-var-item"><div class="xr-var-name"><span class="xr-has-index">time</span></div><div class="xr-var-dims">(time)</div><div class="xr-var-dtype">&lt;U20</div><div class="xr-var-preview xr-preview">'2022-01-01T00:00:00Z' ... '2016...</div><input id="attrs-cbe20085-18f4-490f-b40b-95effa1386a0" class="xr-var-attrs-in" type="checkbox" disabled=""><label for="attrs-cbe20085-18f4-490f-b40b-95effa1386a0" title="Show/Hide attributes"><svg class="icon xr-icon-file-text2"><use href="#icon-file-text2"></use></svg></label><input id="data-546878f3-b1d2-450e-9023-0e303f2ddce0" class="xr-var-data-in" type="checkbox"><label for="data-546878f3-b1d2-450e-9023-0e303f2ddce0" title="Show/Hide data repr"><svg class="icon xr-icon-database"><use href="#icon-database"></use></svg></label><div class="xr-var-attrs"><dl class="xr-attrs"></dl></div><div class="xr-var-data"><pre>array(['2022-01-01T00:00:00Z', '2021-12-01T00:00:00Z', '2021-11-01T00:00:00Z',
+       '2021-10-01T00:00:00Z', '2021-09-01T00:00:00Z', '2021-08-01T00:00:00Z',
+       '2021-07-01T00:00:00Z', '2021-06-01T00:00:00Z', '2021-05-01T00:00:00Z',
+       '2021-04-01T00:00:00Z', '2021-03-01T00:00:00Z', '2021-02-01T00:00:00Z',
+       '2021-01-01T00:00:00Z', '2020-12-01T00:00:00Z', '2020-11-01T00:00:00Z',
+       '2020-10-01T00:00:00Z', '2020-09-01T00:00:00Z', '2020-08-01T00:00:00Z',
+       '2020-07-01T00:00:00Z', '2020-06-01T00:00:00Z', '2020-05-01T00:00:00Z',
+       '2020-04-01T00:00:00Z', '2020-03-01T00:00:00Z', '2020-02-01T00:00:00Z',
+       '2020-01-01T00:00:00Z', '2019-12-01T00:00:00Z', '2019-11-01T00:00:00Z',
+       '2019-10-01T00:00:00Z', '2019-09-01T00:00:00Z', '2019-08-01T00:00:00Z',
+       '2019-07-01T00:00:00Z', '2019-06-01T00:00:00Z', '2019-05-01T00:00:00Z',
+       '2019-04-01T00:00:00Z', '2019-03-01T00:00:00Z', '2019-02-01T00:00:00Z',
+       '2019-01-01T00:00:00Z', '2018-12-01T00:00:00Z', '2018-11-01T00:00:00Z',
+       '2018-10-01T00:00:00Z', '2018-09-01T00:00:00Z', '2018-08-01T00:00:00Z',
+       '2018-07-01T00:00:00Z', '2018-06-01T00:00:00Z', '2018-05-01T00:00:00Z',
+       '2018-04-01T00:00:00Z', '2018-03-01T00:00:00Z', '2018-02-01T00:00:00Z',
+       '2018-01-01T00:00:00Z', '2017-12-01T00:00:00Z', '2017-11-01T00:00:00Z',
+       '2017-10-01T00:00:00Z', '2017-09-01T00:00:00Z', '2017-08-01T00:00:00Z',
+       '2017-07-01T00:00:00Z', '2017-06-01T00:00:00Z', '2017-05-01T00:00:00Z',
+       '2017-04-01T00:00:00Z', '2017-03-01T00:00:00Z', '2017-02-01T00:00:00Z',
+       '2017-01-01T00:00:00Z', '2016-12-01T00:00:00Z', '2016-11-01T00:00:00Z',
+       '2016-10-01T00:00:00Z', '2016-09-01T00:00:00Z', '2016-08-01T00:00:00Z',
+       '2016-07-01T00:00:00Z', '2016-06-01T00:00:00Z', '2016-05-01T00:00:00Z',
+       '2016-04-01T00:00:00Z', '2016-03-01T00:00:00Z', '2016-02-01T00:00:00Z',
+       '2016-01-01T00:00:00Z'], dtype='&lt;U20')</pre></div></li><li class="xr-var-item"><div class="xr-var-name"><span>id</span></div><div class="xr-var-dims">(time)</div><div class="xr-var-dtype">&lt;U45</div><div class="xr-var-preview xr-preview">'OMI_trno2_monthly_0.10x0.10_202...</div><input id="attrs-f793ce5f-1959-41a0-9924-a5ff7ed2f56b" class="xr-var-attrs-in" type="checkbox" disabled=""><label for="attrs-f793ce5f-1959-41a0-9924-a5ff7ed2f56b" title="Show/Hide attributes"><svg class="icon xr-icon-file-text2"><use href="#icon-file-text2"></use></svg></label><input id="data-fd242bff-ce5b-4552-b059-d47ada849cfc" class="xr-var-data-in" type="checkbox"><label for="data-fd242bff-ce5b-4552-b059-d47ada849cfc" title="Show/Hide data repr"><svg class="icon xr-icon-database"><use href="#icon-database"></use></svg></label><div class="xr-var-attrs"><dl class="xr-attrs"></dl></div><div class="xr-var-data"><pre>array(['OMI_trno2_monthly_0.10x0.10_202201_Col3_V4.nc',
+       'OMI_trno2_monthly_0.10x0.10_202112_Col3_V4.nc',
+       'OMI_trno2_monthly_0.10x0.10_202111_Col3_V4.nc',
+       'OMI_trno2_monthly_0.10x0.10_202110_Col3_V4.nc',
+       'OMI_trno2_monthly_0.10x0.10_202109_Col3_V4.nc',
+       'OMI_trno2_monthly_0.10x0.10_202108_Col3_V4.nc',
+       'OMI_trno2_monthly_0.10x0.10_202107_Col3_V4.nc',
+       'OMI_trno2_monthly_0.10x0.10_202106_Col3_V4.nc',
+       'OMI_trno2_monthly_0.10x0.10_202105_Col3_V4.nc',
+       'OMI_trno2_monthly_0.10x0.10_202104_Col3_V4.nc',
+       'OMI_trno2_monthly_0.10x0.10_202103_Col3_V4.nc',
+       'OMI_trno2_monthly_0.10x0.10_202102_Col3_V4.nc',
+       'OMI_trno2_monthly_0.10x0.10_202101_Col3_V4.nc',
+       'OMI_trno2_monthly_0.10x0.10_202012_Col3_V4.nc',
+       'OMI_trno2_monthly_0.10x0.10_202011_Col3_V4.nc',
+       'OMI_trno2_monthly_0.10x0.10_202010_Col3_V4.nc',
+       'OMI_trno2_monthly_0.10x0.10_202009_Col3_V4.nc',
+       'OMI_trno2_monthly_0.10x0.10_202008_Col3_V4.nc',
+       'OMI_trno2_monthly_0.10x0.10_202007_Col3_V4.nc',
+       'OMI_trno2_monthly_0.10x0.10_202006_Col3_V4.nc',
 ...
-       'OMI_trno2_0.10x0.10_202006_Col3_V4-no2-monthly',
-       'OMI_trno2_0.10x0.10_202007_Col3_V4-no2-monthly',
-       'OMI_trno2_0.10x0.10_202008_Col3_V4-no2-monthly',
-       'OMI_trno2_0.10x0.10_202009_Col3_V4-no2-monthly',
-       'OMI_trno2_0.10x0.10_202010_Col3_V4-no2-monthly',
-       'OMI_trno2_0.10x0.10_202011_Col3_V4-no2-monthly',
-       'OMI_trno2_0.10x0.10_202012_Col3_V4-no2-monthly',
-       'OMI_trno2_0.10x0.10_202101_Col3_V4-no2-monthly',
-       'OMI_trno2_0.10x0.10_202102_Col3_V4-no2-monthly',
-       'OMI_trno2_0.10x0.10_202103_Col3_V4-no2-monthly',
-       'OMI_trno2_0.10x0.10_202104_Col3_V4-no2-monthly',
-       'OMI_trno2_0.10x0.10_202105_Col3_V4-no2-monthly',
-       'OMI_trno2_0.10x0.10_202106_Col3_V4-no2-monthly',
-       'OMI_trno2_0.10x0.10_202107_Col3_V4-no2-monthly',
-       'OMI_trno2_0.10x0.10_202108_Col3_V4-no2-monthly',
-       'OMI_trno2_0.10x0.10_202109_Col3_V4-no2-monthly',
-       'OMI_trno2_0.10x0.10_202110_Col3_V4-no2-monthly',
-       'OMI_trno2_0.10x0.10_202111_Col3_V4-no2-monthly',
-       'OMI_trno2_0.10x0.10_202112_Col3_V4-no2-monthly',
-       'OMI_trno2_0.10x0.10_202201_Col3_V4-no2-monthly'], dtype='&lt;U46')</pre></div></li><li class="xr-var-item"><div class="xr-var-name"><span>band</span></div><div class="xr-var-dims">()</div><div class="xr-var-dtype">&lt;U11</div><div class="xr-var-preview xr-preview">'cog_default'</div><input id="attrs-b824b3cc-8d92-4830-a559-2924b405e183" class="xr-var-attrs-in" type="checkbox" disabled=""><label for="attrs-b824b3cc-8d92-4830-a559-2924b405e183" title="Show/Hide attributes"><svg class="icon xr-icon-file-text2"><use href="#icon-file-text2"></use></svg></label><input id="data-a6d91972-8dcd-47a4-a952-bede3ea4f538" class="xr-var-data-in" type="checkbox"><label for="data-a6d91972-8dcd-47a4-a952-bede3ea4f538" title="Show/Hide data repr"><svg class="icon xr-icon-database"><use href="#icon-database"></use></svg></label><div class="xr-var-attrs"><dl class="xr-attrs"></dl></div><div class="xr-var-data"><pre>array('cog_default', dtype='&lt;U11')</pre></div></li><li class="xr-var-item"><div class="xr-var-name"><span class="xr-has-index">x</span></div><div class="xr-var-dims">(x)</div><div class="xr-var-dtype">float64</div><div class="xr-var-preview xr-preview">73.7 73.8 73.9 ... 134.9 135.0</div><input id="attrs-7dee3c22-51b1-4cdf-9ee5-44de2d3b4084" class="xr-var-attrs-in" type="checkbox"><label for="attrs-7dee3c22-51b1-4cdf-9ee5-44de2d3b4084" title="Show/Hide attributes"><svg class="icon xr-icon-file-text2"><use href="#icon-file-text2"></use></svg></label><input id="data-58bcf2fe-9efa-4357-9369-41d87cead4a9" class="xr-var-data-in" type="checkbox"><label for="data-58bcf2fe-9efa-4357-9369-41d87cead4a9" title="Show/Hide data repr"><svg class="icon xr-icon-database"><use href="#icon-database"></use></svg></label><div class="xr-var-attrs"><dl class="xr-attrs"><dt><span>axis :</span></dt><dd>X</dd><dt><span>long_name :</span></dt><dd>longitude</dd><dt><span>standard_name :</span></dt><dd>longitude</dd><dt><span>units :</span></dt><dd>degrees_east</dd></dl></div><div class="xr-var-data"><pre>array([ 73.7,  73.8,  73.9, ..., 134.8, 134.9, 135. ])</pre></div></li><li class="xr-var-item"><div class="xr-var-name"><span class="xr-has-index">y</span></div><div class="xr-var-dims">(y)</div><div class="xr-var-dtype">float64</div><div class="xr-var-preview xr-preview">53.5 53.4 53.3 ... 18.4 18.3 18.2</div><input id="attrs-1ce87801-20d1-49cd-9985-78920aa8b990" class="xr-var-attrs-in" type="checkbox"><label for="attrs-1ce87801-20d1-49cd-9985-78920aa8b990" title="Show/Hide attributes"><svg class="icon xr-icon-file-text2"><use href="#icon-file-text2"></use></svg></label><input id="data-b8b1dd44-f9bb-4a0a-9b1b-443b39fd58c6" class="xr-var-data-in" type="checkbox"><label for="data-b8b1dd44-f9bb-4a0a-9b1b-443b39fd58c6" title="Show/Hide data repr"><svg class="icon xr-icon-database"><use href="#icon-database"></use></svg></label><div class="xr-var-attrs"><dl class="xr-attrs"><dt><span>axis :</span></dt><dd>Y</dd><dt><span>long_name :</span></dt><dd>latitude</dd><dt><span>standard_name :</span></dt><dd>latitude</dd><dt><span>units :</span></dt><dd>degrees_north</dd></dl></div><div class="xr-var-data"><pre>array([53.5, 53.4, 53.3, ..., 18.4, 18.3, 18.2])</pre></div></li><li class="xr-var-item"><div class="xr-var-name"><span>proj:geometry</span></div><div class="xr-var-dims">()</div><div class="xr-var-dtype">object</div><div class="xr-var-preview xr-preview">{'type': 'Polygon', 'coordinates...</div><input id="attrs-7f6fcf3a-3a53-4d85-86aa-cac8c04b080d" class="xr-var-attrs-in" type="checkbox" disabled=""><label for="attrs-7f6fcf3a-3a53-4d85-86aa-cac8c04b080d" title="Show/Hide attributes"><svg class="icon xr-icon-file-text2"><use href="#icon-file-text2"></use></svg></label><input id="data-b0acf42d-cf7f-43f2-a144-8dfef132e91c" class="xr-var-data-in" type="checkbox"><label for="data-b0acf42d-cf7f-43f2-a144-8dfef132e91c" title="Show/Hide data repr"><svg class="icon xr-icon-database"><use href="#icon-database"></use></svg></label><div class="xr-var-attrs"><dl class="xr-attrs"></dl></div><div class="xr-var-data"><pre>array({'type': 'Polygon', 'coordinates': [[[-180.0, 90.0], [-180.0, -90.0], [180.0, -90.0], [180.0, 90.0], [-180.0, 90.0]]]},
-      dtype=object)</pre></div></li><li class="xr-var-item"><div class="xr-var-name"><span>proj:epsg</span></div><div class="xr-var-dims">()</div><div class="xr-var-dtype">int64</div><div class="xr-var-preview xr-preview">4326</div><input id="attrs-fdf06b74-48b8-467c-9e87-d7a09db7f401" class="xr-var-attrs-in" type="checkbox" disabled=""><label for="attrs-fdf06b74-48b8-467c-9e87-d7a09db7f401" title="Show/Hide attributes"><svg class="icon xr-icon-file-text2"><use href="#icon-file-text2"></use></svg></label><input id="data-056038db-c439-454d-8bc6-9f3a16fe5b71" class="xr-var-data-in" type="checkbox"><label for="data-056038db-c439-454d-8bc6-9f3a16fe5b71" title="Show/Hide data repr"><svg class="icon xr-icon-database"><use href="#icon-database"></use></svg></label><div class="xr-var-attrs"><dl class="xr-attrs"></dl></div><div class="xr-var-data"><pre>array(4326)</pre></div></li><li class="xr-var-item"><div class="xr-var-name"><span>proj:bbox</span></div><div class="xr-var-dims">()</div><div class="xr-var-dtype">object</div><div class="xr-var-preview xr-preview">{90.0, 180.0, -90.0, -180.0}</div><input id="attrs-9314da79-9978-4205-bfdb-15d314ff0f8c" class="xr-var-attrs-in" type="checkbox" disabled=""><label for="attrs-9314da79-9978-4205-bfdb-15d314ff0f8c" title="Show/Hide attributes"><svg class="icon xr-icon-file-text2"><use href="#icon-file-text2"></use></svg></label><input id="data-055c176f-82da-418f-98ae-31f6290e0efb" class="xr-var-data-in" type="checkbox"><label for="data-055c176f-82da-418f-98ae-31f6290e0efb" title="Show/Hide data repr"><svg class="icon xr-icon-database"><use href="#icon-database"></use></svg></label><div class="xr-var-attrs"><dl class="xr-attrs"></dl></div><div class="xr-var-data"><pre>array({90.0, 180.0, -90.0, -180.0}, dtype=object)</pre></div></li><li class="xr-var-item"><div class="xr-var-name"><span>proj:shape</span></div><div class="xr-var-dims">()</div><div class="xr-var-dtype">object</div><div class="xr-var-preview xr-preview">{1800, 3600}</div><input id="attrs-854614f6-eb74-41f3-adb9-9b2973f8da9d" class="xr-var-attrs-in" type="checkbox" disabled=""><label for="attrs-854614f6-eb74-41f3-adb9-9b2973f8da9d" title="Show/Hide attributes"><svg class="icon xr-icon-file-text2"><use href="#icon-file-text2"></use></svg></label><input id="data-22eeb590-9630-46be-8416-ca987b057c03" class="xr-var-data-in" type="checkbox"><label for="data-22eeb590-9630-46be-8416-ca987b057c03" title="Show/Hide data repr"><svg class="icon xr-icon-database"><use href="#icon-database"></use></svg></label><div class="xr-var-attrs"><dl class="xr-attrs"></dl></div><div class="xr-var-data"><pre>array({1800, 3600}, dtype=object)</pre></div></li><li class="xr-var-item"><div class="xr-var-name"><span>proj:transform</span></div><div class="xr-var-dims">()</div><div class="xr-var-dtype">object</div><div class="xr-var-preview xr-preview">{0.1, 0.0, 1.0, -0.1, -180.0, 90.0}</div><input id="attrs-f57875fd-22b0-4271-ae82-598353c9d349" class="xr-var-attrs-in" type="checkbox" disabled=""><label for="attrs-f57875fd-22b0-4271-ae82-598353c9d349" title="Show/Hide attributes"><svg class="icon xr-icon-file-text2"><use href="#icon-file-text2"></use></svg></label><input id="data-4666dceb-09b0-4c77-82db-2ae932ef6600" class="xr-var-data-in" type="checkbox"><label for="data-4666dceb-09b0-4c77-82db-2ae932ef6600" title="Show/Hide data repr"><svg class="icon xr-icon-database"><use href="#icon-database"></use></svg></label><div class="xr-var-attrs"><dl class="xr-attrs"></dl></div><div class="xr-var-data"><pre>array({0.1, 0.0, 1.0, -0.1, -180.0, 90.0}, dtype=object)</pre></div></li><li class="xr-var-item"><div class="xr-var-name"><span>epsg</span></div><div class="xr-var-dims">()</div><div class="xr-var-dtype">int64</div><div class="xr-var-preview xr-preview">4326</div><input id="attrs-382f3810-909e-45b0-97f6-e3371b5fdefb" class="xr-var-attrs-in" type="checkbox" disabled=""><label for="attrs-382f3810-909e-45b0-97f6-e3371b5fdefb" title="Show/Hide attributes"><svg class="icon xr-icon-file-text2"><use href="#icon-file-text2"></use></svg></label><input id="data-f5a9b4c0-e4a0-4052-b8c6-6165a43f17a3" class="xr-var-data-in" type="checkbox"><label for="data-f5a9b4c0-e4a0-4052-b8c6-6165a43f17a3" title="Show/Hide data repr"><svg class="icon xr-icon-database"><use href="#icon-database"></use></svg></label><div class="xr-var-attrs"><dl class="xr-attrs"></dl></div><div class="xr-var-data"><pre>array(4326)</pre></div></li><li class="xr-var-item"><div class="xr-var-name"><span>spatial_ref</span></div><div class="xr-var-dims">()</div><div class="xr-var-dtype">int64</div><div class="xr-var-preview xr-preview">0</div><input id="attrs-01413a1f-c72a-4be5-81c8-0dc61f56fbcf" class="xr-var-attrs-in" type="checkbox"><label for="attrs-01413a1f-c72a-4be5-81c8-0dc61f56fbcf" title="Show/Hide attributes"><svg class="icon xr-icon-file-text2"><use href="#icon-file-text2"></use></svg></label><input id="data-9f5b68cc-ac33-4cf3-8502-67e96d6a96e1" class="xr-var-data-in" type="checkbox"><label for="data-9f5b68cc-ac33-4cf3-8502-67e96d6a96e1" title="Show/Hide data repr"><svg class="icon xr-icon-database"><use href="#icon-database"></use></svg></label><div class="xr-var-attrs"><dl class="xr-attrs"><dt><span>crs_wkt :</span></dt><dd>GEOGCS["WGS 84",DATUM["WGS_1984",SPHEROID["WGS 84",6378137,298.257223563,AUTHORITY["EPSG","7030"]],AUTHORITY["EPSG","6326"]],PRIMEM["Greenwich",0,AUTHORITY["EPSG","8901"]],UNIT["degree",0.0174532925199433,AUTHORITY["EPSG","9122"]],AXIS["Latitude",NORTH],AXIS["Longitude",EAST],AUTHORITY["EPSG","4326"]]</dd><dt><span>semi_major_axis :</span></dt><dd>6378137.0</dd><dt><span>semi_minor_axis :</span></dt><dd>6356752.314245179</dd><dt><span>inverse_flattening :</span></dt><dd>298.257223563</dd><dt><span>reference_ellipsoid_name :</span></dt><dd>WGS 84</dd><dt><span>longitude_of_prime_meridian :</span></dt><dd>0.0</dd><dt><span>prime_meridian_name :</span></dt><dd>Greenwich</dd><dt><span>geographic_crs_name :</span></dt><dd>WGS 84</dd><dt><span>grid_mapping_name :</span></dt><dd>latitude_longitude</dd><dt><span>spatial_ref :</span></dt><dd>GEOGCS["WGS 84",DATUM["WGS_1984",SPHEROID["WGS 84",6378137,298.257223563,AUTHORITY["EPSG","7030"]],AUTHORITY["EPSG","6326"]],PRIMEM["Greenwich",0,AUTHORITY["EPSG","8901"]],UNIT["degree",0.0174532925199433,AUTHORITY["EPSG","9122"]],AXIS["Latitude",NORTH],AXIS["Longitude",EAST],AUTHORITY["EPSG","4326"]]</dd><dt><span>GeoTransform :</span></dt><dd>73.65000000000002 0.09999999999999998 0.0 53.55 0.0 -0.09999999999999999</dd></dl></div><div class="xr-var-data"><pre>array(0)</pre></div></li></ul></div></li><li class="xr-section-item"><input id="section-17ad3efe-8b18-46f5-8f56-fb5978724ca9" class="xr-section-summary-in" type="checkbox" checked=""><label for="section-17ad3efe-8b18-46f5-8f56-fb5978724ca9" class="xr-section-summary">Attributes: <span>(2)</span></label><div class="xr-section-inline-details"></div><div class="xr-section-details"><dl class="xr-attrs"><dt><span>spec :</span></dt><dd>RasterSpec(epsg=4326, bounds=(-180.0, -90.0, 180.0, 90.0), resolutions_xy=(0.1, 0.1))</dd><dt><span>resolution :</span></dt><dd>0.1</dd></dl></div></li></ul></div></div>
+       'OMI_trno2_monthly_0.10x0.10_201708_Col3_V4.nc',
+       'OMI_trno2_monthly_0.10x0.10_201707_Col3_V4.nc',
+       'OMI_trno2_monthly_0.10x0.10_201706_Col3_V4.nc',
+       'OMI_trno2_monthly_0.10x0.10_201705_Col3_V4.nc',
+       'OMI_trno2_monthly_0.10x0.10_201704_Col3_V4.nc',
+       'OMI_trno2_monthly_0.10x0.10_201703_Col3_V4.nc',
+       'OMI_trno2_monthly_0.10x0.10_201702_Col3_V4.nc',
+       'OMI_trno2_monthly_0.10x0.10_201701_Col3_V4.nc',
+       'OMI_trno2_monthly_0.10x0.10_201612_Col3_V4.nc',
+       'OMI_trno2_monthly_0.10x0.10_201611_Col3_V4.nc',
+       'OMI_trno2_monthly_0.10x0.10_201610_Col3_V4.nc',
+       'OMI_trno2_monthly_0.10x0.10_201609_Col3_V4.nc',
+       'OMI_trno2_monthly_0.10x0.10_201608_Col3_V4.nc',
+       'OMI_trno2_monthly_0.10x0.10_201607_Col3_V4.nc',
+       'OMI_trno2_monthly_0.10x0.10_201606_Col3_V4.nc',
+       'OMI_trno2_monthly_0.10x0.10_201605_Col3_V4.nc',
+       'OMI_trno2_monthly_0.10x0.10_201604_Col3_V4.nc',
+       'OMI_trno2_monthly_0.10x0.10_201603_Col3_V4.nc',
+       'OMI_trno2_monthly_0.10x0.10_201602_Col3_V4.nc',
+       'OMI_trno2_monthly_0.10x0.10_201601_Col3_V4.nc'], dtype='&lt;U45')</pre></div></li><li class="xr-var-item"><div class="xr-var-name"><span>band</span></div><div class="xr-var-dims">()</div><div class="xr-var-dtype">&lt;U11</div><div class="xr-var-preview xr-preview">'cog_default'</div><input id="attrs-9551040e-1799-4176-bcfa-57de80fbd1e8" class="xr-var-attrs-in" type="checkbox" disabled=""><label for="attrs-9551040e-1799-4176-bcfa-57de80fbd1e8" title="Show/Hide attributes"><svg class="icon xr-icon-file-text2"><use href="#icon-file-text2"></use></svg></label><input id="data-0e0b193c-6d59-4b8e-88f0-b11bf81c2b4c" class="xr-var-data-in" type="checkbox"><label for="data-0e0b193c-6d59-4b8e-88f0-b11bf81c2b4c" title="Show/Hide data repr"><svg class="icon xr-icon-database"><use href="#icon-database"></use></svg></label><div class="xr-var-attrs"><dl class="xr-attrs"></dl></div><div class="xr-var-data"><pre>array('cog_default', dtype='&lt;U11')</pre></div></li><li class="xr-var-item"><div class="xr-var-name"><span class="xr-has-index">x</span></div><div class="xr-var-dims">(x)</div><div class="xr-var-dtype">float64</div><div class="xr-var-preview xr-preview">73.7 73.8 73.9 ... 134.9 135.0</div><input id="attrs-660c0a73-1243-4ae0-814f-c2dca64b2c0e" class="xr-var-attrs-in" type="checkbox"><label for="attrs-660c0a73-1243-4ae0-814f-c2dca64b2c0e" title="Show/Hide attributes"><svg class="icon xr-icon-file-text2"><use href="#icon-file-text2"></use></svg></label><input id="data-4940bb23-6db8-4584-b94b-ba369bcda917" class="xr-var-data-in" type="checkbox"><label for="data-4940bb23-6db8-4584-b94b-ba369bcda917" title="Show/Hide data repr"><svg class="icon xr-icon-database"><use href="#icon-database"></use></svg></label><div class="xr-var-attrs"><dl class="xr-attrs"><dt><span>axis :</span></dt><dd>X</dd><dt><span>long_name :</span></dt><dd>longitude</dd><dt><span>standard_name :</span></dt><dd>longitude</dd><dt><span>units :</span></dt><dd>degrees_east</dd></dl></div><div class="xr-var-data"><pre>array([ 73.7,  73.8,  73.9, ..., 134.8, 134.9, 135. ])</pre></div></li><li class="xr-var-item"><div class="xr-var-name"><span class="xr-has-index">y</span></div><div class="xr-var-dims">(y)</div><div class="xr-var-dtype">float64</div><div class="xr-var-preview xr-preview">53.5 53.4 53.3 ... 18.4 18.3 18.2</div><input id="attrs-6e020fe5-cc93-4a52-98cf-b73afe60047e" class="xr-var-attrs-in" type="checkbox"><label for="attrs-6e020fe5-cc93-4a52-98cf-b73afe60047e" title="Show/Hide attributes"><svg class="icon xr-icon-file-text2"><use href="#icon-file-text2"></use></svg></label><input id="data-b5009186-af09-4c0a-b579-333bfffd3437" class="xr-var-data-in" type="checkbox"><label for="data-b5009186-af09-4c0a-b579-333bfffd3437" title="Show/Hide data repr"><svg class="icon xr-icon-database"><use href="#icon-database"></use></svg></label><div class="xr-var-attrs"><dl class="xr-attrs"><dt><span>axis :</span></dt><dd>Y</dd><dt><span>long_name :</span></dt><dd>latitude</dd><dt><span>standard_name :</span></dt><dd>latitude</dd><dt><span>units :</span></dt><dd>degrees_north</dd></dl></div><div class="xr-var-data"><pre>array([53.5, 53.4, 53.3, ..., 18.4, 18.3, 18.2])</pre></div></li><li class="xr-var-item"><div class="xr-var-name"><span>proj:shape</span></div><div class="xr-var-dims">()</div><div class="xr-var-dtype">object</div><div class="xr-var-preview xr-preview">{1800, 3600}</div><input id="attrs-434de3c0-ee61-4e75-958f-864f6024fdc6" class="xr-var-attrs-in" type="checkbox" disabled=""><label for="attrs-434de3c0-ee61-4e75-958f-864f6024fdc6" title="Show/Hide attributes"><svg class="icon xr-icon-file-text2"><use href="#icon-file-text2"></use></svg></label><input id="data-6c97d449-b7ef-4b0e-8403-fc546bd655ec" class="xr-var-data-in" type="checkbox"><label for="data-6c97d449-b7ef-4b0e-8403-fc546bd655ec" title="Show/Hide data repr"><svg class="icon xr-icon-database"><use href="#icon-database"></use></svg></label><div class="xr-var-attrs"><dl class="xr-attrs"></dl></div><div class="xr-var-data"><pre>array({1800, 3600}, dtype=object)</pre></div></li><li class="xr-var-item"><div class="xr-var-name"><span>proj:geometry</span></div><div class="xr-var-dims">()</div><div class="xr-var-dtype">object</div><div class="xr-var-preview xr-preview">{'type': 'Polygon', 'coordinates...</div><input id="attrs-c15a36ce-b221-4346-93d2-0f802a323168" class="xr-var-attrs-in" type="checkbox" disabled=""><label for="attrs-c15a36ce-b221-4346-93d2-0f802a323168" title="Show/Hide attributes"><svg class="icon xr-icon-file-text2"><use href="#icon-file-text2"></use></svg></label><input id="data-9c597d74-c9fa-4520-a8b1-07b25167411e" class="xr-var-data-in" type="checkbox"><label for="data-9c597d74-c9fa-4520-a8b1-07b25167411e" title="Show/Hide data repr"><svg class="icon xr-icon-database"><use href="#icon-database"></use></svg></label><div class="xr-var-attrs"><dl class="xr-attrs"></dl></div><div class="xr-var-data"><pre>array({'type': 'Polygon', 'coordinates': [[[-180.0, -90.0], [180.0, -90.0], [180.0, 90.0], [-180.0, 90.0], [-180.0, -90.0]]]},
+      dtype=object)</pre></div></li><li class="xr-var-item"><div class="xr-var-name"><span>proj:bbox</span></div><div class="xr-var-dims">()</div><div class="xr-var-dtype">object</div><div class="xr-var-preview xr-preview">{90.0, 180.0, -90.0, -180.0}</div><input id="attrs-34442235-098a-4768-9140-9e89f600c06c" class="xr-var-attrs-in" type="checkbox" disabled=""><label for="attrs-34442235-098a-4768-9140-9e89f600c06c" title="Show/Hide attributes"><svg class="icon xr-icon-file-text2"><use href="#icon-file-text2"></use></svg></label><input id="data-0b0e9295-da3a-463a-b370-d553f2cb9cab" class="xr-var-data-in" type="checkbox"><label for="data-0b0e9295-da3a-463a-b370-d553f2cb9cab" title="Show/Hide data repr"><svg class="icon xr-icon-database"><use href="#icon-database"></use></svg></label><div class="xr-var-attrs"><dl class="xr-attrs"></dl></div><div class="xr-var-data"><pre>array({90.0, 180.0, -90.0, -180.0}, dtype=object)</pre></div></li><li class="xr-var-item"><div class="xr-var-name"><span>start_datetime</span></div><div class="xr-var-dims">(time)</div><div class="xr-var-dtype">&lt;U20</div><div class="xr-var-preview xr-preview">'2022-01-01T00:00:00Z' ... '2016...</div><input id="attrs-d13663f7-5850-4f33-adbe-c1a178ed191e" class="xr-var-attrs-in" type="checkbox" disabled=""><label for="attrs-d13663f7-5850-4f33-adbe-c1a178ed191e" title="Show/Hide attributes"><svg class="icon xr-icon-file-text2"><use href="#icon-file-text2"></use></svg></label><input id="data-42550cc0-a05e-473a-91ff-c9673aa2f796" class="xr-var-data-in" type="checkbox"><label for="data-42550cc0-a05e-473a-91ff-c9673aa2f796" title="Show/Hide data repr"><svg class="icon xr-icon-database"><use href="#icon-database"></use></svg></label><div class="xr-var-attrs"><dl class="xr-attrs"></dl></div><div class="xr-var-data"><pre>array(['2022-01-01T00:00:00Z', '2021-12-01T00:00:00Z',
+       '2021-11-01T00:00:00Z', '2021-10-01T00:00:00Z',
+       '2021-09-01T00:00:00Z', '2021-08-01T00:00:00Z',
+       '2021-07-01T00:00:00Z', '2021-06-01T00:00:00Z',
+       '2021-05-01T00:00:00Z', '2021-04-01T00:00:00Z',
+       '2021-03-01T00:00:00Z', '2021-02-01T00:00:00Z',
+       '2021-01-01T00:00:00Z', '2020-12-01T00:00:00Z',
+       '2020-11-01T00:00:00Z', '2020-10-01T00:00:00Z',
+       '2020-09-01T00:00:00Z', '2020-08-01T00:00:00Z',
+       '2020-07-01T00:00:00Z', '2020-06-01T00:00:00Z',
+       '2020-05-01T00:00:00Z', '2020-04-01T00:00:00Z',
+       '2020-03-01T00:00:00Z', '2020-02-01T00:00:00Z',
+       '2020-01-01T00:00:00Z', '2019-12-01T00:00:00Z',
+       '2019-11-01T00:00:00Z', '2019-10-01T00:00:00Z',
+       '2019-09-01T00:00:00Z', '2019-08-01T00:00:00Z',
+       '2019-07-01T00:00:00Z', '2019-06-01T00:00:00Z',
+       '2019-05-01T00:00:00Z', '2019-04-01T00:00:00Z',
+       '2019-03-01T00:00:00Z', '2019-02-01T00:00:00Z',
+       '2019-01-01T00:00:00Z', '2018-12-01T00:00:00Z',
+       '2018-11-01T00:00:00Z', '2018-10-01T00:00:00Z',
+       '2018-09-01T00:00:00Z', '2018-08-01T00:00:00Z',
+       '2018-07-01T00:00:00Z', '2018-06-01T00:00:00Z',
+       '2018-05-01T00:00:00Z', '2018-04-01T00:00:00Z',
+       '2018-03-01T00:00:00Z', '2018-02-01T00:00:00Z',
+       '2018-01-01T00:00:00Z', '2017-12-01T00:00:00Z',
+       '2017-11-01T00:00:00Z', '2017-10-01T00:00:00Z',
+       '2017-09-01T00:00:00Z', '2017-08-01T00:00:00Z',
+       '2017-07-01T00:00:00Z', '2017-06-01T00:00:00Z',
+       '2017-05-01T00:00:00Z', '2017-04-01T00:00:00Z',
+       '2017-03-01T00:00:00Z', '2017-02-01T00:00:00Z',
+       '2017-01-01T00:00:00Z', '2016-12-01T00:00:00Z',
+       '2016-11-01T00:00:00Z', '2016-10-01T00:00:00Z',
+       '2016-09-01T00:00:00Z', '2016-08-01T00:00:00Z',
+       '2016-07-01T00:00:00Z', '2016-06-01T00:00:00Z',
+       '2016-05-01T00:00:00Z', '2016-04-01T00:00:00Z',
+       '2016-03-01T00:00:00Z', '2016-02-01T00:00:00Z',
+       '2016-01-01T00:00:00Z'], dtype='&lt;U20')</pre></div></li><li class="xr-var-item"><div class="xr-var-name"><span>end_datetime</span></div><div class="xr-var-dims">(time)</div><div class="xr-var-dtype">&lt;U20</div><div class="xr-var-preview xr-preview">'2022-01-31T00:00:00Z' ... '2016...</div><input id="attrs-306ac168-d74c-45c8-bed0-de807ffb12c1" class="xr-var-attrs-in" type="checkbox" disabled=""><label for="attrs-306ac168-d74c-45c8-bed0-de807ffb12c1" title="Show/Hide attributes"><svg class="icon xr-icon-file-text2"><use href="#icon-file-text2"></use></svg></label><input id="data-481e164f-459e-4053-927b-58420138987d" class="xr-var-data-in" type="checkbox"><label for="data-481e164f-459e-4053-927b-58420138987d" title="Show/Hide data repr"><svg class="icon xr-icon-database"><use href="#icon-database"></use></svg></label><div class="xr-var-attrs"><dl class="xr-attrs"></dl></div><div class="xr-var-data"><pre>array(['2022-01-31T00:00:00Z', '2021-12-31T00:00:00Z',
+       '2021-11-30T00:00:00Z', '2021-10-31T00:00:00Z',
+       '2021-09-30T00:00:00Z', '2021-08-31T00:00:00Z',
+       '2021-07-31T00:00:00Z', '2021-06-30T00:00:00Z',
+       '2021-05-31T00:00:00Z', '2021-04-30T00:00:00Z',
+       '2021-03-31T00:00:00Z', '2021-02-28T00:00:00Z',
+       '2021-01-31T00:00:00Z', '2020-12-31T00:00:00Z',
+       '2020-11-30T00:00:00Z', '2020-10-31T00:00:00Z',
+       '2020-09-30T00:00:00Z', '2020-08-31T00:00:00Z',
+       '2020-07-31T00:00:00Z', '2020-06-30T00:00:00Z',
+       '2020-05-31T00:00:00Z', '2020-04-30T00:00:00Z',
+       '2020-03-31T00:00:00Z', '2020-02-29T00:00:00Z',
+       '2020-01-31T00:00:00Z', '2019-12-31T00:00:00Z',
+       '2019-11-30T00:00:00Z', '2019-10-31T00:00:00Z',
+       '2019-09-30T00:00:00Z', '2019-08-31T00:00:00Z',
+       '2019-07-31T00:00:00Z', '2019-06-30T00:00:00Z',
+       '2019-05-31T00:00:00Z', '2019-04-30T00:00:00Z',
+       '2019-03-31T00:00:00Z', '2019-02-28T00:00:00Z',
+       '2019-01-31T00:00:00Z', '2018-12-31T00:00:00Z',
+       '2018-11-30T00:00:00Z', '2018-10-31T00:00:00Z',
+       '2018-09-30T00:00:00Z', '2018-08-31T00:00:00Z',
+       '2018-07-31T00:00:00Z', '2018-06-30T00:00:00Z',
+       '2018-05-31T00:00:00Z', '2018-04-30T00:00:00Z',
+       '2018-03-31T00:00:00Z', '2018-02-28T00:00:00Z',
+       '2018-01-31T00:00:00Z', '2017-12-31T00:00:00Z',
+       '2017-11-30T00:00:00Z', '2017-10-31T00:00:00Z',
+       '2017-09-30T00:00:00Z', '2017-08-31T00:00:00Z',
+       '2017-07-31T00:00:00Z', '2017-06-30T00:00:00Z',
+       '2017-05-31T00:00:00Z', '2017-04-30T00:00:00Z',
+       '2017-03-31T00:00:00Z', '2017-02-28T00:00:00Z',
+       '2017-01-31T00:00:00Z', '2016-12-31T00:00:00Z',
+       '2016-11-30T00:00:00Z', '2016-10-31T00:00:00Z',
+       '2016-09-30T00:00:00Z', '2016-08-31T00:00:00Z',
+       '2016-07-31T00:00:00Z', '2016-06-30T00:00:00Z',
+       '2016-05-31T00:00:00Z', '2016-04-30T00:00:00Z',
+       '2016-03-31T00:00:00Z', '2016-02-29T00:00:00Z',
+       '2016-01-31T00:00:00Z'], dtype='&lt;U20')</pre></div></li><li class="xr-var-item"><div class="xr-var-name"><span>proj:epsg</span></div><div class="xr-var-dims">()</div><div class="xr-var-dtype">int64</div><div class="xr-var-preview xr-preview">4326</div><input id="attrs-39f8cf72-5524-4933-85db-79421eb97736" class="xr-var-attrs-in" type="checkbox" disabled=""><label for="attrs-39f8cf72-5524-4933-85db-79421eb97736" title="Show/Hide attributes"><svg class="icon xr-icon-file-text2"><use href="#icon-file-text2"></use></svg></label><input id="data-e34bf5ca-b041-4105-af6f-d3d14355fd71" class="xr-var-data-in" type="checkbox"><label for="data-e34bf5ca-b041-4105-af6f-d3d14355fd71" title="Show/Hide data repr"><svg class="icon xr-icon-database"><use href="#icon-database"></use></svg></label><div class="xr-var-attrs"><dl class="xr-attrs"></dl></div><div class="xr-var-data"><pre>array(4326)</pre></div></li><li class="xr-var-item"><div class="xr-var-name"><span>proj:transform</span></div><div class="xr-var-dims">()</div><div class="xr-var-dtype">object</div><div class="xr-var-preview xr-preview">{0.1, 0.0, 1.0, -0.1, -180.0, 90.0}</div><input id="attrs-a9ea90af-a9f4-47c9-8bb8-b962670bbf71" class="xr-var-attrs-in" type="checkbox" disabled=""><label for="attrs-a9ea90af-a9f4-47c9-8bb8-b962670bbf71" title="Show/Hide attributes"><svg class="icon xr-icon-file-text2"><use href="#icon-file-text2"></use></svg></label><input id="data-de04f1fb-284e-4a6b-884f-3c7f90112fc2" class="xr-var-data-in" type="checkbox"><label for="data-de04f1fb-284e-4a6b-884f-3c7f90112fc2" title="Show/Hide data repr"><svg class="icon xr-icon-database"><use href="#icon-database"></use></svg></label><div class="xr-var-attrs"><dl class="xr-attrs"></dl></div><div class="xr-var-data"><pre>array({0.1, 0.0, 1.0, -0.1, -180.0, 90.0}, dtype=object)</pre></div></li><li class="xr-var-item"><div class="xr-var-name"><span>epsg</span></div><div class="xr-var-dims">()</div><div class="xr-var-dtype">int64</div><div class="xr-var-preview xr-preview">4326</div><input id="attrs-b1854a86-5ee9-4fab-b339-fce64654d73b" class="xr-var-attrs-in" type="checkbox" disabled=""><label for="attrs-b1854a86-5ee9-4fab-b339-fce64654d73b" title="Show/Hide attributes"><svg class="icon xr-icon-file-text2"><use href="#icon-file-text2"></use></svg></label><input id="data-c8a9aff6-a522-4567-a691-1c82c95d8198" class="xr-var-data-in" type="checkbox"><label for="data-c8a9aff6-a522-4567-a691-1c82c95d8198" title="Show/Hide data repr"><svg class="icon xr-icon-database"><use href="#icon-database"></use></svg></label><div class="xr-var-attrs"><dl class="xr-attrs"></dl></div><div class="xr-var-data"><pre>array(4326)</pre></div></li><li class="xr-var-item"><div class="xr-var-name"><span>spatial_ref</span></div><div class="xr-var-dims">()</div><div class="xr-var-dtype">int64</div><div class="xr-var-preview xr-preview">0</div><input id="attrs-1b6ec8b0-497b-4fd0-a85c-e234b57bef17" class="xr-var-attrs-in" type="checkbox"><label for="attrs-1b6ec8b0-497b-4fd0-a85c-e234b57bef17" title="Show/Hide attributes"><svg class="icon xr-icon-file-text2"><use href="#icon-file-text2"></use></svg></label><input id="data-7fbf8413-acd5-406d-88e2-4eb326ca4e16" class="xr-var-data-in" type="checkbox"><label for="data-7fbf8413-acd5-406d-88e2-4eb326ca4e16" title="Show/Hide data repr"><svg class="icon xr-icon-database"><use href="#icon-database"></use></svg></label><div class="xr-var-attrs"><dl class="xr-attrs"><dt><span>crs_wkt :</span></dt><dd>GEOGCS["WGS 84",DATUM["WGS_1984",SPHEROID["WGS 84",6378137,298.257223563,AUTHORITY["EPSG","7030"]],AUTHORITY["EPSG","6326"]],PRIMEM["Greenwich",0,AUTHORITY["EPSG","8901"]],UNIT["degree",0.0174532925199433,AUTHORITY["EPSG","9122"]],AXIS["Latitude",NORTH],AXIS["Longitude",EAST],AUTHORITY["EPSG","4326"]]</dd><dt><span>semi_major_axis :</span></dt><dd>6378137.0</dd><dt><span>semi_minor_axis :</span></dt><dd>6356752.314245179</dd><dt><span>inverse_flattening :</span></dt><dd>298.257223563</dd><dt><span>reference_ellipsoid_name :</span></dt><dd>WGS 84</dd><dt><span>longitude_of_prime_meridian :</span></dt><dd>0.0</dd><dt><span>prime_meridian_name :</span></dt><dd>Greenwich</dd><dt><span>geographic_crs_name :</span></dt><dd>WGS 84</dd><dt><span>grid_mapping_name :</span></dt><dd>latitude_longitude</dd><dt><span>spatial_ref :</span></dt><dd>GEOGCS["WGS 84",DATUM["WGS_1984",SPHEROID["WGS 84",6378137,298.257223563,AUTHORITY["EPSG","7030"]],AUTHORITY["EPSG","6326"]],PRIMEM["Greenwich",0,AUTHORITY["EPSG","8901"]],UNIT["degree",0.0174532925199433,AUTHORITY["EPSG","9122"]],AXIS["Latitude",NORTH],AXIS["Longitude",EAST],AUTHORITY["EPSG","4326"]]</dd><dt><span>GeoTransform :</span></dt><dd>73.65000000000002 0.09999999999999998 0.0 53.55 0.0 -0.09999999999999999</dd></dl></div><div class="xr-var-data"><pre>array(0)</pre></div></li></ul></div></li><li class="xr-section-item"><input id="section-d138c619-fba3-4b9d-b0d4-9cfcd59d3333" class="xr-section-summary-in" type="checkbox" checked=""><label for="section-d138c619-fba3-4b9d-b0d4-9cfcd59d3333" class="xr-section-summary">Attributes: <span>(2)</span></label><div class="xr-section-inline-details"></div><div class="xr-section-details"><dl class="xr-attrs"><dt><span>spec :</span></dt><dd>RasterSpec(epsg=4326, bounds=(-180.0, -90.0, 180.0, 90.0), resolutions_xy=(0.1, 0.1))</dd><dt><span>resolution :</span></dt><dd>0.1</dd></dl></div></li></ul></div></div>
 </div>
 </div>
-<div class="cell" data-execution_count="8">
-<div class="sourceCode" id="cb8"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Group data into months</span></span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>dates <span class="op">=</span> data_band.groupby(<span class="st">'time'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-execution_count="39">
+<div class="sourceCode" id="cb10"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Group data into months</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>dates <span class="op">=</span> data_band.groupby(<span class="st">'time'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-execution_count="9">
-<div class="sourceCode" id="cb9"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Average over entire spatial bounding box for each month</span></span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>means <span class="op">=</span> dates.mean(dim<span class="op">=</span>(<span class="st">'x'</span>, <span class="st">'y'</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-execution_count="40">
+<div class="sourceCode" id="cb11"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Average over entire spatial bounding box for each month</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>means <span class="op">=</span> dates.mean(dim<span class="op">=</span>(<span class="st">'x'</span>, <span class="st">'y'</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-execution_count="10">
-<div class="sourceCode" id="cb10"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>means.plot()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-execution_count="41">
+<div class="sourceCode" id="cb12"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>means.plot()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="monthly-omi-no2-timeseries-rioxarray-stackstac_files/figure-html/cell-10-output-1.png" class="img-fluid"></p>
+<p><img src="monthly-omi-no2-timeseries-rioxarray-stackstac_files/figure-html/cell-11-output-1.png" class="img-fluid"></p>
 </div>
 </div>
 
