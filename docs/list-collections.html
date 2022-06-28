@@ -3,7 +3,7 @@
   <meta charset="utf-8">
   <meta name="generator" content="quarto-0.9.128">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-  <title>veda-documentation – list-collections</title>
+  <title>VEDA Documentation – list-collections</title>
   <style>
     code{white-space: pre-wrap;}
     span.smallcaps{font-variant: small-caps;}
@@ -133,7 +133,7 @@
   <nav id="quarto-sidebar" class="sidebar collapse sidebar-navigation floating overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
-      <a href="./">veda-documentation</a> 
+      <a href="./">VEDA Documentation</a> 
     </div>
       </div>
       <div class="mt-2 flex-shrink-0 align-items-center">
@@ -153,19 +153,42 @@
   <a href="./veda-apis.html" class="sidebar-item-text sidebar-link">VEDA APIs</a>
   </div>
 </li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./tools.html" class="sidebar-item-text sidebar-link">Tools</a>
+  </div>
+</li>
         <li class="sidebar-item sidebar-item-section">
     <div class="sidebar-item-container"> 
-        <a href="./tools-and-examples.html" class="sidebar-item-text sidebar-link">Tools and Examples</a>
-      <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-tools-and-examplesqmd" aria-expanded="true">
+        <a href="./notebooks.html" class="sidebar-item-text sidebar-link">Example Notebooks</a>
+      <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-notebooksqmd" aria-expanded="true">
         <i class="bi bi-chevron-right ms-2"></i>
       </a>
     </div>
-    <ul id="quarto-sidebar-section-tools-and-examplesqmd" class="collapse list-unstyled sidebar-section depth1 show">  
+    <ul id="quarto-sidebar-section-notebooksqmd" class="collapse list-unstyled sidebar-section depth1 show">  
+        <li class="sidebar-item sidebar-item-section">
+    <div class="sidebar-item-container"> 
+        <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-basic-api-usage" aria-expanded="true">Basic API Usage</a>
+      <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-basic-api-usage" aria-expanded="true">
+        <i class="bi bi-chevron-right ms-2"></i>
+      </a>
+    </div>
+    <ul id="quarto-sidebar-section-basic-api-usage" class="collapse list-unstyled sidebar-section depth2 show">  
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./list-collections.html" class="sidebar-item-text sidebar-link active">List all collections</a>
   </div>
 </li>
+    </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+    <div class="sidebar-item-container"> 
+        <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-advanced-api-usage" aria-expanded="false">Advanced API Usage</a>
+      <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-advanced-api-usage" aria-expanded="false">
+        <i class="bi bi-chevron-right ms-2"></i>
+      </a>
+    </div>
+    <ul id="quarto-sidebar-section-advanced-api-usage" class="collapse list-unstyled sidebar-section depth2 ">  
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./monthly-omi-no2-timeseries-rioxarray-stackstac.html" class="sidebar-item-text sidebar-link">Monthly OMI NO2 time series using rioxarray and stackstac</a>
@@ -176,6 +199,13 @@
   <a href="./monthly-omi-no2-timeseries-stac-api.html" class="sidebar-item-text sidebar-link">Monthly OMI NO2 time series using STAC API statistics endpoints</a>
   </div>
 </li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./open-and-plot-svi.html" class="sidebar-item-text sidebar-link">Open and Plot Social Vulnerability Indiex (SVI)</a>
+  </div>
+</li>
+    </ul>
+  </li>
     </ul>
   </li>
     </ul>
@@ -200,39 +230,43 @@
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> cat <span class="kw">in</span> subcatalogs:</span>
 <span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(cat.<span class="bu">id</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-stdout">
-<pre><code>social-vulnerability-index-housing-nopop
+<pre><code>no2-monthly
+hls-l30-002-ej-reprocessed
+blue-tarp-planetscope
+social-vulnerability-index-housing
 nightlights-hd-monthly
-grdi-v1-built
-MO_NPP_npp_vgpm
-HLSS30.002
-HLSL30.002
-OMI_trno2-COG
-no2-monthly-diff
-social-vulnerability-index-household
-social-vulnerability-index-household-nopop
-social-vulnerability-index-minority
-grdi-shdi-raster
-no2-monthly
-facebook_population_density
-grdi-vnl-slope-raster
+geoglam
 grdi-vnl-raster
+hls-s30-002-ej
 social-vulnerability-index-socioeconomic
 social-vulnerability-index-socioeconomic-nopop
-social-vulnerability-index-housing
-blue-tarp-detection
-blue-tarp-planetscope
-grdi-v1-raster
-OMSO2PCA-COG
-social-vulnerability-index-overall-nopop
 grdi-filled-missing-values-count
+blue-tarp-detection
+MO_NPP_npp_vgpm
+facebook_population_density
+hls-l30-002-ej
+social-vulnerability-index-overall-nopop
 social-vulnerability-index-overall
-IS2SITMOGR4
-grdi-cdr-raster
-social-vulnerability-index-minority-nopop
+grdi-v1-raster
+social-vulnerability-index-housing-nopop
+IS2SITMOGR4-cog
+social-vulnerability-index-minority
+social-vulnerability-index-household-nopop
+grdi-v1-built
 nceo_africa_2017
-geoglam
-grdi-imr-raster
-nightlights-hd-3bands</code></pre>
+HLSL30.002
+nightlights-500m-daily
+OMI_trno2-COG
+grdi-vnl-slope-raster
+OMSO2PCA-COG
+HLSS30.002
+social-vulnerability-index-minority-nopop
+social-vulnerability-index-household
+grdi-shdi-raster
+nightlights-hd-1band
+grdi-cdr-raster
+no2-monthly-diff
+grdi-imr-raster</code></pre>
 </div>
 </div>
 

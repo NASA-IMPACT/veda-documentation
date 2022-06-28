@@ -2,9 +2,14 @@
 
 ## Welcome to documentation about the VEDA API and Datasets
 
-Documentation for the various APIs for the datasets maintained by NASA VEDA project.
+This website provides documentation and example notebooks for the various APIs for the datasets maintained by NASA VEDA project.
 
-Example notebooks on how to use those APIs and datasets.
-
-Run the notebooks with 
+You can run the notebooks with 
 <a href="https://mybinder.org/v2/gh/nasa-impact/veda-documentation/HEAD"><img src="https://mybinder.org/badge_logo.svg" alt="MyBinder link." target="_blank"></a>
+
+or locally via:
+
+```
+pip3 install -r requirements
+jupyter notebook
+```

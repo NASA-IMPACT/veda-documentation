@@ -3,18 +3,24 @@ project:
   output-dir: docs
 
 website:
-  title: "veda-documentation"
+  title: "VEDA Documentation"
   author: "VEDA Team (NASA IMPACT and Development Seed)"
   date: "3/31/2022"
   sidebar:
     contents:
-    - index.qmd
-    - veda-apis.qmd
-    - section: tools-and-examples.qmd
-      contents:
-        - list-collections.ipynb
-        - monthly-omi-no2-timeseries-rioxarray-stackstac.ipynb
-        - monthly-omi-no2-timeseries-stac-api.ipynb
+      - index.qmd
+      - veda-apis.qmd
+      - tools.qmd
+      - section: notebooks.qmd
+        contents:
+        - section: "Basic API Usage"
+          contents:
+          - list-collections.ipynb
+        - section: "Advanced API Usage"
+          contents:
+          - monthly-omi-no2-timeseries-rioxarray-stackstac.ipynb
+          - monthly-omi-no2-timeseries-stac-api.ipynb
+          - open-and-plot-svi.ipynb
 
 format:
   html:
