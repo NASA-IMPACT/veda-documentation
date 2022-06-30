@@ -4,10 +4,7 @@
 
 This website provides documentation and example notebooks for the various APIs for the datasets maintained by NASA VEDA project.
 
-You can run the notebooks with 
-<a href="https://mybinder.org/v2/gh/nasa-impact/veda-documentation/HEAD"><img src="https://mybinder.org/badge_logo.svg" alt="MyBinder link." target="_blank"></a>
-
-or locally via:
+You can run the notebooks locally with:
 
 ```
 pip3 install -r requirements

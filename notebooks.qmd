@@ -1,9 +1,6 @@
 # Example Notebooks
 
-Run the notebooks with mybinder:
-<a href="https://mybinder.org/v2/gh/nasa-impact/veda-documentation/HEAD"><img src="https://mybinder.org/badge_logo.svg" alt="MyBinder link." target="_blank"></a>
-
-or locally:
+Run the notebooks locally via:
 
 ```bash
 pip3 install -r requirements

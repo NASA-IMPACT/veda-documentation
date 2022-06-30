@@ -18,9 +18,9 @@ website:
           - list-collections.ipynb
         - section: "Advanced API Usage"
           contents:
-          - monthly-omi-no2-timeseries-rioxarray-stackstac.ipynb
-          - monthly-omi-no2-timeseries-stac-api.ipynb
-          - open-and-plot-svi.ipynb
+          - timeseries-rioxarray-stackstac.ipynb
+          - timeseries-stac-api.ipynb
+          - map-data.ipynb
 
 format:
   html:
