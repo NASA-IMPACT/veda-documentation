@@ -13,14 +13,14 @@ website:
       - tools.qmd
       - section: notebooks.qmd
         contents:
-        - section: "Basic API Usage"
+        - section: "Basic API Use"
           contents:
           - list-collections.ipynb
-        - section: "Advanced API Usage"
+        - section: "Advanced API Use"
           contents:
           - timeseries-rioxarray-stackstac.ipynb
           - timeseries-stac-api.ipynb
-          - map-data.ipynb
+          - open-and-plot.ipynb
 
 format:
   html:

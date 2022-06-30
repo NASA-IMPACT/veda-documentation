@@ -1,0 +1,611 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+  <meta charset="utf-8">
+  <meta name="generator" content="quarto-0.9.128">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <title>VEDA Documentation – timeseries-stac-api</title>
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      {   }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+    code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+    code span.at { color: #7d9029; } /* Attribute */
+    code span.bn { color: #40a070; } /* BaseN */
+    code span.bu { } /* BuiltIn */
+    code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #4070a0; } /* Char */
+    code span.cn { color: #880000; } /* Constant */
+    code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+    code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+    code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+    code span.dt { color: #902000; } /* DataType */
+    code span.dv { color: #40a070; } /* DecVal */
+    code span.er { color: #ff0000; font-weight: bold; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #40a070; } /* Float */
+    code span.fu { color: #06287e; } /* Function */
+    code span.im { } /* Import */
+    code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+    code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+    code span.op { color: #666666; } /* Operator */
+    code span.ot { color: #007020; } /* Other */
+    code span.pp { color: #bc7a00; } /* Preprocessor */
+    code span.sc { color: #4070a0; } /* SpecialChar */
+    code span.ss { color: #bb6688; } /* SpecialString */
+    code span.st { color: #4070a0; } /* String */
+    code span.va { color: #19177c; } /* Variable */
+    code span.vs { color: #4070a0; } /* VerbatimString */
+    code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+  </style>
+
+  <script src="site_libs/quarto-nav/quarto-nav.js"></script>
+  <script src="site_libs/quarto-nav/headroom.min.js"></script>
+  <script src="site_libs/clipboard/clipboard.min.js"></script>
+  <meta name="quarto:offset" content="./">
+  <script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+  <script src="site_libs/quarto-search/fuse.min.js"></script>
+  <script src="site_libs/quarto-search/quarto-search.js"></script>
+  <script src="site_libs/quarto-html/quarto.js"></script>
+  <script src="site_libs/quarto-html/popper.min.js"></script>
+  <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+  <script src="site_libs/quarto-html/anchor.min.js"></script>
+  <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+  <link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet">
+  <script src="site_libs/bootstrap/bootstrap.min.js"></script>
+  <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+  <link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet">
+  <script id="quarto-search-options" type="application/json">{
+    "location": "sidebar",
+    "copy-button": false,
+    "collapse-after": 3,
+    "panel-placement": "start",
+    "type": "textbox",
+    "limit": 20,
+    "language": {
+      "search-no-results-text": "No results",
+      "search-matching-documents-text": "matching documents",
+      "search-copy-link-title": "Copy link to search",
+      "search-hide-matches-text": "Hide additional matches",
+      "search-more-match-text": "more match in this document",
+      "search-more-matches-text": "more matches in this document",
+      "search-clear-button-title": "Clear",
+      "search-detached-cancel-button-title": "Cancel",
+      "search-submit-button-title": "Submit"
+    }
+  }</script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
+  <script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
+  <script src="https://unpkg.com/@jupyter-widgets/html-manager@*/dist/embed-amd.js" crossorigin="anonymous"></script>
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+</head>
+<body class="floating fullcontent">
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+    <div class="container-fluid d-flex justify-content-between">
+      <h1 class="quarto-secondary-nav-title">(Untitled)</h1>
+      <button type="button" class="quarto-btn-toggle btn">
+        <i class="bi bi-chevron-right"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">VEDA Documentation</a> 
+    </div>
+      </div>
+      <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+      </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">Welcome</a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./veda-apis.html" class="sidebar-item-text sidebar-link">VEDA APIs</a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./tools.html" class="sidebar-item-text sidebar-link">Tools</a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+    <div class="sidebar-item-container"> 
+        <a href="./notebooks.html" class="sidebar-item-text sidebar-link">Example Notebooks</a>
+      <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-notebooksqmd" aria-expanded="true">
+        <i class="bi bi-chevron-right ms-2"></i>
+      </a>
+    </div>
+    <ul id="quarto-sidebar-section-notebooksqmd" class="collapse list-unstyled sidebar-section depth1 show">  
+        <li class="sidebar-item sidebar-item-section">
+    <div class="sidebar-item-container"> 
+        <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-basic-api-use" aria-expanded="false">Basic API Use</a>
+      <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-basic-api-use" aria-expanded="false">
+        <i class="bi bi-chevron-right ms-2"></i>
+      </a>
+    </div>
+    <ul id="quarto-sidebar-section-basic-api-use" class="collapse list-unstyled sidebar-section depth2 ">  
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./list-collections.html" class="sidebar-item-text sidebar-link">List all collections</a>
+  </div>
+</li>
+    </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+    <div class="sidebar-item-container"> 
+        <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-advanced-api-use" aria-expanded="true">Advanced API Use</a>
+      <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-advanced-api-use" aria-expanded="true">
+        <i class="bi bi-chevron-right ms-2"></i>
+      </a>
+    </div>
+    <ul id="quarto-sidebar-section-advanced-api-use" class="collapse list-unstyled sidebar-section depth2 show">  
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./timeseries-rioxarray-stackstac.html" class="sidebar-item-text sidebar-link">Time series using rioxarray and stackstac</a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./timeseries-stac-api.html" class="sidebar-item-text sidebar-link active">Time series using STAC API statistics endpoints</a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./open-and-plot.html" class="sidebar-item-text sidebar-link">Open and Plot Data</a>
+  </div>
+</li>
+    </ul>
+  </li>
+    </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<!-- margin-sidebar -->
+    
+<!-- main -->
+<main class="content" id="quarto-document-content">
+<section id="time-series-using-stac-api-statistics-endpoints" class="level1">
+<h1>Time series using STAC API statistics endpoints</h1>
+<p>This notebook demonstrates how to generate a timeseries using STAC API statistics endpoints.</p>
+<ul>
+<li>Author: Leo Thomas</li>
+<li>Lasted Updated Date: June 29, 2022</li>
+</ul>
+<div class="cell" data-execution_count="1">
+<div class="sourceCode" id="cb1"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> concurrent.futures</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> datetime <span class="im">as</span> dt</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> ipyleaflet <span class="im">import</span> basemaps, Map, GeoJSON</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> json</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> requests <span class="im">as</span> re</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pprint</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> time</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>STAC_API_URL <span class="op">=</span> <span class="st">"https://staging-stac.delta-backend.xyz"</span></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>RASTER_API_URL <span class="op">=</span> <span class="st">"https://staging-raster.delta-backend.xyz"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="declare-your-collection-of-interest" class="level1">
+<h1>Declare your collection of interest</h1>
+<p>You can discover available collections the following ways:</p>
+<ul>
+<li>Use the <code>{STAC_ENDPOINT_URL}/collections</code> API endpoint (JSON response)</li>
+<li>Programmatically using <code>pystac</code> (see example in the <code>list-collections.ipynb</code> notebook</li>
+<li>In the STAC Browser: http://delta-staging-stac-browser.s3-website-us-east-1.amazonaws.com/</li>
+</ul>
+<div class="cell" data-execution_count="2">
+<div class="sourceCode" id="cb2"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>collection <span class="op">=</span> <span class="st">'no2-monthly'</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<section id="discover-data-using-the-stac-endpoint" class="level2">
+<h2 class="anchored" data-anchor-id="discover-data-using-the-stac-endpoint">Discover data using the STAC endpoint</h2>
+<div class="cell" data-execution_count="3">
+<div class="sourceCode" id="cb3"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>re.get(<span class="ss">f"</span><span class="sc">{</span>STAC_API_URL<span class="sc">}</span><span class="ss">/collections/</span><span class="sc">{</span>collection<span class="sc">}</span><span class="ss">"</span>).json()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display" data-execution_count="3">
+<pre><code>{'id': 'no2-monthly',
+ 'type': 'Collection',
+ 'links': [{'rel': 'items',
+   'type': 'application/geo+json',
+   'href': 'https://staging-stac.delta-backend.xyz/collections/no2-monthly/items'},
+  {'rel': 'parent',
+   'type': 'application/json',
+   'href': 'https://staging-stac.delta-backend.xyz/'},
+  {'rel': 'root',
+   'type': 'application/json',
+   'href': 'https://staging-stac.delta-backend.xyz/'},
+  {'rel': 'self',
+   'type': 'application/json',
+   'href': 'https://staging-stac.delta-backend.xyz/collections/no2-monthly'}],
+ 'title': 'NO₂',
+ 'extent': {'spatial': {'bbox': [[-180, -90, 180, 90]]},
+  'temporal': {'interval': [['2016-01-01T00:00:00Z',
+     '2022-01-01T00:00:00Z']]}},
+ 'license': 'MIT',
+ 'summaries': {'datetime': ['2016-01-01T00:00:00Z', '2022-05-01T00:00:00Z'],
+  'cog_default': {'max': 50064805976866816, 'min': -6618294421291008}},
+ 'description': 'Darker colors indicate higher nitrogen dioxide (NO₂) levels and more activity. Lighter colors indicate lower levels of NO₂ and less activity. Missing pixels indicate areas of no data most likely associated with cloud cover or snow.',
+ 'item_assets': {'cog_default': {'type': 'image/tiff; application=geotiff; profile=cloud-optimized',
+   'roles': ['data', 'layer'],
+   'title': 'Default COG Layer',
+   'description': 'Cloud optimized default layer to display on map'}},
+ 'stac_version': '1.0.0',
+ 'stac_extensions': ['https://stac-extensions.github.io/item-assets/v1.0.0/schema.json'],
+ 'dashboard:is_periodic': True,
+ 'dashboard:time_density': 'month'}</code></pre>
+</div>
+</div>
+</section>
+<section id="describe-the-periodic-nature-of-the-data" class="level2">
+<h2 class="anchored" data-anchor-id="describe-the-periodic-nature-of-the-data">Describe the periodic nature of the data</h2>
+<div class="cell" data-scrolled="true" data-execution_count="5">
+<div class="sourceCode" id="cb5"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>pprint.pprint({</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>    k:v <span class="cf">for</span> k,v <span class="kw">in</span> re.get(<span class="ss">f"</span><span class="sc">{</span>STAC_API_URL<span class="sc">}</span><span class="ss">/collections/no2-monthly"</span>).json().items()</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> k <span class="kw">in</span> [<span class="st">"dashboard:is_periodic"</span>, <span class="st">"dashboard:time_density"</span>, <span class="st">"summaries"</span>]</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-stdout">
+<pre><code>{'dashboard:is_periodic': True,
+ 'dashboard:time_density': 'month',
+ 'summaries': {'cog_default': {'max': 50064805976866816,
+                               'min': -6618294421291008},
+               'datetime': ['2016-01-01T00:00:00Z', '2022-05-01T00:00:00Z']}}</code></pre>
+</div>
+</div>
+</section>
+<section id="load-and-inspect-one-of-the-stac-items" class="level2">
+<h2 class="anchored" data-anchor-id="load-and-inspect-one-of-the-stac-items">Load and inspect one of the STAC items</h2>
+<p>This step is just for demonstration, to inspect what an item looks like.</p>
+<div class="cell" data-execution_count="7">
+<div class="sourceCode" id="cb7"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>items <span class="op">=</span> re.get(<span class="ss">f"</span><span class="sc">{</span>STAC_API_URL<span class="sc">}</span><span class="ss">/collections/</span><span class="sc">{</span>collection<span class="sc">}</span><span class="ss">/items?limit=100"</span>).json()[<span class="st">"features"</span>]</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>items[<span class="dv">0</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display" data-execution_count="7">
+<pre><code>{'id': 'OMI_trno2_monthly_0.10x0.10_202205_Col3_V4.nc',
+ 'bbox': [-180.0, -90.0, 180.0, 90.0],
+ 'type': 'Feature',
+ 'links': [{'rel': 'collection',
+   'type': 'application/json',
+   'href': 'https://staging-stac.delta-backend.xyz/collections/no2-monthly'},
+  {'rel': 'parent',
+   'type': 'application/json',
+   'href': 'https://staging-stac.delta-backend.xyz/collections/no2-monthly'},
+  {'rel': 'root',
+   'type': 'application/json',
+   'href': 'https://staging-stac.delta-backend.xyz/'},
+  {'rel': 'self',
+   'type': 'application/geo+json',
+   'href': 'https://staging-stac.delta-backend.xyz/collections/no2-monthly/items/OMI_trno2_monthly_0.10x0.10_202205_Col3_V4.nc'}],
+ 'assets': {'cog_default': {'href': 's3://veda-data-store-staging/no2-monthly/OMI_trno2_monthly_0.10x0.10_202205_Col3_V4.nc.tif',
+   'type': 'image/tiff; application=geotiff; profile=cloud-optimized',
+   'roles': ['data', 'layer'],
+   'raster:bands': [{'scale': 1.0,
+     'nodata': -1.2676506002282294e+30,
+     'offset': 0.0,
+     'sampling': 'area',
+     'data_type': 'float32',
+     'histogram': {'max': 16009167399550976,
+      'min': -2647376502194176.0,
+      'count': 11,
+      'buckets': [254, 378517, 28452, 2275, 668, 196, 31, 15, 5, 2]},
+     'statistics': {'mean': 420353736794736.56,
+      'stddev': 570417159377508.8,
+      'maximum': 16009167399550976,
+      'minimum': -2647376502194176.0,
+      'valid_percent': 78.28044891357422}}]}},
+ 'geometry': {'type': 'Polygon',
+  'coordinates': [[[-180.0, -90.0],
+    [180.0, -90.0],
+    [180.0, 90.0],
+    [-180.0, 90.0],
+    [-180.0, -90.0]]]},
+ 'collection': 'no2-monthly',
+ 'properties': {'datetime': None,
+  'proj:bbox': [-180.0, -90.0, 180.0, 90.0],
+  'proj:epsg': 4326,
+  'proj:shape': [1800, 3600],
+  'end_datetime': '2022-05-31T00:00:00Z',
+  'proj:geometry': {'type': 'Polygon',
+   'coordinates': [[[-180.0, -90.0],
+     [180.0, -90.0],
+     [180.0, 90.0],
+     [-180.0, 90.0],
+     [-180.0, -90.0]]]},
+  'proj:transform': [0.1, 0.0, -180.0, 0.0, -0.1, 90.0, 0.0, 0.0, 1.0],
+  'start_datetime': '2022-05-01T00:00:00Z'},
+ 'stac_version': '1.0.0',
+ 'stac_extensions': ['https://stac-extensions.github.io/projection/v1.0.0/schema.json',
+  'https://stac-extensions.github.io/raster/v1.1.0/schema.json']}</code></pre>
+</div>
+</div>
+</section>
+<section id="define-a-bounding-box" class="level2">
+<h2 class="anchored" data-anchor-id="define-a-bounding-box">Define a bounding box</h2>
+<p>We’ve defined a bounding box for France in this case.</p>
+<div class="cell" data-execution_count="8">
+<div class="sourceCode" id="cb9"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>bounding_box_france <span class="op">=</span> { </span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>    <span class="st">"type"</span>: <span class="st">"Feature"</span>,</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">"properties"</span>: {},</span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>    <span class="st">"geometry"</span>: {</span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>        <span class="st">"type"</span>: <span class="st">"Polygon"</span>,</span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>        <span class="st">"coordinates"</span>: [[</span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>            [</span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>              <span class="op">-</span><span class="fl">5.4534286</span>,</span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>              <span class="fl">41.2632185</span></span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>            ],</span>
+<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a>            [</span>
+<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a>              <span class="fl">9.8678344</span>,</span>
+<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a>              <span class="fl">41.2632185</span></span>
+<span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a>            ],</span>
+<span id="cb9-15"><a href="#cb9-15" aria-hidden="true" tabindex="-1"></a>            [</span>
+<span id="cb9-16"><a href="#cb9-16" aria-hidden="true" tabindex="-1"></a>              <span class="fl">9.8678344</span>,</span>
+<span id="cb9-17"><a href="#cb9-17" aria-hidden="true" tabindex="-1"></a>              <span class="fl">51.268318</span></span>
+<span id="cb9-18"><a href="#cb9-18" aria-hidden="true" tabindex="-1"></a>            ],</span>
+<span id="cb9-19"><a href="#cb9-19" aria-hidden="true" tabindex="-1"></a>            [</span>
+<span id="cb9-20"><a href="#cb9-20" aria-hidden="true" tabindex="-1"></a>              <span class="op">-</span><span class="fl">5.4534286</span>,</span>
+<span id="cb9-21"><a href="#cb9-21" aria-hidden="true" tabindex="-1"></a>              <span class="fl">51.268318</span></span>
+<span id="cb9-22"><a href="#cb9-22" aria-hidden="true" tabindex="-1"></a>            ],</span>
+<span id="cb9-23"><a href="#cb9-23" aria-hidden="true" tabindex="-1"></a>            [</span>
+<span id="cb9-24"><a href="#cb9-24" aria-hidden="true" tabindex="-1"></a>              <span class="op">-</span><span class="fl">5.4534286</span>,</span>
+<span id="cb9-25"><a href="#cb9-25" aria-hidden="true" tabindex="-1"></a>              <span class="fl">41.2632185</span></span>
+<span id="cb9-26"><a href="#cb9-26" aria-hidden="true" tabindex="-1"></a>            ]</span>
+<span id="cb9-27"><a href="#cb9-27" aria-hidden="true" tabindex="-1"></a>        ]]</span>
+<span id="cb9-28"><a href="#cb9-28" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb9-29"><a href="#cb9-29" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb9-30"><a href="#cb9-30" aria-hidden="true" tabindex="-1"></a></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="map-the-bounding-box" class="level2">
+<h2 class="anchored" data-anchor-id="map-the-bounding-box">Map the bounding box</h2>
+<p>This step is for visual inspection of the bounding box.</p>
+<div class="cell" data-execution_count="9">
+<div class="sourceCode" id="cb10"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>m <span class="op">=</span> Map(</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>    basemap<span class="op">=</span>basemaps.OpenStreetMap.Mapnik,</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>    center<span class="op">=</span>(<span class="dv">47</span>,<span class="dv">4</span>),</span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>    zoom<span class="op">=</span><span class="dv">3</span></span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>geo <span class="op">=</span> GeoJSON(</span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>    data<span class="op">=</span>bounding_box_france,</span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>    style<span class="op">=</span>{<span class="st">"color"</span>: <span class="st">"red"</span>, <span class="st">"fillOpacity"</span>: <span class="dv">0</span>}</span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a>m.add_layer(geo)</span>
+<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a>m</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<script type="application/vnd.jupyter.widget-view+json">
+{"model_id":"f686dcad7af7470d890cefd62b1bafa0","version_major":2,"version_minor":0}
+</script>
+</div>
+</div>
+</section>
+<section id="use-cogstatistics-to-get-data-for-the-bounding-box" class="level2">
+<h2 class="anchored" data-anchor-id="use-cogstatistics-to-get-data-for-the-bounding-box">Use <code>/cog/statistics</code> to get data for the bounding box</h2>
+<p>First, we create a <code>generate_stats</code> function and then we call it with the bounding box defined for France.</p>
+<div class="cell" data-execution_count="10">
+<div class="sourceCode" id="cb11"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> generate_stats(items, bounding_box):</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>    stats <span class="op">=</span> [</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>        {</span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>            <span class="op">**</span>re.post(</span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>                <span class="ss">f"</span><span class="sc">{</span>RASTER_API_URL<span class="sc">}</span><span class="ss">/cog/statistics"</span>, </span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>                params<span class="op">=</span>{</span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>                    <span class="st">"url"</span>:item[<span class="st">"assets"</span>][<span class="st">"cog_default"</span>][<span class="st">"href"</span>]</span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>                },</span>
+<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a>                json<span class="op">=</span>bounding_box</span>
+<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a>            ).json()[<span class="st">"properties"</span>], </span>
+<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a>             <span class="st">"start_datetime"</span>:item[<span class="st">"properties"</span>][<span class="st">"start_datetime"</span>]</span>
+<span id="cb11-12"><a href="#cb11-12" aria-hidden="true" tabindex="-1"></a>        }</span>
+<span id="cb11-13"><a href="#cb11-13" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> item <span class="kw">in</span> items</span>
+<span id="cb11-14"><a href="#cb11-14" aria-hidden="true" tabindex="-1"></a>    ]</span>
+<span id="cb11-15"><a href="#cb11-15" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> stats</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="generate-and-estimate-time-to-generate-statistics" class="level2">
+<h2 class="anchored" data-anchor-id="generate-and-estimate-time-to-generate-statistics">Generate and estimate time to generate statistics</h2>
+<p>This may take a minute, depending on the network.</p>
+<div class="cell" data-scrolled="true" data-execution_count="11">
+<div class="sourceCode" id="cb12"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>start <span class="op">=</span> time.time()</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>stats <span class="op">=</span> generate_stats(items, bounding_box_france)</span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>end <span class="op">=</span> time.time()</span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Elapsed time for small bounding box (france) </span><span class="sc">{</span><span class="bu">round</span>(end<span class="op">-</span>start,<span class="dv">2</span>)<span class="sc">}</span><span class="ss"> seconds. Items queried: </span><span class="sc">{</span><span class="bu">len</span>(items)<span class="sc">}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-stdout">
+<pre><code>Elapsed time for small bounding box (france) 124.64 seconds. Items queried: 77</code></pre>
+</div>
+</div>
+</section>
+<section id="inspect-one-result" class="level2">
+<h2 class="anchored" data-anchor-id="inspect-one-result">Inspect one result</h2>
+<div class="cell" data-execution_count="12">
+<div class="sourceCode" id="cb14"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>stats[<span class="dv">1</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display" data-execution_count="12">
+<pre><code>{'statistics': {'1': {'min': -1686681841303552.0,
+   'max': 8037704876949504.0,
+   'mean': 1719699112594799.0,
+   'count': 15200.0,
+   'sum': 2.6139426511440945e+19,
+   'std': 1311942344229939.8,
+   'median': 1358823029735424.0,
+   'majority': 537238232367104.0,
+   'minority': -1686681841303552.0,
+   'unique': 15194.0,
+   'histogram': [[7.0,
+     568.0,
+     6212.0,
+     4554.0,
+     2093.0,
+     819.0,
+     437.0,
+     271.0,
+     182.0,
+     57.0],
+    [-1686681841303552.0,
+     -714243169478246.4,
+     258195502347059.25,
+     1230634174172365.0,
+     2203072845997670.5,
+     3175511517822976.0,
+     4147950189648282.0,
+     5120388861473587.0,
+     6092827533298893.0,
+     7065266205124199.0,
+     8037704876949504.0]],
+   'valid_percent': 99.35,
+   'masked_pixels': 100.0,
+   'valid_pixels': 15200.0,
+   'percentile_98': 5865060032776768.0,
+   'percentile_2': 116917669524930.58}},
+ 'start_datetime': '2022-04-01T00:00:00Z'}</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="13">
+<div class="sourceCode" id="cb16"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>dates <span class="op">=</span> [dt.datetime.strptime(stat[<span class="st">"start_datetime"</span>], <span class="st">"%Y-%m-</span><span class="sc">%d</span><span class="st">T%H:%M:%SZ"</span>) <span class="cf">for</span> stat <span class="kw">in</span> stats]</span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>means <span class="op">=</span> [stat[<span class="st">"statistics"</span>][<span class="st">"1"</span>][<span class="st">"mean"</span>] <span class="cf">for</span> stat <span class="kw">in</span> stats]</span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>std_devs <span class="op">=</span> [stat[<span class="st">"statistics"</span>][<span class="st">"1"</span>][<span class="st">"std"</span>] <span class="cf">for</span> stat <span class="kw">in</span> stats]</span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>upper_bounds <span class="op">=</span> [m<span class="op">+</span>s <span class="cf">for</span> (m,s) <span class="kw">in</span> <span class="bu">zip</span>(means, std_devs)]</span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>lower_bounds <span class="op">=</span> [m<span class="op">-</span>s <span class="cf">for</span> (m,s) <span class="kw">in</span> <span class="bu">zip</span>(means, std_devs)]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-execution_count="14">
+<div class="sourceCode" id="cb17"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>plt.plot(dates, means, <span class="st">'black'</span>)</span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>plt.fill_between(dates, upper_bounds, lower_bounds, facecolor<span class="op">=</span><span class="st">"lightgrey"</span>, interpolate<span class="op">=</span><span class="va">True</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display" data-execution_count="14">
+<pre><code>&lt;matplotlib.collections.PolyCollection at 0x18274a310&gt;</code></pre>
+</div>
+<div class="cell-output-display">
+<p><img src="timeseries-stac-api_files/figure-html/cell-13-output-2.png" class="img-fluid"></p>
+</div>
+</div>
+
+
+
+</section>
+</section>
+</main> <!-- /main -->
+<script type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    setTimeout(function() {
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      let href = ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const cites = ref.parentNode.getAttribute('data-cites').split(' ');
+    tippyHover(ref, function() {
+      var popup = window.document.createElement('div');
+      cites.forEach(function(cite) {
+        var citeDiv = window.document.createElement('div');
+        citeDiv.classList.add('hanging-indent');
+        citeDiv.classList.add('csl-entry');
+        var biblioDiv = window.document.getElementById('ref-' + cite);
+        if (biblioDiv) {
+          citeDiv.innerHTML = biblioDiv.innerHTML;
+        }
+        popup.appendChild(citeDiv);
+      });
+      return popup.innerHTML;
+    });
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+</body></html>
