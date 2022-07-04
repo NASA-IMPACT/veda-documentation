@@ -233,11 +233,7 @@
 </section>
 <section id="accessing-the-data" class="level1">
 <h1>Accessing the data</h1>
-<p>The data is in a protected bucket. There are two ways you can access the data to run this notebook:</p>
-<ol type="1">
-<li>Via a shared jupyter notebook hosted on AWS Sagemaker. Note this is a shared environment so please be gentle with it: https://stac-api-example-notebooks.notebook.us-west-2.sagemaker.aws/</li>
-<li>If you wish to run this code outside of AWS Sagemaker, you will need to request access via an AWS IAM role or user permission. Please email aimee@developmentseed.org if you are interested in being provided read access to the data. Once you have provided the role you will use to access the data, the team will add that role or user ARN to the permitted list of identities which can assume a role with read access to the data. The code in <code>create_rio_session.py</code> can then be used to assume this read-access role, identified in that code by the environment variable <code>AWS_ROLE</code>.</li>
-</ol>
+<p>The data is in a protected bucket. Please request access by emailng aimee@developmentseed.org providing your affiliation, interest in or expected use of the dataset, and an AWS IAM role or user Amazon Resource Name (ARN). Once you have provided the role you will use to access the data, the team will add that role or user ARN to the permitted list of identities which can assume a role with read access to the data. The code in <code>create_rio_session.py</code> can then be used to assume this read-access role, identified in that code by the environment variable <code>AWS_ROLE</code>.</p>
 <div class="cell" data-execution_count="2">
 <div class="sourceCode" id="cb2"><pre class="sourceCode python cell-code code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Skip this if running in AWS Sagemaker</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="op">%</span>run <span class="op">-</span>i <span class="st">'create_rio_session.py'</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
