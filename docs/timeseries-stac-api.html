@@ -236,8 +236,8 @@
 <span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pprint</span>
 <span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> time</span>
 <span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>STAC_API_URL <span class="op">=</span> <span class="st">"https://staging-stac.delta-backend.xyz"</span></span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>RASTER_API_URL <span class="op">=</span> <span class="st">"https://staging-raster.delta-backend.xyz"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>STAC_API_URL <span class="op">=</span> <span class="st">"https://staging-stac.delta-backend.com"</span></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>RASTER_API_URL <span class="op">=</span> <span class="st">"https://staging-raster.delta-backend.com"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="declare-your-collection-of-interest" class="level1">
@@ -260,16 +260,16 @@
  'type': 'Collection',
  'links': [{'rel': 'items',
    'type': 'application/geo+json',
-   'href': 'https://staging-stac.delta-backend.xyz/collections/no2-monthly/items'},
+   'href': 'https://staging-stac.delta-backend.com/collections/no2-monthly/items'},
   {'rel': 'parent',
    'type': 'application/json',
-   'href': 'https://staging-stac.delta-backend.xyz/'},
+   'href': 'https://staging-stac.delta-backend.com/'},
   {'rel': 'root',
    'type': 'application/json',
-   'href': 'https://staging-stac.delta-backend.xyz/'},
+   'href': 'https://staging-stac.delta-backend.com/'},
   {'rel': 'self',
    'type': 'application/json',
-   'href': 'https://staging-stac.delta-backend.xyz/collections/no2-monthly'}],
+   'href': 'https://staging-stac.delta-backend.com/collections/no2-monthly'}],
  'title': 'NO₂',
  'extent': {'spatial': {'bbox': [[-180, -90, 180, 90]]},
   'temporal': {'interval': [['2016-01-01T00:00:00Z',
@@ -317,16 +317,16 @@
  'type': 'Feature',
  'links': [{'rel': 'collection',
    'type': 'application/json',
-   'href': 'https://staging-stac.delta-backend.xyz/collections/no2-monthly'},
+   'href': 'https://staging-stac.delta-backend.com/collections/no2-monthly'},
   {'rel': 'parent',
    'type': 'application/json',
-   'href': 'https://staging-stac.delta-backend.xyz/collections/no2-monthly'},
+   'href': 'https://staging-stac.delta-backend.com/collections/no2-monthly'},
   {'rel': 'root',
    'type': 'application/json',
-   'href': 'https://staging-stac.delta-backend.xyz/'},
+   'href': 'https://staging-stac.delta-backend.com/'},
   {'rel': 'self',
    'type': 'application/geo+json',
-   'href': 'https://staging-stac.delta-backend.xyz/collections/no2-monthly/items/OMI_trno2_monthly_0.10x0.10_202205_Col3_V4.nc'}],
+   'href': 'https://staging-stac.delta-backend.com/collections/no2-monthly/items/OMI_trno2_monthly_0.10x0.10_202205_Col3_V4.nc'}],
  'assets': {'cog_default': {'href': 's3://veda-data-store-staging/no2-monthly/OMI_trno2_monthly_0.10x0.10_202205_Col3_V4.nc.tif',
    'type': 'image/tiff; application=geotiff; profile=cloud-optimized',
    'roles': ['data', 'layer'],
