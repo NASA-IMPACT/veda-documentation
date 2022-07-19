@@ -2,6 +2,7 @@
 
 The example notebooks use these tools:
 
+* [folium](https://github.com/python-visualization/folium): folium adds Leaflet.js support to python projects for visualizing data in a map.
 * [pystac](https://pystac.readthedocs.io/): PySTAC is a library for working with SpatioTemporal Asset Catalogs (STAC) in Python 3.
 * [rioxarray](https://corteva.github.io/rioxarray/stable/): rasterio xarray extension
 * [sat-search](https://github.com/sat-utils/sat-search): Sat-search is a Python 3 library and a command line tool for discovering and downloading publicly available satellite imagery using STAC compliant API.

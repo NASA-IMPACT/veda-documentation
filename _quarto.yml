@@ -21,6 +21,7 @@ website:
           - timeseries-rioxarray-stackstac.ipynb
           - timeseries-stac-api.ipynb
           - open-and-plot.ipynb
+          - hls-visualization.ipynb
 
 format:
   html:
