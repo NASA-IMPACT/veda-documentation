@@ -11,3 +11,4 @@ sat-search
 sphinxcontrib-napoleon
 sphinx-rtd-theme
 stackstac
+folium
