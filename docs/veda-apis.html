@@ -1,64 +1,70 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
-  <meta charset="utf-8">
-  <meta name="generator" content="quarto-0.9.128">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-  <title>VEDA Documentation – veda-apis</title>
-  <style>
-    code{white-space: pre-wrap;}
-    span.smallcaps{font-variant: small-caps;}
-    span.underline{text-decoration: underline;}
-    div.column{display: inline-block; vertical-align: top; width: 50%;}
-    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
-    ul.task-list{list-style: none;}
-  </style>
 
-  <script src="site_libs/quarto-nav/quarto-nav.js"></script>
-  <script src="site_libs/quarto-nav/headroom.min.js"></script>
-  <script src="site_libs/clipboard/clipboard.min.js"></script>
-  <meta name="quarto:offset" content="./">
-  <script src="site_libs/quarto-search/autocomplete.umd.js"></script>
-  <script src="site_libs/quarto-search/fuse.min.js"></script>
-  <script src="site_libs/quarto-search/quarto-search.js"></script>
-  <script src="site_libs/quarto-html/quarto.js"></script>
-  <script src="site_libs/quarto-html/popper.min.js"></script>
-  <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
-  <script src="site_libs/quarto-html/anchor.min.js"></script>
-  <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-  <link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet">
-  <script src="site_libs/bootstrap/bootstrap.min.js"></script>
-  <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-  <link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet">
-  <script id="quarto-search-options" type="application/json">{
-    "location": "sidebar",
-    "copy-button": false,
-    "collapse-after": 3,
-    "panel-placement": "start",
-    "type": "textbox",
-    "limit": 20,
-    "language": {
-      "search-no-results-text": "No results",
-      "search-matching-documents-text": "matching documents",
-      "search-copy-link-title": "Copy link to search",
-      "search-hide-matches-text": "Hide additional matches",
-      "search-more-match-text": "more match in this document",
-      "search-more-matches-text": "more matches in this document",
-      "search-clear-button-title": "Clear",
-      "search-detached-cancel-button-title": "Cancel",
-      "search-submit-button-title": "Submit"
-    }
-  }</script>
-  <!--[if lt IE 9]>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
-  <![endif]-->
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.0.32">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>VEDA Documentation – veda-apis</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+span.underline{text-decoration: underline;}
+div.column{display: inline-block; vertical-align: top; width: 50%;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit"
+  }
+}</script>
+
+
 </head>
-<body class="floating fullcontent">
+
+<body class="nav-sidebar floating fullcontent">
+
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
   <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
     <div class="container-fluid d-flex justify-content-between">
       <h1 class="quarto-secondary-nav-title">(Untitled)</h1>
-      <button type="button" class="quarto-btn-toggle btn">
+      <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
         <i class="bi bi-chevron-right"></i>
       </button>
     </div>
@@ -96,54 +102,59 @@
   </div>
 </li>
         <li class="sidebar-item sidebar-item-section">
-    <div class="sidebar-item-container"> 
-        <a href="./notebooks.html" class="sidebar-item-text sidebar-link">Example Notebooks</a>
-      <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-notebooksqmd" aria-expanded="true">
-        <i class="bi bi-chevron-right ms-2"></i>
-      </a>
-    </div>
-    <ul id="quarto-sidebar-section-notebooksqmd" class="collapse list-unstyled sidebar-section depth1 show">  
-        <li class="sidebar-item sidebar-item-section">
-    <div class="sidebar-item-container"> 
-        <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-basic-api-use" aria-expanded="false">Basic API Use</a>
-      <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-basic-api-use" aria-expanded="false">
-        <i class="bi bi-chevron-right ms-2"></i>
-      </a>
-    </div>
-    <ul id="quarto-sidebar-section-basic-api-use" class="collapse list-unstyled sidebar-section depth2 ">  
-        <li class="sidebar-item">
+      <div class="sidebar-item-container"> 
+            <a href="./notebooks.html" class="sidebar-item-text sidebar-link">Example Notebooks</a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="false">Basic API Use</a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="false">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./list-collections.html" class="sidebar-item-text sidebar-link">List all collections</a>
   </div>
 </li>
-    </ul>
+      </ul>
   </li>
-        <li class="sidebar-item sidebar-item-section">
-    <div class="sidebar-item-container"> 
-        <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-advanced-api-use" aria-expanded="false">Advanced API Use</a>
-      <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-advanced-api-use" aria-expanded="false">
-        <i class="bi bi-chevron-right ms-2"></i>
-      </a>
-    </div>
-    <ul id="quarto-sidebar-section-advanced-api-use" class="collapse list-unstyled sidebar-section depth2 ">  
-        <li class="sidebar-item">
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="false">Advanced API Use</a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="false">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./timeseries-rioxarray-stackstac.html" class="sidebar-item-text sidebar-link">Time series using rioxarray and stackstac</a>
   </div>
 </li>
-        <li class="sidebar-item">
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./timeseries-stac-api.html" class="sidebar-item-text sidebar-link">Time series using STAC API statistics endpoints</a>
   </div>
 </li>
-        <li class="sidebar-item">
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./open-and-plot.html" class="sidebar-item-text sidebar-link">Open and Plot Data</a>
   </div>
 </li>
-    </ul>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./hls-visualization.html" class="sidebar-item-text sidebar-link">Multi-Band Visualization Preview for Harmonized Landsat Sentinel-2 (HLS) with Common Query Language (CQL2-JSON)</a>
+  </div>
+</li>
+      </ul>
   </li>
-    </ul>
+      </ul>
   </li>
     </ul>
     </div>
@@ -152,6 +163,9 @@
     
 <!-- main -->
 <main class="content" id="quarto-document-content">
+
+
+
 <section id="veda-apis" class="level1 unnumbered">
 <h1 class="unnumbered">VEDA APIs</h1>
 <p>The VEDA API source code is currently stored in a private repository: <a href="https://github.com/NASA-IMPACT/delta-backend">delta-backend</a> but is based off <a href="https://github.com/developmentseed/eoAPI">eoAPI</a></p>
@@ -164,30 +178,48 @@
 <h3 class="anchored" data-anchor-id="staging-maintenance-will-be-announced">Staging (maintenance will be announced):</h3>
 <ul>
 <li>STAC browser (experimental): <a href="http://delta-staging-stac-browser.s3-website-us-east-1.amazonaws.com/">delta-staging-stac-browser</a></li>
-<li>STAC API (metadata): <a href="https://staging-stac.delta-backend.xyz/docs">https://staging-stac.delta-backend.xyz/docs</a></li>
-<li>List collections: <a href="https://staging-stac.delta-backend.xyz/collections">https://staging-stac.delta-backend.xyz/collections</a></li>
-<li>Raster API (tiling): <a href="https://staging-raster.delta-backend.xyz/docs">https://staging-raster.delta-backend.xyz/docs</a></li>
-<li>STAC viewer (experimental): <a href="https://staging-stac.delta-backend.xyz/index.html">https://staging-stac.delta-backend.xyz/index.html</a></li>
+<li>STAC API (metadata): <a href="https://staging-stac.delta-backend.com/docs">https://staging-stac.delta-backend.com/docs</a></li>
+<li>List collections: <a href="https://staging-stac.delta-backend.com/collections">https://staging-stac.delta-backend.com/collections</a></li>
+<li>Raster API (tiling): <a href="https://staging-raster.delta-backend.com/docs">https://staging-raster.delta-backend.com/docs</a></li>
+<li>STAC viewer (experimental): <a href="https://staging-stac.delta-backend.com/index.html">https://staging-stac.delta-backend.com/index.html</a></li>
 </ul>
 </section>
 <section id="development-aka-dev-experimental-work-expected-downtime" class="level3">
 <h3 class="anchored" data-anchor-id="development-aka-dev-experimental-work-expected-downtime">Development, aka Dev (experimental work, expected downtime)</h3>
 <ul>
 <li>STAC browser (experimental): <a href="http://delta-dev-stac-browser.s3-website-us-east-1.amazonaws.com/">delta-dev-stac-browser</a></li>
-<li>STAC API (metadata): <a href="https://dev-stac.delta-backend.xyz/docs">https://dev-stac.delta-backend.xyz/docs</a></li>
-<li>List collections: <a href="https://dev-stac.delta-backend.xyz/collections">https://dev-stac.delta-backend.xyz/collections</a></li>
-<li>Raster API (tiling): <a href="https://dev-raster.delta-backend.xyz/docs">https://dev-raster.delta-backend.xyz/docs</a></li>
-<li>STAC viewer (experimental): <a href="https://dev-stac.delta-backend.xyz/index.html">https://dev-stac.delta-backend.xyz/index.html</a></li>
+<li>STAC API (metadata): <a href="https://dev-stac.delta-backend.com/docs">https://dev-stac.delta-backend.com/docs</a></li>
+<li>List collections: <a href="https://dev-stac.delta-backend.com/collections">https://dev-stac.delta-backend.com/collections</a></li>
+<li>Raster API (tiling): <a href="https://dev-raster.delta-backend.com/docs">https://dev-raster.delta-backend.com/docs</a></li>
+<li>STAC viewer (experimental): <a href="https://dev-stac.delta-backend.com/index.html">https://dev-stac.delta-backend.com/index.html</a></li>
 </ul>
 
 
+</section>
+</section>
+</section>
 
-</section>
-</section>
-</section>
 </main> <!-- /main -->
-<script type="application/javascript">
+<script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
   const icon = "";
   const anchorJS = new window.AnchorJS();
   anchorJS.options = {
@@ -207,7 +239,10 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     button.blur();
     // flash "checked"
     button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
     setTimeout(function() {
+      button.setAttribute("title", currentTitle);
       button.classList.remove('code-copy-button-checked');
     }, 1000);
     // clear code selection
@@ -263,6 +298,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 });
 </script>
 </div> <!-- /content -->
+
 
 
 </body></html>
