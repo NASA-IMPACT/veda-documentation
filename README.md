@@ -7,7 +7,7 @@ Example notebooks on how to use those APIs and datasets.
 Run the notebooks via:
 
 ```bash
-pip3 install -r requirements
+pip3 install -r requirements.txt
 jupyter notebook
 ```
 
