@@ -22,6 +22,7 @@ website:
           - timeseries-stac-api.ipynb
           - open-and-plot.ipynb
           - hls-visualization.ipynb
+          - single-item-viz.ipynb
 
 format:
   html:
