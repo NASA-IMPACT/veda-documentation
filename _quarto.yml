@@ -21,8 +21,8 @@ website:
           ## disable the 2 following notebooks since they rely on data 
           ## in MCP and github actions has no way to request short term
           ## access credentials to access the data
-          # - timeseries-rioxarray-stackstac.ipynb
-          # - open-and-plot.ipynb
+          - timeseries-rioxarray-stackstac.ipynb
+          - open-and-plot.ipynb
           - timeseries-stac-api.ipynb
           - hls-visualization.ipynb
           - single-item-viz.ipynb
@@ -32,6 +32,9 @@ format:
     theme: cosmo
   pdf:
     documentclass: scrreprt
+
+execute: 
+  freeze: auto
 
 
 

@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.0.32">
+<meta name="generator" content="quarto-1.0.37">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -205,17 +205,22 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./timeseries-stac-api.html" class="sidebar-item-text sidebar-link">Time series using STAC API statistics endpoints</a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
   <a href="./open-and-plot.html" class="sidebar-item-text sidebar-link">Open and Plot Data</a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="./timeseries-stac-api.html" class="sidebar-item-text sidebar-link">Time series using STAC API statistics endpoint</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="./hls-visualization.html" class="sidebar-item-text sidebar-link active">Multi-Band Visualization Preview for Harmonized Landsat Sentinel-2 (HLS) with Common Query Language (CQL2-JSON)</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./single-item-viz.html" class="sidebar-item-text sidebar-link">Single Item Viz</a>
   </div>
 </li>
       </ul>
@@ -232,8 +237,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 
 
-<section id="multi-band-visualization-preview-for-harmonized-landsat-sentinel-2-hls-with-common-query-language-cql2-json" class="level1">
-<h1>Multi-Band Visualization Preview for Harmonized Landsat Sentinel-2 (HLS) with Common Query Language (CQL2-JSON)</h1>
+<section id="multi-band-visualization-preview-for-harmonized-landsat-sentinel-2-hls-with-common-query-language-cql2-json" class="level1 unnumbered">
+<h1 class="unnumbered">Multi-Band Visualization Preview for Harmonized Landsat Sentinel-2 (HLS) with Common Query Language (CQL2-JSON)</h1>
 <ul>
 <li>Author: Alexandra Kirk</li>
 <li>Last Updated Date: June 30, 2022</li>
@@ -253,12 +258,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p><a href="https://lpdaac.usgs.gov/products/hlss30v002/">HLSS30 Dataset Landing Page</a></p>
 <p><a href="https://gisgeography.com/sentinel-2-bands-combinations/">Sentinel 2 Bands and Combinations Blog</a></p>
 <p><a href="https://github.com/radiantearth/stac-api-spec/tree/master/fragments/filter#examples">CQL2 STAC-API Examples</a></p>
+<div class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> json</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> requests</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> folium <span class="im">import</span> Map, TileLayer</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 <section id="parameters-for-investigating-hurricane-events-with-the-dynamic-tiler-and-custom-band-combinations" class="level2">
 <h2 class="anchored" data-anchor-id="parameters-for-investigating-hurricane-events-with-the-dynamic-tiler-and-custom-band-combinations">Parameters for investigating hurricane events with the dynamic tiler and custom band combinations</h2>
 <p>The notebook examples below focus on HLS S30 data for Hurricane Ida, but Hurricane Maria and L30 parameters are provided below for further exploration.</p>
+<div class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Endpoints</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>STAC_API_URL <span class="op">=</span> <span class="st">"https://staging-stac.delta-backend.com"</span></span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>RASTER_API_URL <span class="op">=</span> <span class="st">"https://staging-raster.delta-backend.com"</span> </span>
@@ -285,6 +293,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb2-24"><a href="#cb2-24" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-25"><a href="#cb2-25" aria-hidden="true" tabindex="-1"></a>ida_bbox <span class="op">=</span> [<span class="op">-</span><span class="fl">90.932637</span>, <span class="fl">29.705366</span>, <span class="op">-</span><span class="fl">89.766437</span>, <span class="fl">30.71627</span>]</span>
 <span id="cb2-26"><a href="#cb2-26" aria-hidden="true" tabindex="-1"></a>ida_temporal_range <span class="op">=</span> [<span class="st">"2021-07-01T00:00:00Z"</span>, <span class="st">"2021-10-28T00:00:00Z"</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 <section id="first-search-the-stac-api-to-find-the-specific-dates-available-within-timeframe-of-interest-hurricane-ida" class="level3">
 <h3 class="anchored" data-anchor-id="first-search-the-stac-api-to-find-the-specific-dates-available-within-timeframe-of-interest-hurricane-ida">First, search the STAC API to find the specific dates available within timeframe of interest (Hurricane Ida)</h3>
 <p>To focus on a specific point in time, we will restrict the temporal range when defining the item search in the example below.</p>
@@ -528,7 +537,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
             <meta name=&quot;viewport&quot; content=&quot;width=device-width,
                 initial-scale=1.0, maximum-scale=1.0, user-scalable=no&quot; />
             <style>
-                #map_60d7591d0db5b00a4710991fe39946e8 {
+                #map_afbebd5faaeec256b14d8f2a0db36333 {
                     position: relative;
                     width: 100.0%;
                     height: 100.0%;
@@ -540,13 +549,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </head>
 <body>    
     
-            <div class=&quot;folium-map&quot; id=&quot;map_60d7591d0db5b00a4710991fe39946e8&quot; ></div>
+            <div class=&quot;folium-map&quot; id=&quot;map_afbebd5faaeec256b14d8f2a0db36333&quot; ></div>
         
 </body>
 <script>    
     
-            var map_60d7591d0db5b00a4710991fe39946e8 = L.map(
-                &quot;map_60d7591d0db5b00a4710991fe39946e8&quot;,
+            var map_afbebd5faaeec256b14d8f2a0db36333 = L.map(
+                &quot;map_afbebd5faaeec256b14d8f2a0db36333&quot;,
                 {
                     center: [30.210818000000003, -90.349537],
                     crs: L.CRS.EPSG3857,
@@ -560,16 +569,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
         
     
-            var tile_layer_d83f6ab8c347960802b19786c9efea7f = L.tileLayer(
+            var tile_layer_a28c2e75018fb276a08bab6b1eed9c7b = L.tileLayer(
                 &quot;https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png&quot;,
                 {&quot;attribution&quot;: &quot;Data by \u0026copy; \u003ca href=\&quot;http://openstreetmap.org\&quot;\u003eOpenStreetMap\u003c/a\u003e, under \u003ca href=\&quot;http://www.openstreetmap.org/copyright\&quot;\u003eODbL\u003c/a\u003e.&quot;, &quot;detectRetina&quot;: false, &quot;maxNativeZoom&quot;: 18, &quot;maxZoom&quot;: 18, &quot;minZoom&quot;: 0, &quot;noWrap&quot;: false, &quot;opacity&quot;: 1, &quot;subdomains&quot;: &quot;abc&quot;, &quot;tms&quot;: false}
-            ).addTo(map_60d7591d0db5b00a4710991fe39946e8);
+            ).addTo(map_afbebd5faaeec256b14d8f2a0db36333);
         
     
-            var tile_layer_d2a5ab580377e942a0dd916400817042 = L.tileLayer(
+            var tile_layer_3bae9791389d98eb9d117032232efcfb = L.tileLayer(
                 &quot;https://staging-raster.delta-backend.com/mosaic/tiles/7743bcb31bff7151aff7e5508785fce1/WebMercatorQuad/{z}/{x}/{y}@1x?post_process=swir\u0026assets=B12\u0026assets=B8A\u0026assets=B04&quot;,
                 {&quot;attribution&quot;: &quot;Mosaic&quot;, &quot;detectRetina&quot;: false, &quot;maxNativeZoom&quot;: 18, &quot;maxZoom&quot;: 18, &quot;minZoom&quot;: 0, &quot;noWrap&quot;: false, &quot;opacity&quot;: 1, &quot;subdomains&quot;: &quot;abc&quot;, &quot;tms&quot;: false}
-            ).addTo(map_60d7591d0db5b00a4710991fe39946e8);
+            ).addTo(map_afbebd5faaeec256b14d8f2a0db36333);
         
 </script>" style="position:absolute;width:100%;height:100%;left:0;top:0;border:none !important;" allowfullscreen="" webkitallowfullscreen="" mozallowfullscreen=""></iframe></div></div>
 </div>
@@ -665,7 +674,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
             <meta name=&quot;viewport&quot; content=&quot;width=device-width,
                 initial-scale=1.0, maximum-scale=1.0, user-scalable=no&quot; />
             <style>
-                #map_9d4e5a4b6778e9ec0213fb3ccfb3c0c4 {
+                #map_b8591e8bee79a092b622583be06cd143 {
                     position: relative;
                     width: 100.0%;
                     height: 100.0%;
@@ -677,13 +686,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </head>
 <body>    
     
-            <div class=&quot;folium-map&quot; id=&quot;map_9d4e5a4b6778e9ec0213fb3ccfb3c0c4&quot; ></div>
+            <div class=&quot;folium-map&quot; id=&quot;map_b8591e8bee79a092b622583be06cd143&quot; ></div>
         
 </body>
 <script>    
     
-            var map_9d4e5a4b6778e9ec0213fb3ccfb3c0c4 = L.map(
-                &quot;map_9d4e5a4b6778e9ec0213fb3ccfb3c0c4&quot;,
+            var map_b8591e8bee79a092b622583be06cd143 = L.map(
+                &quot;map_b8591e8bee79a092b622583be06cd143&quot;,
                 {
                     center: [30.210818000000003, -90.349537],
                     crs: L.CRS.EPSG3857,
@@ -697,16 +706,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
         
     
-            var tile_layer_099e9e6cb62bfb7dbdd20145fc5f37af = L.tileLayer(
+            var tile_layer_dbd1f0521f985d978161b5d7781685c3 = L.tileLayer(
                 &quot;https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png&quot;,
                 {&quot;attribution&quot;: &quot;Data by \u0026copy; \u003ca href=\&quot;http://openstreetmap.org\&quot;\u003eOpenStreetMap\u003c/a\u003e, under \u003ca href=\&quot;http://www.openstreetmap.org/copyright\&quot;\u003eODbL\u003c/a\u003e.&quot;, &quot;detectRetina&quot;: false, &quot;maxNativeZoom&quot;: 18, &quot;maxZoom&quot;: 18, &quot;minZoom&quot;: 0, &quot;noWrap&quot;: false, &quot;opacity&quot;: 1, &quot;subdomains&quot;: &quot;abc&quot;, &quot;tms&quot;: false}
-            ).addTo(map_9d4e5a4b6778e9ec0213fb3ccfb3c0c4);
+            ).addTo(map_b8591e8bee79a092b622583be06cd143);
         
     
-            var tile_layer_6ca8c61e26963f1cef5076bfe2283f8c = L.tileLayer(
+            var tile_layer_fbd7d685551ac1b10d3168403e8892b6 = L.tileLayer(
                 &quot;https://staging-raster.delta-backend.com/mosaic/tiles/7743bcb31bff7151aff7e5508785fce1/WebMercatorQuad/{z}/{x}/{y}@1x?assets=B08\u0026assets=B04\u0026expression=%28B08-B04%29%2F%28B08%2BB04%29\u0026rescale=0%2C1\u0026colormap_name=rdylgn&quot;,
                 {&quot;attribution&quot;: &quot;Mosaic&quot;, &quot;detectRetina&quot;: false, &quot;maxNativeZoom&quot;: 18, &quot;maxZoom&quot;: 18, &quot;minZoom&quot;: 0, &quot;noWrap&quot;: false, &quot;opacity&quot;: 1, &quot;subdomains&quot;: &quot;abc&quot;, &quot;tms&quot;: false}
-            ).addTo(map_9d4e5a4b6778e9ec0213fb3ccfb3c0c4);
+            ).addTo(map_b8591e8bee79a092b622583be06cd143);
         
 </script>" style="position:absolute;width:100%;height:100%;left:0;top:0;border:none !important;" allowfullscreen="" webkitallowfullscreen="" mozallowfullscreen=""></iframe></div></div>
 </div>
@@ -798,6 +807,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
  '2017-11-29T14:44:11.126689Z']</code></pre>
 </div>
 </div>
+<div class="cell" data-execution_count="10">
 <div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Restricted date range </span></span>
 <span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>restricted_temporal_filter <span class="op">=</span> {</span>
 <span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">"op"</span>: <span class="st">"t_intersects"</span>,</span>
@@ -842,6 +852,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb17-42"><a href="#cb17-42" aria-hidden="true" tabindex="-1"></a>        <span class="st">"colormap_name"</span>: <span class="st">"viridis"</span></span>
 <span id="cb17-43"><a href="#cb17-43" aria-hidden="true" tabindex="-1"></a>    }</span>
 <span id="cb17-44"><a href="#cb17-44" aria-hidden="true" tabindex="-1"></a>).json()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 <div class="cell" data-execution_count="11">
 <div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Use bbox initial zoom and map</span></span>
 <span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Set up a map located w/in event bounds</span></span>
@@ -885,7 +896,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
             <meta name=&quot;viewport&quot; content=&quot;width=device-width,
                 initial-scale=1.0, maximum-scale=1.0, user-scalable=no&quot; />
             <style>
-                #map_180e447dc25b820a091f8d29e7a23b98 {
+                #map_335e9cda3ec7d86a50e29103cb4b76b9 {
                     position: relative;
                     width: 100.0%;
                     height: 100.0%;
@@ -897,13 +908,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </head>
 <body>    
     
-            <div class=&quot;folium-map&quot; id=&quot;map_180e447dc25b820a091f8d29e7a23b98&quot; ></div>
+            <div class=&quot;folium-map&quot; id=&quot;map_335e9cda3ec7d86a50e29103cb4b76b9&quot; ></div>
         
 </body>
 <script>    
     
-            var map_180e447dc25b820a091f8d29e7a23b98 = L.map(
-                &quot;map_180e447dc25b820a091f8d29e7a23b98&quot;,
+            var map_335e9cda3ec7d86a50e29103cb4b76b9 = L.map(
+                &quot;map_335e9cda3ec7d86a50e29103cb4b76b9&quot;,
                 {
                     center: [18.464629000000002, -65.638847],
                     crs: L.CRS.EPSG3857,
@@ -917,16 +928,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
         
     
-            var tile_layer_a8226415158a45691e96cb201c871cd1 = L.tileLayer(
+            var tile_layer_90ec86d8dbf9203817d154a049621602 = L.tileLayer(
                 &quot;https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png&quot;,
                 {&quot;attribution&quot;: &quot;Data by \u0026copy; \u003ca href=\&quot;http://openstreetmap.org\&quot;\u003eOpenStreetMap\u003c/a\u003e, under \u003ca href=\&quot;http://www.openstreetmap.org/copyright\&quot;\u003eODbL\u003c/a\u003e.&quot;, &quot;detectRetina&quot;: false, &quot;maxNativeZoom&quot;: 18, &quot;maxZoom&quot;: 18, &quot;minZoom&quot;: 0, &quot;noWrap&quot;: false, &quot;opacity&quot;: 1, &quot;subdomains&quot;: &quot;abc&quot;, &quot;tms&quot;: false}
-            ).addTo(map_180e447dc25b820a091f8d29e7a23b98);
+            ).addTo(map_335e9cda3ec7d86a50e29103cb4b76b9);
         
     
-            var tile_layer_f65009d956ff78a729a266a18a46f99e = L.tileLayer(
+            var tile_layer_c4cf9bde4449bcf809f733e9aed5c134 = L.tileLayer(
                 &quot;https://staging-raster.delta-backend.com/mosaic/tiles/61809545320d5ea343d57453af06b818/WebMercatorQuad/{z}/{x}/{y}@1x?assets=B03\u0026assets=B05\u0026expression=%28B03-B05%29%2F%28B03%2BB05%29\u0026rescale=0%2C1\u0026colormap_name=viridis&quot;,
                 {&quot;attribution&quot;: &quot;Mosaic&quot;, &quot;detectRetina&quot;: false, &quot;maxNativeZoom&quot;: 18, &quot;maxZoom&quot;: 18, &quot;minZoom&quot;: 0, &quot;noWrap&quot;: false, &quot;opacity&quot;: 1, &quot;subdomains&quot;: &quot;abc&quot;, &quot;tms&quot;: false}
-            ).addTo(map_180e447dc25b820a091f8d29e7a23b98);
+            ).addTo(map_335e9cda3ec7d86a50e29103cb4b76b9);
         
 </script>" style="position:absolute;width:100%;height:100%;left:0;top:0;border:none !important;" allowfullscreen="" webkitallowfullscreen="" mozallowfullscreen=""></iframe></div></div>
 </div>
