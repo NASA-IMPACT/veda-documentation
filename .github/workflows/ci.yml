@@ -1,6 +1,6 @@
 on:
   push:
-    branches: main
+    branches: lt/ci
 
 name: Quarto Publish
 
@@ -27,6 +27,7 @@ jobs:
       - name: Render and Publish
         uses: quarto-dev/quarto-actions/publish@v2
         with:
-          target: gh-pages
+          target: lt/ci
+          path: docs
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
