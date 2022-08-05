@@ -1,6 +1,6 @@
 on:
   push:
-    branches: lt/ci
+    branches: main
 
 name: Quarto Publish
 
