@@ -12,8 +12,6 @@ jobs:
     steps:
       - name: Check out repository
         uses: actions/checkout@v3
-        with:
-          ref: lt/ci
 
       - name: Set up Quarto
         uses: quarto-dev/quarto-actions/setup@v2
@@ -40,3 +38,4 @@ jobs:
           render: false
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+           
