@@ -19,8 +19,8 @@ website:
         - section: "Advanced API Use"
           contents:
           - timeseries-rioxarray-stackstac.ipynb
-          - timeseries-stac-api.ipynb
           - open-and-plot.ipynb
+          - timeseries-stac-api.ipynb
           - hls-visualization.ipynb
           - single-item-viz.ipynb
 
@@ -29,6 +29,10 @@ format:
     theme: cosmo
   pdf:
     documentclass: scrreprt
+
+execute: 
+  freeze: auto
+
 
 
 

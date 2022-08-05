@@ -11,3 +11,4 @@ sphinxcontrib-napoleon
 sphinx-rtd-theme
 stackstac
 folium
+boto3
