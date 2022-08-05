@@ -5,9 +5,8 @@ ipykernel~=6.4.1
 ipyleaflet
 matplotlib
 nbsphinx
-pystac
 rioxarray
-sat-search
+pystac_client
 sphinxcontrib-napoleon
 sphinx-rtd-theme
 stackstac
