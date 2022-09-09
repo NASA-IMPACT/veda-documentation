@@ -12,3 +12,5 @@ sphinx-rtd-theme
 stackstac
 folium
 boto3
+selenium
+Pillow
