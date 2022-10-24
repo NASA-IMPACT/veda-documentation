@@ -1,4 +1,4 @@
-# Welcome {.unnumbered}
+# Welcome 
 
 ## Welcome to documentation about the VEDA API and Datasets
 
