@@ -15,3 +15,6 @@ folium
 boto3
 selenium
 Pillow
+hvplot
+sat-search
+pydantic[dotenv]
