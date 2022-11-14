@@ -19,7 +19,7 @@ website:
         - section: "Advanced API Use"
           contents:
           - timeseries-rioxarray-stackstac.ipynb
-          - open-and-plot.ipynb
+          - svi-overall.ipynb
           - timeseries-stac-api.ipynb
           - hls-visualization.ipynb
           - single-item-viz.ipynb
