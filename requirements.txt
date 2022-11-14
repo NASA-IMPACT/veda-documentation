@@ -13,3 +13,7 @@ sphinx-rtd-theme
 stackstac
 folium
 boto3
+hvplot
+sat-search
+pydantic[dotenv]
+
