@@ -1,3 +1,4 @@
+cognito_client
 sphinx>=1.4
 pandoc
 nbconvert
@@ -12,3 +13,7 @@ sphinx-rtd-theme
 stackstac
 folium
 boto3
+hvplot
+sat-search
+pydantic[dotenv]
+
