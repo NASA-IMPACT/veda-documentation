@@ -13,4 +13,5 @@ stackstac
 folium
 boto3
 selenium
+webdriver-manager
 Pillow
