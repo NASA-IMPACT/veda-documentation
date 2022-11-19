@@ -1,3 +1,4 @@
+cognito_client
 sphinx>=1.4
 pandoc
 nbconvert
@@ -15,3 +16,7 @@ boto3
 selenium
 webdriver-manager
 Pillow
+hvplot
+sat-search
+pydantic[dotenv]
+
