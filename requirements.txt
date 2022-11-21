@@ -13,6 +13,9 @@ sphinx-rtd-theme
 stackstac
 folium
 boto3
+selenium
+webdriver-manager
+Pillow
 hvplot
 sat-search
 pydantic[dotenv]
