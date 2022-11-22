@@ -23,7 +23,7 @@ website:
           - timeseries-stac-api.ipynb
           - hls-visualization.ipynb
           - single-item-viz.ipynb
-
+          - gif-generation.ipynb
 format:
   html:
     theme: cosmo
