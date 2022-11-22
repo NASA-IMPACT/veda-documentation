@@ -4,8 +4,8 @@ project:
 
 website:
   title: "VEDA Documentation"
-  author: "VEDA Team (NASA IMPACT and Development Seed)"
-  date: "3/31/2022"
+  #author: "VEDA Team (NASA IMPACT and Development Seed)"
+  #date: "3/31/2022"
   sidebar:
     contents:
       - index.qmd
